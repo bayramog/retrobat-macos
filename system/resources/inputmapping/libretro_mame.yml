@@ -427,6 +427,19 @@ bublbobl_6variation:
   btn_r: 1
   btn_l2: -1
   btn_r2: -1
+daytona:
+  analog_dpad_mode: 0
+  btn_r: -1
+  btn_l: -1
+  btn_r3: 0
+  stk_r_x+: 10
+  stk_r_x-: 9
+  stk_r_y+: 1
+  stk_r_y-: 8
+  btn_a: 14
+  btn_b: 12
+  btn_x: 11
+  btn_y: 13
 deadconx:
   analog_dpad_mode: 0
   btn_a: 1
