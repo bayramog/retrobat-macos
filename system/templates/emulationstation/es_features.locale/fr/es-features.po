@@ -10852,3 +10852,19 @@ msgstr "EN BAS À GAUCHE"
 msgctxt "game_options"
 msgid "FORCE HARDWARE"
 msgstr "FORCER LE TYPE DE CONSOLE"
+
+msgctxt "game_options"
+msgid "ALLOW GAME/CORE OPTIONS OVERRIDE"
+msgstr "AUTORISER OPTIONS DU JEU/CORE"
+
+msgctxt "game_options"
+msgid "By default, RetroBat discards core specific option files."
+msgstr "Activer cette option pour prendre en compte les fichiers .opt du core ou du jeu."
+
+msgctxt "game_options"
+msgid "ALLOW GAME/CORE SHADERS OVERRIDE"
+msgstr "AUTORISER SHADERS PAR JEU/CORE"
+
+msgctxt "game_options"
+msgid "Enable this to enable shaders even when RetroBat has no shader set."
+msgstr "Activer cette option pour utiliser les presets enregistrés directement dans RetroArch."

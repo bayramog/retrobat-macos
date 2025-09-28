@@ -306,7 +306,7 @@ mappings_file = "gamecontrollerdb.txt"            	# Filename of a database with
 
 [Storage]
 cache_root = ""                                   	# Root path for files used to speed up certain parts of the emulator or the game. These files may be persistent, but they can be deleted without major side effects such as progress loss. If empty, the cache folder under the storage root, or, if available, the cache directory preferred for the OS, will be used.
-content_root = "../../saves/xbox360/xenia"        	# Root path for guest content storage (saves, etc.), or empty to use the content folder under the storage root.
+content_root = ""                                 	# Root path for guest content storage (saves, etc.), or empty to use the content folder under the storage root.
 mount_cache = false                               	# Enable cache mount
 mount_scratch = false                             	# Enable scratch mount
 storage_root = ""                                 	# Root path for persistent internal data storage (config, etc.), or empty to use the path preferred for the OS, such as the documents folder, or the emulator executable directory if portable.txt is present in it.
@@ -323,12 +323,10 @@ show_profiler = false                             	# Show profiling UI by defaul
 vulkan_allow_present_mode_fifo_relaxed = true     	# When available, allow the relaxed first-in-first-out presentation mode (3rd priority), which causes waiting for host display vertical sync, but may present with tearing if frames don't meet the host display refresh rate.
 vulkan_allow_present_mode_immediate = true        	# When available, allow the immediate presentation mode (1st priority), offering the lowest latency with the possibility of tearing in certain cases, and, depending on the configuration, variable refresh rate.
 vulkan_allow_present_mode_mailbox = true          	# When available, allow the mailbox presentation mode (2nd priority), offering low latency without the possibility of tearing.
-vulkan_debug_utils_messenger = false              	# Enable writing Vulkan debug messages via VK_EXT_debug_utils to the Xenia log.
-vulkan_debug_utils_messenger_severity = 2         	# Maximum severity of messages to log via the Vulkan debug messenger: 0 - error, 1 - warning, 2 - info, 3 - verbose.
-vulkan_debug_utils_names = false                  	# Enable naming Vulkan objects via VK_EXT_debug_utils.
-vulkan_device = -1                                	# Index of the physical device to use, or -1 for any compatible device.
+vulkan_device = -1                                	# Index of the preferred Vulkan physical device, or -1 to use any compatible device.
+vulkan_log_debug_messages = true                  	# Write Vulkan VK_EXT_debug_utils messages to the Xenia log, as opposed to the OS debug output.
 vulkan_sparse_shared_memory = true                	# Enable sparse binding for shared memory emulation. Disabling it increases video memory usage - a 512 MB buffer is created - but allows graphics debuggers that don't support sparse binding to work.
-vulkan_validation = false                         	# Enable Vulkan validation (VK_LAYER_KHRONOS_validation). Messages will be written to the OS debug log without vulkan_debug_messenger or to the Xenia log with it.
+vulkan_validation = false                         	# Enable the Vulkan validation layer (VK_LAYER_KHRONOS_validation). Messages will be written to the Xenia log if 'vulkan_log_debug_messages' is enabled, or to the OS debug output otherwise.
 
 
 [Win32]
