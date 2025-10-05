@@ -2819,6 +2819,50 @@ dsps:
   P2RelativeRight:   # Player 2 Gun X Right
   P2RelativeUp:   # Player 2 Gun Y Up
   
+razingstorm_gun:
+  Coin1: kb_5 # Coin 1
+  ExtensionOne21: kb_1 # Player 1 Start
+  ExtensionOne4: kb_2 # Player 2 Start
+  mouseleft_1: ExtensionOne3 # Player 1 Trigger
+  mouseleft_2: ExtensionOne2 # Player 2 Trigger
+  mouseright_1: ExtensionOne17 # Player 2 Footpedal
+  mouseright_2: ExtensionOne18 # Player 2 Footpedal
+  ExtensionOne13: kb_S # Service
+  Test: kb_T # Test
+  ExtensionOne11: kb_Down  # Down Select
+  ExtensionOne12: kb_Up  # Up Select
+  P1ButtonUp: kb_Return  # Enter  
+  
+razingstorm:
+  Test: l3  # Test
+  ExtensionOne13: r3  # Service  
+  Coin1: select  # Coin
+  P1ButtonUp: south  # Enter
+  Analog0: rightstickleft  # Player 1 Gun X
+  Analog2: rightstickup  # Player 1 Gun Y
+  Analog4: rightstickleft  # Player 2 Gun X
+  Analog6: rightstickup  # Player 2 Gun Y  
+  ExtensionOne11: down  # Down Select
+  ExtensionOne12: up  # Up Select
+  ExtensionOne17: lefttrigger  # Player 2 Footpedal
+  ExtensionOne18: lefttrigger  # Player 1 Footpedal
+  ExtensionOne2: righttrigger  # Player 2 Trigger
+  ExtensionOne21: start  # Player 1 Start
+  ExtensionOne3: righttrigger  # Player 1 Trigger
+  ExtensionOne4: start  # Player 2 Start
+
+  # Unmapped inputs:
+  P1RelativeDown:   # Player 1 Gun Y Down
+  P1RelativeLeft:   # Player 1 Gun X Left
+  P1RelativeRight:   # Player 1 Gun X Right
+  P1RelativeUp:   # Player 1 Gun Y Up
+  P1LightGun:   # Player 1 Light Gun  
+  P2LightGun:   # Player 2 Light Gun
+  P2RelativeDown:   # Player 2 Gun Y Down
+  P2RelativeLeft:   # Player 2 Gun X Left
+  P2RelativeRight:   # Player 2 Gun X Right
+  P2RelativeUp:   # Player 2 Gun Y Up
+  
 taikogreen:
   P1ButtonStart: l3  # Test
   P1Button5: r3  # Service
@@ -2834,6 +2878,52 @@ taikogreen:
   P1Button6: east  # Player 2 Drum Right Center
   ExtensionOne13: west  # Player 2 Drum Left Side
   ExtensionOne21: north  # Player 2 Drum Right Side
+  
+tekken6:
+  Test: l3  # Test
+  ExtensionOne13: r3  # Service
+  Coin1: select  # Coin
+  ExtensionOne14: start  # Player 1 Start
+  ExtensionOne12: up  # Player 1 Up    
+  ExtensionOne11: down  # Player 1 Down
+  P1ButtonDown: left  # Player 1 Left
+  P1ButtonRight: right  # Player 1 Right
+  P1ButtonUp: west  # Player 1 Left Punch
+  P1ButtonLeft: north  # Player 1 Right Punch
+  ExtensionOne4: south  # Player 1 Left Kick
+  ExtensionOne3: east  # Player 1 Right Kick
+  P2ButtonStart: start  # Player 2 Start
+  ExtensionOne27: up  # Player 2 Up
+  ExtensionOne26: down  # Player 2 Down
+  ExtensionOne25: left  # Player 2 Left
+  ExtensionOne24: right # Player 2 Right
+  ExtensionOne23: west  # Player 2 Left Punch
+  ExtensionOne22: north  # Player 2 Right Punch
+  P2Button6: south  # Player 2 Left Kick
+  P2Button5: east  # Player 2 Right Kick
+
+tekken6br:
+  Test: l3  # Test
+  ExtensionOne13: r3  # Service
+  Coin1: select  # Coin
+  ExtensionOne14: start  # Player 1 Start
+  ExtensionOne12: up  # Player 1 Up    
+  ExtensionOne11: down  # Player 1 Down
+  P1ButtonDown: left  # Player 1 Left
+  P1ButtonRight: right  # Player 1 Right
+  P1ButtonUp: west  # Player 1 Left Punch
+  P1ButtonLeft: north  # Player 1 Right Punch
+  ExtensionOne4: south  # Player 1 Left Kick
+  ExtensionOne3: east  # Player 1 Right Kick
+  P2ButtonStart: start  # Player 2 Start
+  ExtensionOne27: up  # Player 2 Up
+  ExtensionOne26: down  # Player 2 Down
+  ExtensionOne25: left  # Player 2 Left
+  ExtensionOne24: right # Player 2 Right
+  ExtensionOne23: west  # Player 2 Left Punch
+  ExtensionOne22: north  # Player 2 Right Punch
+  P2Button6: south  # Player 2 Left Kick
+  P2Button5: east  # Player 2 Right Kick
   
 ttt2u:
   Test: l3  # Test
