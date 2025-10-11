@@ -1,6 +1,6 @@
 # Changelog
 
-## RetroBat 7.5
+## RetroBat 7.5 - in progress (BETA)
 <details>
 
 ### Emulators\cores:
