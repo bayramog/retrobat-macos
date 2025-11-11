@@ -55,11 +55,6 @@
 \system\templates\gemrb\GemRB.cfg|\emulators\gemrb\GemRB.cfg
 \system\templates\gopher64\config.json|\emulators\gopher64\portable_data\config\config.json
 \system\templates\gzdoom\gzdoom_portable.ini|\emulators\gzdoom\gzdoom_portable.ini
-\system\templates\halflife\config.cfg|\roms\halflife\valve\config.cfg
-\system\templates\halflife\extras.pak|\roms\halflife\extras.pak
-\system\templates\halflife\opengl.cfg|\roms\halflife\valve\opengl.cfg
-\system\templates\halflife\valve\extras.pk3|\roms\halflife\valve\extras.pk3
-\system\templates\halflife\video.cfg|\roms\halflife\valve\video.cfg
 \system\templates\hatari\hatari.cfg|\emulators\hatari\hatari.cfg
 \system\templates\hbmame\ctrlr\ds4_ds5.cfg|\saves\hbmame\ctrlr\ds4_ds5.cfg
 \system\templates\hbmame\ctrlr\switch_pro.cfg|\saves\hbmame\ctrlr\switch_pro.cfg
@@ -136,6 +131,11 @@
 \system\templates\retroarch\saves\reicast\nvmem_atomiswave.zip|\saves\atomiswave\reicast
 \system\templates\retroarch\saves\reicast\nvmem_naomi.zip|\saves\naomi\reicast
 \system\templates\retroarch\saves\reicast\nvmem.naomi2.zip|\saves\naomi2\reicast
+\system\templates\roms\halflife\config.cfg|\roms\halflife\valve\config.cfg
+\system\templates\roms\halflife\extras.pak|\roms\halflife\extras.pak
+\system\templates\roms\halflife\opengl.cfg|\roms\halflife\valve\opengl.cfg
+\system\templates\roms\halflife\valve\extras.pk3|\roms\halflife\valve\extras.pk3
+\system\templates\roms\halflife\video.cfg|\roms\halflife\valve\video.cfg
 \system\templates\roms\ports\2048.libretro|\roms\ports\2048.libretro
 \system\templates\roms\ports\anarch.libretro|\roms\ports\anarch.libretro
 \system\templates\roms\ports\craft.libretro|\roms\ports\craft.libretro
