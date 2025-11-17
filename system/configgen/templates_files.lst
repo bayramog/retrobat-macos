@@ -154,6 +154,7 @@
 \system\templates\rpcs3\GuiConfigs\CurrentSettings.ini|\emulators\rpcs3\GuiConfigs\CurrentSettings.ini
 \system\templates\rpcs3\config\config.yml|\emulators\rpcs3\config\config.yml
 \system\templates\rpcs3\config\vfs.yml|\emulators\rpcs3\config\vfs.yml
+\system\templates\rtcw\Main\realrtcwconfig.cfg|\roms\rtcw\Main\realrtcwconfig.cfg
 \system\templates\ryujinx\Configure Ryujinx.bat|\emulators\ryujinx\Configure Ryujinx.bat
 \system\templates\ryujinx\portable\Config.json|\saves\switch\ryujinx\portable\Config.json
 \system\templates\scummvm\scummvm.ini|\emulators\scummvm\scummvm.ini
