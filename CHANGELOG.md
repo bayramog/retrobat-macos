@@ -1,5 +1,39 @@
 # Changelog
 
+## RetroBat 7.5.2
+<details>
+
+### Emulators\cores:
+- Add bennugd libretro core
+- Add realRTCW port (Return To Castle Wolfenstein port)
+- Add 2ship (2 Ship 2 Harkinian: Zelda Majora's Mask port)
+- Bump soh (Ship of Harkinian)
+- Bump xenia-edge (fixes start on wrong screen)
+
+### Fixes:
+- DHEWM3: separate save folder per game
+- DOLPHIN WII: fix wiimote horizontal profile not working
+- DUCKSTATION: fix controller detection when dolphinbar in mode 4 is connected
+- EXELAUNCHER: fix wsquashfs with mounting as Z drive
+- MUPEN64 (RMG): fix controller not working
+- PCSX2: fix controller detection when dolphinbar in mode 4 is connected
+- RETROARCH VICE: review default machines (from PAL to NTSC)
+
+### Features:
+- RETROARCH (PSX, PCFX, PCENGINECD): add option to change path to search bios
+- RETROARCH: add option for fastforward ratio
+- RYUJINX: compatibility with latest Canary and SDL3
+- VPINBALL: add screenres settings
+
+Other stuff:
+- EMULATIONSTATION: fix a case of white-flash in carousel when moving
+- EMULATIONSTATION: fix a crash in carousel view when using subfolders
+- Fix error message when RetroBat is in a path that contains spaces
+- Reorganize templates folder to match emulators folder
+- Retrobat executable: fix video stretching on 4:3 monitors
+
+</details>
+
 ## RetroBat 7.5.1.1
 <details>
 
