@@ -2,6 +2,7 @@
 <upgradeinfo>
   <neveroverwrite path="emulationstation\.emulationstation\es_settings.cfg"/>
   <neveroverwrite path="emulationstation\.emulationstation\es_input.cfg"/>
+  <neveroverwrite path="emulators\2ship\2ship2harkinian.json"/>
   <neveroverwrite path="emulators\altirra\Altirra.ini"/>
   <neveroverwrite path="emulators\ares\settings.bml"/>
   <neveroverwrite path="emulators\azahar\user\config\qt-config.ini"/>
@@ -99,6 +100,7 @@
   <neveroverwrite path="roms\sonicretro\sonic1\settings.ini"/>
   <neveroverwrite path="roms\sonicretro\sonic2\settings.ini"/>
   <neveroverwrite path="roms\sonicretro\soniccd\settings.ini"/>
+  <neveroverwrite path="roms\rtcw\Main\realrtcwconfig.cfg"/>
   <neveroverwrite path="emulators\ssf\SSF.ini"/>
   <neveroverwrite path="emulators\stella\stella.sqlite3"/>
   <neveroverwrite path="emulators\sudachi\user\config\qt-config.ini"/>
@@ -122,6 +124,8 @@
     <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
     <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
     <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
     <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
     <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
     <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
