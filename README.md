@@ -38,6 +38,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - GetUpOr - community, support
 - RetroBoy - community, support
 - Tartifless - developer, documentation
+- Aynshe - community, support
 
 ## 💟 Special Thanks
 
