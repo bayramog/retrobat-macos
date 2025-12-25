@@ -3,7 +3,7 @@
   <a href="https://www.retrobat.org/"><img src="https://raw.githubusercontent.com/kaylh/RetroBat/master/system/resources/retrobat_logo.svg" alt="retrobat" width="500"></a>
 </h1>
 <p align="left">
-  <a href="https://discord.gg/k8mg99cY6F">
+  <a href="https://discord.gg/GVcPNxwzuT">
       <img src="https://img.shields.io/discord/748519802255179917?color=blue&label=discord&logo=discord&logoColor=white&style=for-the-badge"
            alt="Discord">
     </a>
@@ -38,6 +38,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - GetUpOr - community, support
 - RetroBoy - community, support
 - Tartifless - developer, documentation
+- Aynshe - community, support
 
 ## 💟 Special Thanks
 
