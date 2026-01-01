@@ -18,20 +18,23 @@ show-live-area-screen: true
 icon-size: 64
 archive-log: false
 backend-renderer: Vulkan
+custom-driver-name: ""
+turbo-mode: false
 gpu-idx: 0
-high-accuracy: true
+high-accuracy: false
 resolution-multiplier: 1
-disable-surface-sync: false
+disable-surface-sync: true
 screen-filter: Bilinear
 v-sync: true
 anisotropic-filtering: 1
 texture-cache: true
 async-pipeline-compilation: true
-show-compile-shaders: false
+show-compile-shaders: true
 hashless-texture-cache: false
 import-textures: false
 export-textures: false
 export-as-png: true
+memory-mapping: double-buffer
 boot-apps-full-screen: false
 audio-backend: SDL
 audio-volume: 100
@@ -44,9 +47,8 @@ cpu-pool-size: 10
 modules-mode: 0
 delay-background: 4
 delay-start: 10
-background-alpha: 0.300000012
+background-alpha: 0.3
 log-level: 0
-cpu-backend: Dynarmic
 cpu-opt: true
 pref-path: .\..\..\saves\psvita\vita3k
 discord-rich-presence: false
@@ -56,8 +58,13 @@ show-touchpad-cursor: true
 performance-overlay: false
 performance-overlay-detail: 0
 performance-overlay-position: 0
+enable-gamepad-overlay: true
+overlay-show-touch-switch: false
+overlay-scale: 1
+overlay-opacity: 100
 screenshot-format: 1
 disable-motion: false
+controller-analog-multiplier: 1
 keyboard-button-select: 229
 keyboard-button-start: 40
 keyboard-button-up: 82
@@ -67,7 +74,7 @@ keyboard-button-left: 80
 keyboard-button-l1: 20
 keyboard-button-r1: 8
 keyboard-button-l2: 24
-keyboard-button-r2: 27
+keyboard-button-r2: 18
 keyboard-button-l3: 9
 keyboard-button-r3: 11
 keyboard-button-triangle: 25
@@ -91,7 +98,7 @@ keyboard-take-screenshot: 0
 user-id: 00
 user-auto-connect: true
 user-lang: ""
-display-info-message: true
+display-info-message: false
 show-welcome: false
 check-for-updates: false
 file-loading-delay: 0
@@ -106,6 +113,7 @@ http-timeout-attempts: 50
 http-timeout-sleep-ms: 100
 http-read-end-attempts: 10
 http-read-end-sleep-ms: 250
+adhoc-addr: 0
 tracy-primitive-impl: false
 controller-binds:
   - 0
