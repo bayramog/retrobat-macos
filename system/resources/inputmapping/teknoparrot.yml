@@ -2561,28 +2561,45 @@ gundampod:
   Test: l3 # Test
 
 ms:
-  Analog2: leftstickup # Throttle Brake
-  Analog4: rightstickleft # Analog X Right
-  Analog6: rightstickup # Analog Y Down
-  P1Button1: south # Enter Switch
-  P1ButtonDown: down # Menu Down
-  P1ButtonUp: up # Menu Up
-  Service1: r3 # Service/Coin
-  Test: l3 # Test
+  Test: l3  # Test
+  Service1: r3  # Service/Coin
+  P1Button1: south  # Enter Switch
+  P1ButtonUp: up  # Menu Up
+  P1ButtonDown: down  # Menu Down
+  Analog2: rightstickup  # Throttle Brake
+  Analog4: leftstickleft  # Analog X Right
+  Analog6: leftstickup  # Analog Y Down
+  ExtensionOne11: east  # Missile
+  ExtensionOne12: south # Machine Gun
 
 starwars:
-  Analog2: lefttrigger # Throttle Brake
-  Analog4: leftstickleft # Analog X Right
-  Analog6: leftstickup # Analog Y Down
-  ExtensionOne12: righttrigger # Weapon Trigger
-  ExtensionOne11: leftshoulder # Weapon Button
-  P1Button1: south # Enter Switch
-  P1Button3: west # View Change
-  P1ButtonDown: down # Menu Down
-  P1ButtonStart: start # Start
-  P1ButtonUp: up # Menu Up
-  Service1: r3 # Service
-  Test: l3 # Test
+  Test: l3  # Test
+  Service1: r3  # Service
+  P1ButtonStart: start  # Start
+  P1Button1: leftshoulder  # Enter Switch
+  P1Button3: rightshoulder  # View Change
+  P1ButtonUp: up  # Menu Up
+  P1ButtonDown: down  # Menu Down
+  Analog2: rightstickup  # Throttle Brake
+  Analog4: leftstickleft  # Analog X Right
+  Analog6: leftstickup  # Analog Y Down
+  ExtensionOne11: east  # Weapon Button
+  ExtensionOne12: south # Weapon Trigger
+
+starwarstfa:
+  Test: l3  # Test
+  Service1: r3  # Service
+  Coin1: select  # Coin
+  P1ButtonStart: start  # Start
+  P1Button1: leftshoulder  # Enter Switch
+  P1Button3: rightshoulder  # View Change
+  P1ButtonUp: up  # Menu Up
+  P1ButtonDown: down  # Menu Down
+  Analog2: rightstickup  # Throttle Brake
+  Analog4: leftstickleft  # Analog X Right
+  Analog6: leftstickup  # Analog Y Down
+  ExtensionOne11: east  # Weapon Button
+  ExtensionOne12: south # Weapon Trigger
 
 ############### INTERACTIVEMOVIE ###############
 
@@ -2862,7 +2879,7 @@ razingstorm:
   P2RelativeLeft:   # Player 2 Gun X Left
   P2RelativeRight:   # Player 2 Gun X Right
   P2RelativeUp:   # Player 2 Gun Y Up
-  
+
 taikogreen:
   P1ButtonStart: l3  # Test
   P1Button5: r3  # Service
@@ -7522,6 +7539,59 @@ startrekvoyager_gun:
   P2ButtonStart: kb_2 # P2 Start
   Service1: kb_S # Service
   Test: kb_T # Test
+
+targetbravo:
+  Test: l3  # Test
+  Service1: r3  # Service 1
+  Coin1: select  # Coin 1
+  P1ButtonStart: start  # Player 1 Start
+  P1Button1: righttrigger  # Player 1 Gun Trigger
+  P1Button2: lefttrigger  # Player 1 Reload
+  P1Button3: west  # Player 1 Action
+  P1Button4: north  # Player 1 Change
+  Analog0: rightstickleft  # Player 1 Gun X
+  Analog2: rightstickup  # Player 1 Gun Y
+  Coin2: select  # Coin 2
+  P2ButtonStart: start  # Player 2 Start
+  P2Button1: righttrigger  # Player 2 Gun Trigger
+  P2Button2: lefttrigger  # Player 2 Reload
+  P2Button3: west  # Player 2 Action
+  P2Button4: north  # Player 2 Change
+  Analog4: rightstickleft  # Player 2 Gun X
+  Analog6: rightstickup  # Player 2 Gun Y
+
+targetbravo_gun:
+  # rawinput:
+  Test: kb_T                 # Test
+  Service1: kb_S            # Service
+  # Player 1
+  Coin1: kb_5               # Coin 1
+  P1ButtonStart: kb_1       # P1 Start
+  mouseleft_1: P1Button1    # P1 Left Trigger
+  mouseright_1: P1Button2   # P1 Right Trigger
+  mousemiddle_1: P1Button3  # P1 Action
+  P1Button4: kb_left        # Player 1 Change
+  
+  # Player 2
+  Coin2: kb_6               # Coin 2
+  P2ButtonStart: kb_2       # P2 Start
+  mouseleft_2: P2Button1    # P2 Left Trigger
+  mouseright_2: P2Button2   # P2 Right Trigger
+  mousemiddle_2: P2Button3  # P2 Action
+  P2Button4: kb_right       # Player 2 Change
+
+  # Unmapped inputs:
+  P1LightGun:   # Player 1 Light Gun
+  P1RelativeDown:   # Player 1 Gun Y Down
+  P1RelativeLeft:   # Player 1 Gun X Left
+  P1RelativeRight:   # Player 1 Gun X Right
+  P1RelativeUp:   # Player 1 Gun Y Up
+  P2LightGun:   # Player 2 Light Gun
+  P2RelativeDown:   # Player 2 Gun Y Down
+  P2RelativeLeft:   # Player 2 Gun X Left
+  P2RelativeRight:   # Player 2 Gun X Right
+  P2RelativeUp:   # Player 2 Gun Y Up
+  Service2:   # Service 2
 
 targetterrorgold:
   Analog0: rightstickleft # P1 Gun X
