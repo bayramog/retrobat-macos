@@ -1,5 +1,58 @@
 # Changelog
 
+## RetroBat 7.5.3
+<details>
+
+### Emulators\cores:
+- Bump Ares to 147
+- Bump Azahar
+- Bump BigPEmu to 1.21
+- Bump Dolphin
+- Bump DosBox-Pure Unleashed to preview 4
+- Bump Duckstation
+- Bump Fbneo
+- Bump Gopher64 to 1.1.11.0
+- Bump Mame to 0.284
+- Bump MelonDS to 1.1
+- Bump Mupen64 (RMG) to 0.8.8zz
+- Bump OpenGoal to 0.2.31
+- Bump PCSX2 to 2.6
+- Bump RPCS3
+- Bump ShadPS4
+- Bump Starship
+- Bump Vita3K
+- Bump xenia-canary
+- Bump Xenia-edge
+- Bump Ymir to 0.2.0
+- bennuGD: add .dcb extension
+- Compatible with Citron 0.12.25
+- Compatible with Ryubing Ryujinx-canary 1.3.243
+
+### Fixes:
+- FLYCAST: remove mapping from l3 to emulator menu
+- EMULATIONSTATION: fix searches in collections
+- EMULATIONSTATION: fixed seta platform ID
+- RYUJINX: fix xbox controllers with new sdl3 version
+
+### Features:
+- EMULATIONSTATION: add sort name metadata to enable sorting games in gamelists
+- LR-PUAE: Add input options
+- ORICUTRON: add options
+- RETROARCH: also allow global shader override file to take priority
+- RYUJINX: add controller deadzone
+- SCUMMVM: add squashfs compatibility for libretro core
+- SUPERMODEL: added deadzone setting
+- VPINBALL: allow changing all screenres.txt in features
+
+Other stuff:
+- Improved 7z extraction for big files
+- Improved speed of launching emulators when no update is detected
+- Increase limit of returned games for HfsDB from 5 to 25
+- Add Wiimote4gun compatibility (Aynshe version of wiimoteGun)
+- Switched KILL to CLOSE for numerous emulator for smoother closing
+
+</details>
+
 ## RetroBat 7.5.2
 <details>
 

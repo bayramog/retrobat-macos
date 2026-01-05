@@ -87,7 +87,7 @@
   <neveroverwrite path="saves\switch\ryujinx\portable\Config.json"/>
   <neveroverwrite path="emulators\scummvm\scummvm.ini"/>
   <neveroverwrite path="emulators\shadps4\user\config.toml"/>
-  <neveroverwrite path="emulators\shadps4\user\qt_ui.ini"/>
+  <neveroverwrite path="emulators\shadps4\launcher\qt_ui.ini"/>
   <neveroverwrite path="emulators\simple64\input-profiles.ini"/>
   <neveroverwrite path="emulators\simple64\input-settings.ini"/>
   <neveroverwrite path="emulators\simple64\mupen64plus.cfg"/>
@@ -111,6 +111,7 @@
   <neveroverwrite path="emulators\winuae\winuae.ini"/>
   <neveroverwrite path="emulators\xemu\xemu.toml"/>
   <neveroverwrite path="emulators\xenia-canary\xenia-canary.config.toml"/>
+  <neveroverwrite path="emulators\xenia-edge\xenia-edge.config.toml"/>
   <neveroverwrite path="emulators\xenia\xenia.config.toml"/>
   <neveroverwrite path="emulators\xm6pro\XM6.ini"/>
   <neveroverwrite path="emulators\xroar\xroar.conf"/>
@@ -120,19 +121,25 @@
   <neveroverwrite path="emulators\zinc\zinc.cfg"/>
   <neveroverwrite path="retrobat.ini"/>
   <actions>
-    <delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
-    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
-    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
-    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
-    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
-    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
-    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
-    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
-    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
-    <rename path="roms\tyrquake" to="roms\quake"/>
-    <rename path="roms\vitaquake2" to="roms\quake2"/>
-    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
-    <delete path="emulators\shadps4\shadPS4.exe"/>
+    <delete path="bios\mame\hash"/>
+	<delete path="emulators\ares\settings.bml"/>
+	<delete path="emulators\azahar\user\config\qt-config.ini"/>
+	<delete path="emulators\bigpemu\userdata\BigPEmuConfig.bigpcfg"/>
+	<delete path="emulators\citron\user\config\qt-config.ini"/>
+	<delete path="emulators\dolphin-emu\User\Config\Dolphin.ini"/>
+	<delete path="emulators\dolphin-emu\User\Config\GCPadNew.ini"/>
+	<delete path="emulators\dolphin-emu\User\Config\Hotkeys.ini"/>
+	<delete path="emulators\duckstation\settings.ini"/>
+	<delete path="emulators\fbneo\config\fbneo64.ini"/>
+	<delete path="emulators\mupen64\Config\mupen64plus.cfg"/>
+	<delete path="emulators\pcsx2\inis\PCSX2.ini"/>
+	<delete path="emulators\rpcs3\config.yml"/>
+	<delete path="saves\switch\ryujinx\portable\Config.json"/>
+	<delete path="emulators\shadps4\user\config.toml"/>
+	<delete path="emulators\vita3k\config.yml"/>
+	<delete path="emulators\xenia-canary\xenia-canary.config.toml"/>
+	<delete path="emulators\xenia-edge\xenia-edge.config.toml"/>
+	<delete path="emulators\ymir\Ymir.toml"/>
   </actions>
   <actions version="7.3.2-stable-win64">
     <move path="tattoos" to="user\tattoos"/>
@@ -148,6 +155,19 @@
     <rename path="emulators\rpcs3\config\config.yml" to="emulators\rpcs3\config\config.yml.bak"/>
     <rename path="emulators\mesen\settings.json" to="emulators\mesen\settings.json.bak"/>
     <rename path="emulators\azahar\user\config\qt-config.ini" to="emulators\azahar\user\config\qt-config.ini.bak"/>
+	<delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
+    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
+    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
+    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
+    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
+    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
+    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
+    <rename path="roms\tyrquake" to="roms\quake"/>
+    <rename path="roms\vitaquake2" to="roms\quake2"/>
+    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
+    <delete path="emulators\shadps4\shadPS4.exe"/>
   </actions>
   <actions version="7.3.2.1-stable-win64">
     <move path="tattoos" to="user\tattoos"/>
@@ -163,6 +183,19 @@
     <rename path="emulators\rpcs3\config\config.yml" to="emulators\rpcs3\config\config.yml.bak"/>
     <rename path="emulators\mesen\settings.json" to="emulators\mesen\settings.json.bak"/>
     <rename path="emulators\azahar\user\config\qt-config.ini" to="emulators\azahar\user\config\qt-config.ini.bak"/>
+	<delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
+    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
+    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
+    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
+    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
+    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
+    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
+    <rename path="roms\tyrquake" to="roms\quake"/>
+    <rename path="roms\vitaquake2" to="roms\quake2"/>
+    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
+    <delete path="emulators\shadps4\shadPS4.exe"/>
   </actions>
   <actions version="7.2.0-stable-win64">
     <rename path="emulators\xenia-manager" to="emulators\xenia-manager.bak"/>
@@ -170,6 +203,19 @@
     <move path="bios\mame\cfg" to="saves\mame\cfg"/>
     <delete path="emulators\eden\user\config\qt-config.ini"/>
     <delete path="saves\mame\mame"/>
+	<delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
+    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
+    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
+    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
+    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
+    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
+    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
+    <rename path="roms\tyrquake" to="roms\quake"/>
+    <rename path="roms\vitaquake2" to="roms\quake2"/>
+    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
+    <delete path="emulators\shadps4\shadPS4.exe"/>
   </actions>
   <actions version="7.3.0-stable-win64">
     <rename path="emulators\xenia-manager" to="emulators\xenia-manager.bak"/>
@@ -177,17 +223,56 @@
     <move path="bios\mame\cfg" to="saves\mame\cfg"/>
     <delete path="emulators\eden\user\config\qt-config.ini"/>
     <delete path="saves\mame\mame"/>
+	<delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
+    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
+    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
+    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
+    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
+    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
+    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
+    <rename path="roms\tyrquake" to="roms\quake"/>
+    <rename path="roms\vitaquake2" to="roms\quake2"/>
+    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
+    <delete path="emulators\shadps4\shadPS4.exe"/>
   </actions>
   <actions version="7.3.1-stable-win64">
     <rename path="system\tools\demulshooter" to="system\tools\demulshooter.bak"/>
     <move path="bios\mame\cfg" to="saves\mame\cfg"/>
     <delete path="emulators\eden\user\config\qt-config.ini"/>
     <delete path="saves\mame\mame"/>
+	<delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
+    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
+    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
+    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
+    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
+    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
+    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
+    <rename path="roms\tyrquake" to="roms\quake"/>
+    <rename path="roms\vitaquake2" to="roms\quake2"/>
+    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
+    <delete path="emulators\shadps4\shadPS4.exe"/>
   </actions>
   <actions version="7.3.1.1-stable-win64">
     <rename path="system\tools\demulshooter" to="system\tools\demulshooter.bak"/>
     <move path="bios\mame\cfg" to="saves\mame\cfg"/>
     <delete path="emulators\eden\user\config\qt-config.ini"/>
     <delete path="saves\mame\mame"/>
+	<delete path="emulators\supermodel\Sega Model 3 UI.exe"/>
+    <rename path="emulators\gopher64\portable_data\config\config.json" to="emulators\gopher64\portable_data\config\config.json.bak"/>
+    <rename path="emulators\jgenesis\jgenesis-config.toml" to="emulators\jgenesis\jgenesis-config.toml.bak"/>
+    <rename path="emulators\xenia-canary\xenia-canary.config.toml" to="emulators\xenia-canary\xenia-canary.config.toml.bak"/>
+    <rename path="emulators\xenia-edge\xenia-edge.config.toml" to="emulators\xenia-edge\xenia-edge.config.toml.bak"/>
+    <rename path="emulators\soh\shipofharkinian.json" to="emulators\soh\shipofharkinian.json.bak"/>
+    <rename path="emulators\xenia\xenia.config.toml" to="emulators\xenia\xenia.config.toml.bak"/>
+    <rename path="emulators\bizhawk\config.ini" to="emulators\bizhawk\config.ini.bak"/>
+    <rename path="emulators\shadps4\user\config.toml" to="emulators\shadps4\user\config.toml.bak"/>
+    <rename path="roms\tyrquake" to="roms\quake"/>
+    <rename path="roms\vitaquake2" to="roms\quake2"/>
+    <rename path="emulators\ymir\Ymir.toml" to="emulators\ymir\Ymir.toml.bak"/>
+    <delete path="emulators\shadps4\shadPS4.exe"/>
   </actions>
 </upgradeinfo>
