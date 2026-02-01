@@ -171,7 +171,7 @@
 \system\templates\soh\shipofharkinian.json|\emulators\soh\shipofharkinian.json
 \system\templates\sonic3air\savedata\settings.json|\emulators\sonic3air\savedata\settings.json
 \system\templates\sonic3air\savedata\settings_input.json|\emulators\sonic3air\savedata\settings_input.json
-\system\templates\sonicmania\Settings.ini|\roms\sonicmania\Settings.ini
+\system\templates\sonicmania\Settings.ini|\roms\sonic-mania\Settings.ini
 \system\templates\sonicretro\sonic1\settings.ini|\roms\sonicretro\sonic1\settings.ini
 \system\templates\sonicretro\sonic2\settings.ini|\roms\sonicretro\sonic2\settings.ini
 \system\templates\sonicretro\soniccd\settings.ini|\roms\sonicretro\soniccd\settings.ini
