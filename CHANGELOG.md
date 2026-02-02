@@ -44,7 +44,7 @@
 - SUPERMODEL: added deadzone setting
 - VPINBALL: allow changing all screenres.txt in features
 
-Other stuff:
+### Other stuff:
 - Improved 7z extraction for big files
 - Improved speed of launching emulators when no update is detected
 - Increase limit of returned games for HfsDB from 5 to 25
@@ -78,7 +78,7 @@ Other stuff:
 - RYUJINX: compatibility with latest Canary and SDL3
 - VPINBALL: add screenres settings
 
-Other stuff:
+### Other stuff:
 - EMULATIONSTATION: fix a case of white-flash in carousel when moving
 - EMULATIONSTATION: fix a crash in carousel view when using subfolders
 - Fix error message when RetroBat is in a path that contains spaces

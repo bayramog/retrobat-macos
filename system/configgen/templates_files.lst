@@ -2,8 +2,7 @@
 \system\resources\emulationstation\notice.pdf|\emulationstation\.emulationstation\notice.pdf
 \system\resources\emulationstation\progress.png|\emulationstation\resources\progress.png
 \system\resources\emulationstation\splash.xml|\emulationstation\resources\splash.xml
-\system\resources\retrobat_logo.png|\emulationstation\resources\splash_retrobat.png
-\system\resources\retrobat_logo_old.svg|\emulationstation\resources\splash_retrobat.svg
+\system\resources\retrobat_logo.svg|\emulationstation\resources\splash_retrobat.svg
 \system\templates\2ship\2ship2harkinian.json|\emulators\2ship\2ship2harkinian.json
 \system\templates\altirra\Altirra.ini|\emulators\altirra\Altirra.ini
 \system\templates\altirra\Configure altirra.bat|\emulators\altirra\Configure altirra.bat
@@ -88,6 +87,8 @@
 \system\templates\m2emulator\NVDATA\NVDATA.zip|\emulators\m2emulator\NVDATA
 \system\templates\m2emulator\scripts\scripts.zip|\emulators\m2emulator\scripts
 \system\templates\m2emulator\templatescfg\xinput.zip|\emulators\m2emulator\templatescfg\xinput
+\system\templates\mame\ctrlr\ipac2.cfg|\saves\mame\ctrlr\ipac2.cfg
+\system\templates\mame\ctrlr\X-Arcade.cfg|\saves\mame\ctrlr\X-Arcade.cfg
 \system\templates\mame\fmtowns\blank.fmtowns|\saves\mame\fmtowns\blank.fmtowns
 \system\templates\mame\ini\fmtownsux.ini|\emulators\mame\ini\fmtownsux.ini
 \system\templates\mame\nvram.zip|\saves\mame\nvram
@@ -172,7 +173,7 @@
 \system\templates\soh\shipofharkinian.json|\emulators\soh\shipofharkinian.json
 \system\templates\sonic3air\savedata\settings.json|\emulators\sonic3air\savedata\settings.json
 \system\templates\sonic3air\savedata\settings_input.json|\emulators\sonic3air\savedata\settings_input.json
-\system\templates\sonicmania\Settings.ini|\roms\sonicmania\Settings.ini
+\system\templates\sonicmania\Settings.ini|\roms\sonic-mania\Settings.ini
 \system\templates\sonicretro\sonic1\settings.ini|\roms\sonicretro\sonic1\settings.ini
 \system\templates\sonicretro\sonic2\settings.ini|\roms\sonicretro\sonic2\settings.ini
 \system\templates\sonicretro\soniccd\settings.ini|\roms\sonicretro\soniccd\settings.ini
