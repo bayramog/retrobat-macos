@@ -87,6 +87,8 @@
 \system\templates\m2emulator\NVDATA\NVDATA.zip|\emulators\m2emulator\NVDATA
 \system\templates\m2emulator\scripts\scripts.zip|\emulators\m2emulator\scripts
 \system\templates\m2emulator\templatescfg\xinput.zip|\emulators\m2emulator\templatescfg\xinput
+\system\templates\mame\ctrlr\ipac2.cfg|\saves\mame\ctrlr\ipac2.cfg
+\system\templates\mame\ctrlr\X-Arcade.cfg|\saves\mame\ctrlr\X-Arcade.cfg
 \system\templates\mame\fmtowns\blank.fmtowns|\saves\mame\fmtowns\blank.fmtowns
 \system\templates\mame\ini\fmtownsux.ini|\emulators\mame\ini\fmtownsux.ini
 \system\templates\mame\nvram.zip|\saves\mame\nvram
