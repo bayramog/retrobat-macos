@@ -273,9 +273,6 @@ emulators\sudachi\user\config
 emulators\supermodel
 emulators\supermodel\Config
 emulators\supermodel\NVRAM
-emulators\suyu
-emulators\suyu\user
-emulators\suyu\user\config
 emulators\vpinball
 emulators\xemu
 emulators\xenia
@@ -465,7 +462,6 @@ screenshots\Mupen64
 screenshots\pcsx2
 screenshots\Simple64
 screenshots\sudachi
-screenshots\suyu
 screenshots\winuae
 screenshots\xemu
 screenshots\yuzu
