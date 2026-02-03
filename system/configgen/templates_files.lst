@@ -182,7 +182,6 @@
 \system\templates\sudachi\user\config\qt-config.ini|\emulators\sudachi\user\config\qt-config.ini
 \system\templates\supermodel\NVRAM\NVRAM.zip|\emulators\supermodel\NVRAM
 \system\templates\supermodel\Config\Supermodel.ini|\emulators\supermodel\Config\Supermodel.ini
-\system\templates\suyu\user\config\qt-config.ini|\emulators\suyu\user\config\qt-config.ini
 \system\templates\user\tattoos\README.md|\user\tattoos\README.md
 \system\templates\user\inputmapping\README.txt|\user\inputmapping\README.txt
 \system\templates\user\inputmapping\mame\README.txt|\user\inputmapping\mame\README.txt
