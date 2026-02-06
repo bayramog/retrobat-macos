@@ -17,6 +17,40 @@ RetroBat automatically downloads and installs all the relevant software needed t
 
 RetroBat can also run in Portable Mode. This means you can play games from an external hard drive or from any removable storage device, as long as the computer meets the minimum requirements.
 
+## 🍎 macOS Apple Silicon Port
+
+> **⚠️ Work in Progress**: This fork is dedicated to porting RetroBat to macOS Apple Silicon (M1/M2/M3).
+
+**Current Status**: Planning Phase Complete ✅
+
+### 📚 Documentation
+- 📋 [**Executive Summary**](EXECUTIVE_SUMMARY.md) - Quick overview in Turkish & English
+- 🚀 [**Quick Start Guide**](QUICK_START.md) - Get started immediately
+- 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed 16-week technical plan
+- 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
+- 🗺️ [**Roadmap**](ROADMAP.md) - Visual progress tracker
+- 📝 [**GitHub Issues**](ISSUES.md) - 17 issue templates for tracking
+
+### 📊 Progress
+- [x] Phase 1: Planning & Documentation (Week 1-2)
+- [ ] Phase 2: Core Tools Migration (Week 3-5)
+- [ ] Phase 3: Launcher Migration (Week 6-8)
+- [ ] Phase 4: Emulator Compatibility (Week 8-10)
+- [ ] Phase 5: Configuration Files (Week 10-11)
+- [ ] Phase 6: Packaging (Week 11-13)
+- [ ] Phase 7: Testing & Documentation (Week 13-15)
+- [ ] Phase 8: Release (Week 15-16)
+
+### 🛠️ Key Technologies
+- **.NET 6+/8** - Cross-platform C# runtime
+- **EmulationStation-DE** - Cross-platform frontend
+- **SDL3** - Cross-platform controller support
+- **Homebrew** - Package management
+
+**Timeline**: ~16 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
+
+---
+
 ## 💻 System Requirements
 
 |**OS supported:**|Windows 11, Windows 10, Windows 8.1|
