@@ -1,0 +1,353 @@
+Title,Labels,Body,Priority
+"Setup macOS Development Environment for RetroBat Port","macos,setup,documentation","## Description
+
+Setup the development environment required to build and test RetroBat on macOS Apple Silicon.
+
+### Tasks
+- [ ] Install .NET 6+ SDK for macOS
+- [ ] Install Xcode and Command Line Tools
+- [ ] Setup Homebrew package manager
+- [ ] Install required dependencies (p7zip, wget, sdl3)
+- [ ] Configure IDE (Visual Studio Code or JetBrains Rider)
+- [ ] Clone emulatorLauncher source repository
+- [ ] Verify build environment with test builds
+- [ ] Document setup process in BUILDING_MACOS.md
+
+### Dependencies
+None - this is the first step
+
+### Acceptance Criteria
+- Development machine can build .NET 6+ projects
+- All required tools are installed and accessible
+- Documentation is complete and tested","High"
+"Port RetroBuild.exe to .NET 6+ for Cross-Platform Support","macos,porting,build-system","## Description
+
+Migrate RetroBuild.exe from .NET Framework to .NET 6+ to enable cross-platform support for macOS.
+
+### Current State
+- RetroBuild.exe is compiled for Windows using .NET Framework
+- Uses Windows-specific APIs and file paths
+
+### Tasks
+- [ ] Obtain or recreate RetroBuild source code
+- [ ] Create new .NET 6+ project
+- [ ] Migrate code to .NET 6+
+- [ ] Replace Windows-specific file path handling
+- [ ] Add platform detection using RuntimeInformation.IsOSPlatform()
+- [ ] Implement macOS-specific build logic
+- [ ] Update command-line argument parsing for cross-platform
+- [ ] Test on both Windows and macOS
+- [ ] Update build.ini with platform-specific settings
+
+### Acceptance Criteria
+- RetroBuild compiles and runs on macOS
+- Can download and extract files on macOS
+- Build configuration works for both platforms
+- Code is maintainable and well-documented","High"
+"Replace Windows System Tools with macOS-Compatible Versions","macos,tools,dependencies","## Description
+
+Replace Windows-only binaries in system/tools/ with macOS-compatible versions or native tools.
+
+### Tools to Replace
+- 7za.exe → macOS 7z binary or native tar/gzip
+- wget.exe → macOS wget or curl
+- curl.exe → native macOS curl
+- SDL2.dll → SDL2.framework (required for EmulationStation)
+- SDL3.dll → SDL3.framework (optional)
+
+### Tasks
+- [ ] Create macOS tools directory structure
+- [ ] Add p7zip for macOS (via Homebrew or bundle binary)
+- [ ] Configure to use native macOS curl
+- [ ] Configure to use native or Homebrew wget
+- [ ] Add SDL2 framework for macOS (required for EmulationStation)
+- [ ] Add SDL3 framework for macOS (optional)
+- [ ] Update build.ini with macOS tool paths
+- [ ] Update RetroBuild to detect platform and use correct tools
+- [ ] Test extraction and download functionality
+- [ ] Document tool dependencies in README
+
+### Acceptance Criteria
+- All required tools available on macOS
+- File operations (extract download) work correctly
+- Build process uses correct tools for each platform
+- Dependencies documented","High"
+"Port RetroBat's EmulationStation Fork to macOS","macos,emulationstation,ui,porting,critical","## Description
+
+Port RetroBat's own EmulationStation fork (based on Batocera) to macOS to maintain 100% feature parity with Windows version.
+
+### Rationale
+- RetroBat's ES has more advanced theme engine than ES-DE
+- Integrated content downloader and scraper
+- Deep integration with RetroBat configuration system
+- RetroBat team won't adopt ES-DE
+- See EMULATIONSTATION_DECISION.md for full details
+
+### Technical Approach
+Port C++ codebase from Windows to macOS:
+- Replace DirectX → OpenGL/Metal
+- Use SDL2 for cross-platform input/graphics
+- All dependencies available via Homebrew
+
+### Timeline
+Estimated Duration: 7 weeks (Week 5-11)
+Complexity: High (C++ porting graphics API migration)
+Priority: Critical (blocks all UI functionality)","Critical"
+"Migrate emulatorLauncher from .NET Framework to .NET 6+ for macOS Support","macos,porting,emulatorlauncher,critical","## Description
+
+Port the emulatorLauncher C# application to .NET 6+ to enable cross-platform support for macOS Apple Silicon.
+
+### Current State
+- Written in C# for .NET Framework (Windows-only)
+- Uses XInput/DirectInput for controllers
+- Windows-specific process management
+
+### Tasks
+- [ ] Clone emulatorLauncher source from upstream
+- [ ] Analyze code for Windows dependencies
+- [ ] Create .NET 6+ solution/project files
+- [ ] Migrate core launcher functionality
+- [ ] Replace controller input system
+- [ ] Update process management for cross-platform
+- [ ] Handle macOS app bundles (.app directories)
+- [ ] Update file path handling
+- [ ] Add platform detection and platform-specific code paths
+- [ ] Test with RetroArch on macOS
+- [ ] Test with standalone emulators
+- [ ] Create unit tests
+- [ ] Document code changes
+
+### Acceptance Criteria
+- emulatorLauncher compiles on macOS
+- Can launch RetroArch with correct parameters
+- Controller configuration works
+- Process monitoring and cleanup functions
+- Compatible with existing configuration format","Critical"
+"Convert All Configuration Files from Windows to macOS Path Format","macos,configuration,paths","## Description
+
+Update all configuration files to use Unix-style paths and macOS environment variables.
+
+### Scope
+- system/templates/emulationstation/ - All EmulationStation configs
+- system/templates/retroarch/ - RetroArch configs
+- system/templates/*/ - All emulator-specific configs
+- system/configgen/ - Configuration generation files
+
+### Changes Required
+1. Path separators: \ → /
+2. Environment variables: %HOME% → $HOME
+3. User profile: %USERPROFILE% → $HOME
+4. Drive letters: Remove C:\ style paths
+5. Executable extensions: .exe → remove or platform-detect
+
+### Acceptance Criteria
+- All configuration files use Unix paths
+- macOS environment variables used correctly
+- Configurations tested with actual emulators
+- No Windows-specific paths remaining
+- Script documented and reusable","High"
+"Integrate RetroArch for macOS Apple Silicon","macos,retroarch,emulator","## Description
+
+Integrate RetroArch for macOS as the primary multi-system emulator.
+
+### Test Systems
+- Nintendo Entertainment System (NES)
+- Super Nintendo (SNES)
+- Sega Genesis
+- PlayStation 1
+- Game Boy / Game Boy Color
+- Game Boy Advance
+
+### Acceptance Criteria
+- RetroArch launches on macOS
+- All test systems work
+- Controllers properly configured
+- Save states functional
+- Shaders working
+- Performance acceptable on M1/M2","High"
+"Create Emulator Compatibility Matrix for macOS","macos,emulators,documentation,research","## Description
+
+Research and document which emulators have macOS versions and create a compatibility matrix.
+
+### Priority Emulators
+1. RetroArch (multi-system)
+2. Dolphin (GameCube/Wii)
+3. PCSX2 (PlayStation 2)
+4. Citra (3DS)
+5. Cemu (Wii U)
+6. DuckStation (PS1)
+7. RPCS3 (PS3)
+8. MAME (Arcade)
+9. DOSBox (DOS)
+10. PPSSPP (PSP)
+
+### Deliverables
+- MACOS_EMULATOR_COMPATIBILITY.md
+- Updated emulator path mappings
+- Download script for macOS emulators","Medium"
+"Create .dmg and .pkg Installers for macOS","macos,installer,distribution","## Description
+
+Create proper macOS installation packages for RetroBat distribution.
+
+### Tasks
+- [ ] Design app bundle structure
+- [ ] Create Info.plist
+- [ ] Create app icon (.icns)
+- [ ] Setup folder layout
+- [ ] Create installation script
+- [ ] Build .dmg disk image
+- [ ] Build .pkg installer package
+- [ ] Test installation process
+- [ ] Document installation steps
+
+### Acceptance Criteria
+- .dmg installs via drag-and-drop
+- .pkg installs correctly
+- App launches after installation
+- All resources accessible
+- Uninstallation clean","Medium"
+"Setup Code Signing and Notarization for macOS Distribution","macos,security,distribution","## Description
+
+Implement Apple code signing and notarization to allow distribution outside Mac App Store.
+
+### Requirements
+- Apple Developer account
+- Developer ID Application certificate
+- Developer ID Installer certificate
+
+### Acceptance Criteria
+- App successfully signed
+- Notarization approved by Apple
+- Launches without security warnings
+- Gatekeeper acceptance verified
+- Process documented","Medium"
+"Implement Automated Build System for macOS Releases","macos,build-system,automation","## Description
+
+Create comprehensive build script to automate the entire macOS build process.
+
+### Tasks
+- [ ] Create main build script (build-macos.sh)
+- [ ] Implement dependency checking
+- [ ] Add .NET project building
+- [ ] Add resource downloading
+- [ ] Add file organization
+- [ ] Add signing integration
+- [ ] Add DMG creation
+- [ ] Add PKG creation
+- [ ] Add build verification
+- [ ] Create CI/CD GitHub Actions workflow
+- [ ] Document build process
+
+### Acceptance Criteria
+- Build runs from scratch successfully
+- All components included in output
+- Signing works (with credentials)
+- CI/CD pipeline functional
+- Build reproducible
+- Documentation complete","Medium"
+"Implement and Test Controller Support for macOS","macos,controllers,testing","## Description
+
+Ensure controller support works properly on macOS using SDL3.
+
+### Controllers to Test
+- Xbox Series X/S Controller (USB and Bluetooth)
+- PlayStation 5 DualSense (USB and Bluetooth)
+- Nintendo Switch Pro Controller
+- 8BitDo Controllers
+- Generic USB controllers
+
+### Acceptance Criteria
+- Major controllers work out of box
+- Button mapping intuitive
+- Configuration persists
+- Troubleshooting documented","High"
+"Create Comprehensive macOS User Documentation","macos,documentation","## Description
+
+Create complete documentation for macOS users.
+
+### Documents to Create
+1. INSTALL_MACOS.md
+2. MACOS_USER_GUIDE.md
+3. TROUBLESHOOTING_MACOS.md
+4. MACOS_FAQ.md
+
+### Acceptance Criteria
+- All documents complete
+- Screenshots included
+- Clear and beginner-friendly
+- Technical details accurate","High"
+"Test and Optimize Performance on Apple Silicon","macos,performance,testing","## Description
+
+Ensure RetroBat performs well on Apple Silicon Macs.
+
+### Testing Areas
+1. EmulationStation UI performance
+2. RetroArch performance
+3. Standalone emulator performance
+4. Memory usage
+5. Battery impact (laptops)
+6. Thermal performance
+
+### Acceptance Criteria
+- Performance meets or exceeds expectations
+- No major bottlenecks
+- Battery usage reasonable
+- Performance documented","Medium"
+"Organize Beta Testing for macOS Release","macos,testing,community","## Description
+
+Setup and run beta testing program before public release.
+
+### Beta Tester Requirements
+- macOS Ventura or later
+- Apple Silicon Mac
+- Various controllers
+- Willing to provide detailed feedback
+- Available for 2-4 weeks
+
+### Acceptance Criteria
+- At least 10 beta testers participate
+- Major issues identified and fixed
+- Documentation validated
+- User experience refined
+- Ready for public release","Medium"
+"Update README.md to Include macOS Support","macos,documentation","## Description
+
+Update the main README.md to properly reflect macOS support.
+
+### Changes Required
+- [ ] Update system requirements section
+- [ ] Add macOS to supported platforms
+- [ ] Update dependencies section
+- [ ] Add macOS installation instructions
+- [ ] Update screenshots (if showing UI)
+- [ ] Add macOS-specific notes
+- [ ] Update download links
+- [ ] Add badge for macOS support
+
+### Acceptance Criteria
+- README clearly shows macOS support
+- Installation instructions accurate
+- Links functional
+- Professional appearance","High"
+"Prepare Release Notes for First macOS Release","macos,documentation,release","## Description
+
+Create comprehensive release notes for the first macOS version.
+
+### Content
+- Overview of macOS port
+- System requirements
+- Installation instructions
+- Known issues
+- Emulator compatibility list
+- Controller support status
+- Performance notes
+- What's different from Windows
+- Future plans
+- Credits and acknowledgments
+
+### Acceptance Criteria
+- Complete and accurate information
+- Professional tone
+- Exciting for community
+- Clear about limitations
+- Ready for publication","Low"

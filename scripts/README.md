@@ -1,10 +1,12 @@
-# GitHub Issues Creation Script
+# GitHub Issues Creation Tools
 
-This directory contains scripts to help create GitHub issues for the RetroBat macOS port project.
+This directory contains multiple tools to help create GitHub issues for the RetroBat macOS port project.
 
-## Script: create-github-issues.sh
+## Available Methods
 
-This script automatically creates all 17 initial GitHub issues as defined in [ISSUES.md](../ISSUES.md).
+### Method 1: Bash Script (create-github-issues.sh) - Recommended
+
+This script automatically creates all 17 initial GitHub issues as defined in [ISSUES.md](../ISSUES.md) using the GitHub CLI (`gh`).
 
 ### Prerequisites
 
@@ -67,7 +69,55 @@ Each issue includes:
 - **Priority**: High, Medium, or Low
 - **Resources**: Links to relevant documentation
 
-### Troubleshooting
+### Method 2: Python Script (create_issues.py)
+
+For users who prefer Python or need more control, use the Python script:
+
+#### Prerequisites
+- Python 3.6+
+- requests library: `pip install requests`
+- GitHub personal access token
+
+#### Usage
+```bash
+# Set your GitHub token
+export GITHUB_TOKEN="your_token_here"
+
+# Run the script
+python3 create_issues.py
+```
+
+#### Advantages
+- More portable across different systems
+- Better error handling
+- Can be easily extended or modified
+- Works with GitHub personal access tokens
+
+### Method 3: CSV Import (issues.csv)
+
+For manual import or use with project management tools:
+
+1. Open the `issues.csv` file
+2. Use GitHub's bulk import feature (if available) or
+3. Import into your project management tool
+4. Create issues manually by copying from the CSV
+
+The CSV contains all issue data in a structured format with columns:
+- Title
+- Labels
+- Body (description and tasks)
+- Priority
+
+### Method 4: Manual Creation
+
+If automated methods don't work, create issues manually:
+
+1. Go to https://github.com/bayramog/retrobat-macos/issues/new
+2. Open [ISSUES.md](../ISSUES.md)
+3. Copy each issue section one by one
+4. Fill in the GitHub issue form manually
+
+## Troubleshooting
 
 **Error: "gh: To use GitHub CLI in a GitHub Actions workflow, set the GH_TOKEN environment variable"**
 
