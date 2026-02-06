@@ -241,7 +241,7 @@ emulationstation_url=https://.../EmulationStation-Win32.zip
 [macOS]
 architecture=arm64  # or x86_64
 retroarch_url=https://buildbot.libretro.com/.../apple/osx/arm64/...
-emulationstation_url=https://.../EmulationStation-DE-macOS.dmg
+emulationstation_url=https://.../EmulationStation-macOS.dmg
 ```
 
 ### 4. Emulators
@@ -346,7 +346,7 @@ macOS:
 3. Platform detection (Windows/macOS)
    ↓
 4. Download platform-specific components:
-   - EmulationStation (ES-DE for macOS)
+   - RetroBat EmulationStation (ported to macOS)
    - RetroArch (platform-specific)
    - Emulators (platform-specific)
    - Cores (platform-specific)
@@ -401,7 +401,7 @@ C:\RetroBat\
     │   │   ├── templates/
     │   │   └── tools/
     │   ├── bios/
-    │   └── EmulationStation-DE.app/
+    │   └── EmulationStation.app/
     └── Frameworks/
         └── SDL3.framework
 

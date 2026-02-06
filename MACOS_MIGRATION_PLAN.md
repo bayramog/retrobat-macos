@@ -575,7 +575,7 @@ brew "dotnet"
 
 2. **Short Term (Next 2 Weeks)**:
    - Start RetroBuild migration
-   - Evaluate ES-DE integration
+   - Begin EmulationStation porting analysis
    - Create proof-of-concept build
 
 3. **Medium Term (Next Month)**:
@@ -610,7 +610,7 @@ brew "dotnet"
 ## Conclusion
 
 This migration is a significant undertaking but entirely feasible. The key success factors are:
-1. Leveraging existing cross-platform tools (.NET 6+, SDL3, ES-DE)
+1. Leveraging existing cross-platform tools (.NET 6+, SDL2/SDL3, RetroBat's ES fork)
 2. Systematic approach to configuration migration
 3. Focus on emulator compatibility
 4. Thorough testing on Apple Silicon
