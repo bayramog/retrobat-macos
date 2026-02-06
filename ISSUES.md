@@ -936,7 +936,7 @@ Update the main README.md to properly reflect macOS support.
 ### macOS
 |**OS supported:**|macOS Ventura (13.0) or later|
 |---|---|
-|**Processor:**|Apple Silicon (M1, M2, M3) or Intel (x86_64)|
+|**Processor:**|Apple Silicon (M1, M2, M3, or newer)|
 |**Graphics:**|Metal-compatible GPU|
 |**Memory:**|8 GB RAM minimum, 16 GB recommended|
 |**Storage:**|10 GB for base installation + space for ROMs|

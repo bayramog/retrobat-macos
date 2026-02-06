@@ -239,7 +239,7 @@ retroarch_url=https://buildbot.libretro.com/.../windows/...
 emulationstation_url=https://.../EmulationStation-Win32.zip
 
 [macOS]
-architecture=arm64  # or x86_64
+architecture=arm64  # Apple Silicon only
 retroarch_url=https://buildbot.libretro.com/.../apple/osx/arm64/...
 emulationstation_url=https://.../EmulationStation-macOS.dmg
 ```
@@ -484,7 +484,7 @@ Emulator
 - Metal graphics API
 
 ### Optimization Areas
-1. **Emulator Selection**: Prefer ARM64 native over x86_64 Rosetta
+1. **Emulator Selection**: ARM64 native builds only
 2. **Graphics**: Use Metal when available
 3. **Memory**: Leverage unified memory
 4. **Thermal**: Monitor and optimize for sustained performance
@@ -534,7 +534,6 @@ Emulator
 - macOS Ventura (M1)
 - macOS Sonoma (M2)
 - macOS Sequoia (M3)
-- Intel Macs (x86_64)
 
 ## Success Metrics
 
