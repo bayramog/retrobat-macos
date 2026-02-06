@@ -75,12 +75,13 @@
 │                     User Interface Layer                     │
 │                                                               │
 │  ┌────────────────────────────────────────────────────┐    │
-│  │    EmulationStation-DE (Cross-platform C++/SDL)    │    │
+│  │   RetroBat EmulationStation (Ported C++/SDL2)      │    │
 │  │  - Game library browsing                           │    │
-│  │  - Theme system (Carbon theme compatible)          │    │
-│  │  - SDL3 controller input                           │    │
+│  │  - Advanced theme system (full RetroBat features)  │    │
+│  │  - SDL2 controller input                           │    │
 │  │  - Settings management                             │    │
-│  │  - Native Apple Silicon support                    │    │
+│  │  - Content downloader & scraper                    │    │
+│  │  - Native Apple Silicon support (OpenGL/Metal)     │    │
 │  └────────────────────────────────────────────────────┘    │
 └───────────────────────────┬─────────────────────────────────┘
                             │
@@ -161,15 +162,16 @@
 - Windows paths and conventions
 
 **Target (macOS)**:
-- EmulationStation-DE (cross-platform)
-- Native macOS support
-- SDL3 for better Apple Silicon support
+- Port RetroBat EmulationStation fork (cross-platform C++)
+- Native macOS support with OpenGL/Metal
+- SDL2 for graphics and controller support
 - Unix paths
 
 **Migration Strategy**:
-- Use ES-DE as-is (already supports macOS)
-- Adapt RetroBat configuration files
-- Maintain Carbon theme compatibility
+- Port RetroBat's own EmulationStation fork to macOS
+- Maintain 100% feature parity with Windows version
+- Replace DirectX with OpenGL/Metal
+- Full Carbon theme compatibility
 
 ### 2. emulatorLauncher
 
@@ -465,8 +467,11 @@ Emulator
 
 ### macOS Dependencies (Target)
 - .NET 6+ or .NET 8 Runtime
-- SDL3 Framework
-- Homebrew (for optional tools)
+- SDL2 Framework (for EmulationStation)
+- SDL3 Framework (optional, for enhanced controller support)
+- Boost libraries
+- FreeImage, FreeType, Eigen3
+- Homebrew (for dependencies and optional tools)
 - macOS 13.0 (Ventura) or later
 - No Visual C++, no DirectX needed
 

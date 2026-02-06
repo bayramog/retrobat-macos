@@ -24,12 +24,10 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 **Current Status**: Planning Phase Complete ✅
 
 ### 📚 Documentation
-- 📋 [**Executive Summary**](EXECUTIVE_SUMMARY.md) - Quick overview in Turkish & English
-- 🚀 [**Quick Start Guide**](QUICK_START.md) - Get started immediately
-- 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed 16-week technical plan
+- 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed technical plan
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
-- 🗺️ [**Roadmap**](ROADMAP.md) - Visual progress tracker
-- 📝 [**GitHub Issues**](ISSUES.md) - 17 issue templates for tracking
+- 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
+- 💡 [**EmulationStation Decision**](EMULATIONSTATION_DECISION.md) - Why we port RetroBat's ES fork
 
 ### 📊 Progress
 - [x] Phase 1: Planning & Documentation (Week 1-2)
@@ -43,11 +41,11 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 
 ### 🛠️ Key Technologies
 - **.NET 6+/8** - Cross-platform C# runtime
-- **EmulationStation-DE** - Cross-platform frontend
-- **SDL3** - Cross-platform controller support
+- **RetroBat EmulationStation** - Porting RetroBat's own ES fork (C++/SDL2)
+- **SDL2/SDL3** - Cross-platform graphics and controller support
 - **Homebrew** - Package management
 
-**Timeline**: ~16 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
+**Timeline**: ~21 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
 
 ---
 

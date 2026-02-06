@@ -140,33 +140,78 @@ else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 - All emulator configuration templates
 - `build.ini`
 
-### Phase 4: EmulationStation Port (Week 4-6)
+### Phase 4: EmulationStation Port (Week 5-11)
 
-#### 4.1 EmulationStation Evaluation
-**Options**:
-1. **EmulationStation Desktop Edition (ES-DE)** - Recommended
-   - Already cross-platform (Windows, Linux, macOS)
-   - Active development
-   - Native Apple Silicon support
-   - URL: https://es-de.org/
+#### 4.1 Analysis and Setup (Week 5-6)
+**Goal**: Understand RetroBat's EmulationStation fork and prepare for porting
 
-2. **Port RetroBat's EmulationStation fork**
-   - More work required
-   - May need significant modifications
+**Why Port RetroBat's Fork?**:
+- More advanced theme engine than ES-DE
+- Integrated content downloader and scraper
+- Deep integration with RetroBat configuration system
+- Maintains 100% feature parity with Windows
+- RetroBat team confirmed they won't adopt ES-DE
+- See [EMULATIONSTATION_DECISION.md](EMULATIONSTATION_DECISION.md) for full rationale
 
-**Recommendation**: Use ES-DE as base and adapt RetroBat's configurations
-
-#### 4.2 EmulationStation Configuration
 **Tasks**:
-1. Download ES-DE for macOS
-2. Adapt `es_systems.cfg` for macOS:
-   - Update command paths
-   - Replace Windows executables with macOS equivalents
-   - Adjust ROM paths to macOS conventions
-3. Test theme compatibility (Carbon theme)
-4. Verify controller configuration
+1. Clone RetroBat's EmulationStation repository
+2. Audit codebase for Windows-specific code
+3. Document all dependencies (SDL2, Boost, FreeImage, etc.)
+4. Create porting checklist
+5. Test compilation on macOS with minimal changes
 
-**Example Configuration Change**:
+#### 4.2 Dependency Installation (Week 6)
+**Tasks**:
+1. Install required libraries via Homebrew:
+   ```bash
+   brew install sdl2 boost freeimage freetype eigen curl cmake
+   ```
+2. Verify library versions and compatibility
+3. Setup CMake build configuration for macOS
+4. Test basic compilation
+
+#### 4.3 Core Porting Work (Week 7-9)
+**Tasks**:
+1. Replace DirectX with OpenGL/Metal rendering
+2. Update input handling to use SDL2 APIs consistently
+3. Port Windows-specific file system operations
+4. Update build system (CMakeLists.txt) for macOS
+5. Handle macOS app bundle structure
+6. Port Windows registry access to config files
+7. Test incremental builds
+
+**Key Code Changes**:
+```cpp
+// Replace DirectX rendering with OpenGL/Metal
+#ifdef __APPLE__
+    // Use OpenGL or Metal
+#else
+    // Use DirectX on Windows
+#endif
+
+// SDL2 already cross-platform, ensure consistent usage
+```
+
+#### 4.4 Integration and Testing (Week 9-10)
+**Tasks**:
+1. Test with RetroBat Carbon theme
+2. Verify all theme features work (animations, transitions)
+3. Test content downloader functionality
+4. Test scraper integration
+5. Verify emulator launching
+6. Test configuration system
+7. Validate controller input
+
+#### 4.5 Polish and Optimization (Week 10-11)
+**Tasks**:
+1. Optimize for Apple Silicon (Metal acceleration)
+2. Tune performance for smooth UI
+3. Apply macOS UI/UX conventions
+4. Fix remaining bugs
+5. Code signing preparation
+6. Documentation updates
+
+**Example Configuration**:
 ```xml
 <!-- Windows -->
 <command>"%HOME%\emulatorLauncher.exe" -system %SYSTEM% -rom %ROM%</command>
@@ -208,7 +253,7 @@ else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 - Handle macOS app bundles (.app directories) properly
 - Implement proper process cleanup
 
-### Phase 6: Emulator Compatibility (Week 8-10)
+### Phase 6: Emulator Compatibility (Week 11-13)
 
 #### 6.1 Emulator Inventory
 **Categories**:
@@ -249,7 +294,7 @@ retroarch_url_macos=https://buildbot.libretro.com/stable/1.19.1/apple/osx/arm64/
 - Update `emulators_names.lst` with macOS paths
 - Configure launch commands for .app bundles
 
-### Phase 7: Configuration Files Migration (Week 10-11)
+### Phase 7: Configuration Files Migration (Week 13-14)
 
 #### 7.1 Batch Processing
 **Goal**: Update all configuration files for macOS
@@ -270,7 +315,7 @@ find system/templates -type f -exec sed -i '' 's/%USERPROFILE%/$HOME/g' {} \;
 - `system/templates/retroarch/retroarch.cfg`
 - All emulator-specific configs in `system/templates/`
 
-### Phase 8: Installer Creation (Week 11-12)
+### Phase 8: Installer Creation (Week 14-15)
 
 #### 8.1 macOS Packaging Options
 **Option 1: .dmg (Disk Image)**
@@ -317,7 +362,7 @@ RetroBat.app/
 3. Notarize the app
 4. Staple the notarization ticket
 
-### Phase 9: Build Automation (Week 12-13)
+### Phase 9: Build Automation (Week 15-16)
 
 #### 9.1 Build Script
 **Goal**: Create automated macOS build process
@@ -375,7 +420,7 @@ brew "sdl3"
 brew "dotnet"
 ```
 
-### Phase 10: Testing (Week 13-14)
+### Phase 10: Testing (Week 16-17)
 
 #### 10.1 Test Plan
 **Test Categories**:
@@ -401,7 +446,7 @@ brew "dotnet"
 | Sonoma 14.x   | ✅ | ✅ | ✅ | |
 | Sequoia 15.x  | ✅ | ✅ | ✅ | |
 
-### Phase 11: Documentation (Week 14-15)
+### Phase 11: Documentation (Week 17-18)
 
 #### 11.1 User Documentation
 **Documents to Create**:
@@ -416,7 +461,7 @@ brew "dotnet"
 2. `ARCHITECTURE_MACOS.md` - Technical architecture overview
 3. `PORTING_GUIDE.md` - Guide for porting additional features
 
-### Phase 12: Release & Distribution (Week 15-16)
+### Phase 12: Release & Distribution (Week 19-21)
 
 #### 12.1 Release Preparation
 **Checklist**:
@@ -447,8 +492,8 @@ brew "dotnet"
 **Solution**: Use SDL3 for cross-platform controller support
 
 ### Challenge 3: EmulationStation Build
-**Issue**: No official macOS build of RetroBat's EmulationStation
-**Solution**: Use EmulationStation Desktop Edition (ES-DE)
+**Issue**: RetroBat's EmulationStation uses DirectX and Windows-specific code
+**Solution**: Port to macOS using OpenGL/Metal, all dependencies available via Homebrew
 
 ### Challenge 4: Path Handling
 **Issue**: Thousands of Windows paths in config files
@@ -507,7 +552,7 @@ brew "dotnet"
 | Planning | 2 weeks | Migration plan, architecture docs |
 | Dev Setup | 1 week | Working dev environment |
 | System Tools | 1 week | macOS tool replacements |
-| EmulationStation | 2 weeks | ES-DE integration |
+| EmulationStation | 7 weeks | RetroBat ES ported to macOS |
 | EmulatorLauncher | 2 weeks | Cross-platform launcher |
 | Emulator Compat | 2 weeks | Major emulators working |
 | Config Files | 1 week | All configs updated |
@@ -515,8 +560,10 @@ brew "dotnet"
 | Build Automation | 1 week | Automated build process |
 | Testing | 1 week | Comprehensive testing |
 | Documentation | 1 week | User and dev docs |
-| Release | 1 week | Public release |
-| **Total** | **~16 weeks** | **RetroBat for macOS** |
+| Release | 2 weeks | Public release |
+| **Total** | **~21 weeks** | **RetroBat for macOS** |
+
+**Note**: Extended timeline (+5 weeks) maintains 100% feature parity with Windows version.
 
 ## Next Steps
 
@@ -545,14 +592,16 @@ brew "dotnet"
 
 ### Documentation
 - .NET 6+ Cross-Platform: https://docs.microsoft.com/en-us/dotnet/core/
+- SDL2 Documentation: https://wiki.libsdl.org/SDL2/
 - SDL3 Documentation: https://wiki.libsdl.org/SDL3/
-- EmulationStation-DE: https://es-de.org/
+- OpenGL on macOS: https://developer.apple.com/opengl/
+- Metal Framework: https://developer.apple.com/metal/
 - macOS App Distribution: https://developer.apple.com/distribution/
 
 ### Code Repositories
 - emulatorLauncher: https://github.com/RetroBat-Official/emulatorlauncher
-- EmulationStation: https://github.com/RetroBat-Official/emulationstation
-- ES-DE: https://gitlab.com/es-de/emulationstation-de
+- RetroBat EmulationStation: https://github.com/RetroBat-Official/emulationstation
+- Batocera EmulationStation: https://github.com/batocera-linux/batocera-emulationstation
 
 ### Community
 - RetroBat Discord: https://discord.gg/GVcPNxwzuT

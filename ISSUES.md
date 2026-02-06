@@ -101,14 +101,16 @@ Replace Windows-only binaries in system/tools/ with macOS-compatible versions or
 - `7za.exe` → macOS 7z binary or native tar/gzip
 - `wget.exe` → macOS wget or curl
 - `curl.exe` → native macOS curl
-- `SDL3.dll` → SDL3.framework
+- `SDL2.dll` → SDL2.framework (required for EmulationStation)
+- `SDL3.dll` → SDL3.framework (optional)
 
 ### Tasks
 - [ ] Create macOS tools directory structure
 - [ ] Add p7zip for macOS (via Homebrew or bundle binary)
 - [ ] Configure to use native macOS curl
 - [ ] Configure to use native or Homebrew wget
-- [ ] Add SDL3 framework for macOS
+- [ ] Add SDL2 framework for macOS (required for EmulationStation)
+- [ ] Add SDL3 framework for macOS (optional, for enhanced features)
 - [ ] Update build.ini with macOS tool paths
 - [ ] Update RetroBuild to detect platform and use correct tools
 - [ ] Test extraction and download functionality
@@ -127,53 +129,112 @@ Replace Windows-only binaries in system/tools/ with macOS-compatible versions or
 
 ---
 
-## Issue 4: Port EmulationStation to macOS
+## Issue 4: Port RetroBat EmulationStation to macOS
 
-**Title**: Integrate EmulationStation for macOS (ES-DE)
+**Title**: Port RetroBat's EmulationStation Fork to macOS
 
-**Labels**: `macos`, `emulationstation`, `ui`
+**Labels**: `macos`, `emulationstation`, `ui`, `porting`, `critical`
 
 **Priority**: Critical
 
 **Description**:
 
-Integrate EmulationStation Desktop Edition (ES-DE) as the frontend for macOS, adapting RetroBat's configurations.
+Port RetroBat's own EmulationStation fork (based on Batocera) to macOS to maintain 100% feature parity with Windows version.
 
-### Approach
-Use ES-DE (cross-platform fork) instead of porting Windows-specific build.
+### Rationale
+- RetroBat's ES has more advanced theme engine than ES-DE
+- Integrated content downloader and scraper
+- Deep integration with RetroBat configuration system
+- RetroBat team won't adopt ES-DE
+- See [EMULATIONSTATION_DECISION.md](EMULATIONSTATION_DECISION.md) for full details
+
+### Technical Approach
+Port C++ codebase from Windows to macOS:
+- Replace DirectX → OpenGL/Metal
+- Use SDL2 for cross-platform input/graphics
+- All dependencies available via Homebrew
 
 ### Tasks
-- [ ] Download and test ES-DE on macOS
-- [ ] Analyze compatibility with RetroBat configs
-- [ ] Adapt es_systems.cfg for macOS
-  - Update command paths
-  - Replace %HOME% with $HOME
-  - Update path separators
-- [ ] Test Carbon theme compatibility
-- [ ] Configure controller support
-- [ ] Test ROM scanning and game launching
-- [ ] Document ES-DE configuration process
-- [ ] Create setup script for ES-DE integration
+
+#### Phase 1: Analysis (Week 5-6)
+- [ ] Clone RetroBat EmulationStation repository
+- [ ] Audit codebase for Windows-specific code
+- [ ] Document DirectX usage patterns
+- [ ] List all dependencies (SDL2, Boost, FreeImage, etc.)
+- [ ] Create detailed porting checklist
+- [ ] Test basic compilation on macOS
+
+#### Phase 2: Dependencies (Week 6)
+- [ ] Install dependencies via Homebrew:
+  ```bash
+  brew install sdl2 boost freeimage freetype eigen curl cmake
+  ```
+- [ ] Verify library versions and compatibility
+- [ ] Setup CMake build configuration for macOS
+- [ ] Test minimal build
+
+#### Phase 3: Core Porting (Week 7-9)
+- [ ] Replace DirectX rendering with OpenGL/Metal
+- [ ] Update window creation for macOS
+- [ ] Port input handling to SDL2 APIs
+- [ ] Convert Windows file paths to Unix
+- [ ] Replace Windows registry with config files
+- [ ] Update CMakeLists.txt for macOS target
+- [ ] Handle macOS app bundle structure
+- [ ] Implement platform detection (#ifdef __APPLE__)
+
+#### Phase 4: Integration (Week 9-10)
+- [ ] Test Carbon theme rendering
+- [ ] Verify theme animations and transitions
+- [ ] Test content downloader functionality
+- [ ] Test scraper integration
+- [ ] Verify emulator launching interface
+- [ ] Test configuration system
+- [ ] Validate controller input
+
+#### Phase 5: Polish (Week 10-11)
+- [ ] Optimize for Apple Silicon (Metal)
+- [ ] Performance tuning for 60 FPS UI
+- [ ] Apply macOS UI/UX conventions
+- [ ] Code signing preparation
+- [ ] Bug fixes and refinements
+- [ ] Documentation
+
+### Dependencies
+- Homebrew (for installing libraries)
+- CMake 3.x
+- SDL2, Boost, FreeImage, FreeType, Eigen3, cURL
 
 ### Configuration Changes
 ```xml
-<!-- Before (Windows) -->
+<!-- Windows -->
 <command>"%HOME%\emulatorLauncher.exe" -system %SYSTEM%</command>
 
-<!-- After (macOS) -->
+<!-- macOS -->
 <command>"$HOME/emulatorLauncher" -system %SYSTEM%</command>
 ```
 
 ### Acceptance Criteria
-- ES-DE launches successfully on macOS
-- RetroBat themes display correctly
+- RetroBat EmulationStation compiles and runs on macOS
+- All RetroBat themes work identically to Windows
+- Content downloader functional
+- Scraper works correctly
 - Controller input works
-- ROM paths correctly configured
-- Games can be launched (with test launcher)
+- Emulator launching works
+- Performance acceptable (60 FPS UI on M1/M2)
+- No feature regressions from Windows version
 
 ### Resources
-- ES-DE: https://es-de.org/
-- ES-DE macOS Guide: https://es-de.org/#macos
+- RetroBat ES: https://github.com/RetroBat-Official/emulationstation
+- Batocera ES: https://github.com/batocera-linux/batocera-emulationstation
+- SDL2 Docs: https://wiki.libsdl.org/SDL2/
+- OpenGL macOS: https://developer.apple.com/opengl/
+- Metal: https://developer.apple.com/metal/
+
+### Timeline
+**Estimated Duration**: 7 weeks (Week 5-11)
+**Complexity**: High (C++ porting, graphics API migration)
+**Priority**: Critical (blocks all UI functionality)
 
 ---
 
@@ -212,7 +273,7 @@ Port the emulatorLauncher C# application to .NET 6+ to enable cross-platform sup
 - [ ] Document code changes
 
 ### Technical Challenges
-1. **Controller Input**: Replace Windows APIs with SDL3
+1. **Controller Input**: Replace Windows APIs with SDL2/SDL3
 2. **Process Management**: Cross-platform process spawning
 3. **App Bundles**: Handle .app structure on macOS
 4. **Configuration**: Platform-specific config paths
@@ -225,11 +286,12 @@ Port the emulatorLauncher C# application to .NET 6+ to enable cross-platform sup
 - Compatible with existing configuration format
 
 ### Dependencies
-- Issue #3 (SDL3 framework)
-- SDL3 development libraries
+- Issue #3 (SDL2/SDL3 framework)
+- Issue #4 (EmulationStation port)
 
 ### Resources
 - Upstream: https://github.com/RetroBat-Official/emulatorlauncher
+- SDL2 API: https://wiki.libsdl.org/SDL2/
 - SDL3 GameController API: https://wiki.libsdl.org/SDL3/CategoryGamepad
 
 ---
@@ -722,7 +784,6 @@ Create complete documentation for macOS users.
 - [ ] Update main README.md
 - [ ] Add screenshots
 - [ ] Create video tutorial (optional)
-- [ ] Translate to Turkish
 - [ ] Review with beta testers
 
 ### Acceptance Criteria
