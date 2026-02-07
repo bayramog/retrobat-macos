@@ -38,6 +38,14 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 **Current Status**: Planning Phase Complete ✅
 
 ### 📚 Documentation
+
+**User Documentation**:
+- 📦 [**Installation Guide**](INSTALL_MACOS.md) - System requirements, installation steps, first-time setup
+- 📖 [**User Guide**](MACOS_USER_GUIDE.md) - EmulationStation navigation, adding games, controllers, customization
+- 🔧 [**Troubleshooting**](TROUBLESHOOTING_MACOS.md) - Common issues, performance, debugging
+- ❓ [**FAQ**](MACOS_FAQ.md) - Frequently asked questions, compatibility, optimization
+
+**Developer Documentation**:
 - 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed technical plan
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
 - 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
@@ -93,27 +101,44 @@ For complete setup instructions, see:
 
 **Timeline**: ~21 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
 
-### 🚀 Getting Started on macOS (When Available)
+### 🚀 Getting Started on macOS
 
-> **Note**: macOS installation will be available once development is complete. For now, you can follow the [Migration Plan](MACOS_MIGRATION_PLAN.md) to contribute.
+> **Note**: For complete installation instructions, see the [**Installation Guide**](INSTALL_MACOS.md).
 
-**Prerequisites:**
-```bash
-# Install Homebrew (if not already installed)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+**Quick Start:**
 
-# Install .NET Runtime
-brew install --cask dotnet-sdk
+1. **Install Prerequisites**:
+   ```bash
+   # Install Homebrew (if not already installed)
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   
+   # Install dependencies
+   brew install p7zip wget sdl2 dotnet-sdk
+   
+   # Install Xcode Command Line Tools
+   xcode-select --install
+   ```
 
-# Install Xcode Command Line Tools
-xcode-select --install
-```
+2. **Download RetroBat**:
+   - Visit [Releases](https://github.com/bayramog/retrobat-macos/releases)
+   - Download the latest `RetroBat-macOS-vX.X.X.dmg`
 
-**Installation Steps (Future):**
-1. Download the latest macOS release from [Releases](https://github.com/bayramog/retrobat-macos/releases)
-2. Open the `.dmg` file and drag RetroBat to your Applications folder
-3. Launch RetroBat from Applications
-4. Follow the setup wizard to configure your emulators and ROMs
+3. **Install**:
+   - Open the `.dmg` file
+   - Drag RetroBat to your Applications folder
+   - Remove quarantine: `xattr -dr com.apple.quarantine /Applications/RetroBat.app`
+
+4. **Launch & Configure**:
+   - Open RetroBat from Applications
+   - Follow the setup wizard
+   - Configure your controllers
+   - Add your games to `~/RetroBat/roms/`
+
+**Next Steps:**
+- 📖 Read the [**User Guide**](MACOS_USER_GUIDE.md) to learn how to use RetroBat
+- 🎮 Add games and BIOS files following the [**Installation Guide**](INSTALL_MACOS.md)
+- ❓ Check the [**FAQ**](MACOS_FAQ.md) for common questions
+- 🔧 See [**Troubleshooting**](TROUBLESHOOTING_MACOS.md) if you encounter issues
 
 **Building from Source:**
 
