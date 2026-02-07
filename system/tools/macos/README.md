@@ -195,6 +195,91 @@ If you get permission errors:
 sudo chown -R $(whoami) $(brew --prefix)/*
 ```
 
+## Controller Support
+
+RetroBat on macOS uses SDL3 for comprehensive game controller support. The system automatically detects and configures most popular controllers.
+
+### Supported Controllers
+
+- **Xbox Controllers**: Series X/S, One, 360, Elite Series 2
+- **PlayStation Controllers**: DualSense (PS5), DualShock 4 (PS4)
+- **Nintendo Controllers**: Switch Pro Controller
+- **Third-Party**: 8BitDo controllers, generic USB gamepads
+
+### Controller Configuration Database
+
+macOS-specific controller mappings are stored in:
+```
+system/tools/macos/gamecontrollerdb.txt
+```
+
+This file contains 100+ tested controller configurations for macOS, based on the community-maintained [SDL_GameControllerDB](https://github.com/mdqinc/SDL_GameControllerDB).
+
+### Testing Controllers
+
+Use the included test script to verify controller detection:
+
+```bash
+# Run controller test from repository root
+./scripts/test-controller-macos.sh
+```
+
+Or use the SDL3 test utility:
+
+```bash
+# Install SDL3 if not already installed
+brew install sdl3
+
+# Test controller input
+testcontroller
+```
+
+### Controller Documentation
+
+Complete controller documentation is available:
+
+- **[Controller Configuration Guide](../../docs/CONTROLLER_CONFIGURATION_MACOS.md)** - How to configure and use controllers
+- **[Controller Testing Guide](../../docs/CONTROLLER_TESTING_MACOS.md)** - Comprehensive testing procedures
+- **[Controller Troubleshooting Guide](../../docs/CONTROLLER_TROUBLESHOOTING_MACOS.md)** - Solutions for common problems
+- **[Controller Known Issues](../../docs/CONTROLLER_KNOWN_ISSUES_MACOS.md)** - Known limitations and workarounds
+
+### Quick Setup
+
+1. **Install SDL libraries**:
+   ```bash
+   brew install sdl2 sdl3
+   ```
+
+2. **Connect your controller**:
+   - USB: Plug in and wait for detection
+   - Bluetooth: Pair via System Settings → Bluetooth
+
+3. **Verify detection**:
+   ```bash
+   ./scripts/test-controller-macos.sh
+   ```
+
+4. **Configure in EmulationStation**:
+   - Launch EmulationStation
+   - Follow the controller configuration wizard
+   - All buttons will be mapped automatically
+
+### Connection Methods
+
+#### USB Connection
+- Most reliable method
+- Lowest latency
+- Charges controller while playing
+- Recommended for competitive gaming
+
+#### Bluetooth Connection
+- Wireless freedom
+- Slightly higher latency (~5-15ms)
+- Requires controller battery management
+- May have interference issues in crowded RF environments
+
+See the [Controller Configuration Guide](../../docs/CONTROLLER_CONFIGURATION_MACOS.md) for detailed connection instructions per controller type.
+
 ## Additional Dependencies
 
 For a complete RetroBat build environment, see the main `Brewfile` in the repository root, which includes:
@@ -209,5 +294,7 @@ For a complete RetroBat build environment, see the main `Brewfile` in the reposi
 
 - [Homebrew Documentation](https://docs.brew.sh/)
 - [SDL2 Documentation](https://wiki.libsdl.org/)
+- [SDL3 Documentation](https://wiki.libsdl.org/SDL3)
+- [SDL_GameControllerDB](https://github.com/mdqinc/SDL_GameControllerDB)
 - [p7zip Documentation](https://www.7-zip.org/)
 - [RetroBat Documentation](https://wiki.retrobat.org/)
