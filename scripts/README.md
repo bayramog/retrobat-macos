@@ -191,3 +191,48 @@ For questions about the macOS port or these issues, please:
 - Open a discussion in the repository
 - Contact the RetroBat team on Discord
 - Reference the migration plan and architecture documents
+
+---
+
+## Configuration Conversion Tools
+
+### convert_windows_paths_to_macos.py
+
+Converts Windows-style paths and environment variables to macOS format in configuration files.
+
+**Purpose:** Automate the conversion of configuration files from Windows to macOS compatible format.
+
+**Features:**
+- Converts path separators: `\` → `/`
+- Converts environment variables: `%HOME%` → `$HOME`, `%USERPROFILE%` → `$HOME`
+- Removes `.exe` extensions from executable paths
+- Handles drive letters: `C:\` → `/`
+- Converts special patterns: `:\assets` → `$HOME/assets`
+
+**Usage:**
+```bash
+# Show help
+python3 convert_windows_paths_to_macos.py --help
+
+# Dry run (preview changes without modifying files)
+python3 convert_windows_paths_to_macos.py --dry-run <path>
+
+# Convert a single file
+python3 convert_windows_paths_to_macos.py system/templates/retroarch/retroarch.cfg
+
+# Convert entire directory
+python3 convert_windows_paths_to_macos.py system/templates/
+
+# Verbose output
+python3 convert_windows_paths_to_macos.py --verbose system/templates/
+```
+
+**Supported File Types:**
+- `.cfg`, `.ini`, `.conf` - Configuration files
+- `.xml`, `.json` - Structured data files
+- `.lst`, `.txt` - List and text files
+- `.po`, `.pot` - Localization files
+- `.info` - Info files
+
+**Documentation:**
+See [docs/WINDOWS_TO_MACOS_CONVERSION.md](../docs/WINDOWS_TO_MACOS_CONVERSION.md) for detailed information about the conversion process and results.
