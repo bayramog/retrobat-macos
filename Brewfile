@@ -24,7 +24,7 @@ brew "curl"
 # git - Version control (built-in with Xcode, but ensure latest)
 brew "git"
 
-# pkg-config - Helper tool for compiling
+# pkg-config - Helper tool for compiling (required for C++ builds)
 brew "pkg-config"
 
 # .NET SDK - Required for building and running RetroBuild
