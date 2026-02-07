@@ -51,9 +51,18 @@ class WindowsToMacOSConverter:
             
         # 3. Convert backslash path separators to forward slashes
         # Look for patterns like: ~\..\roms\, path\to\file, etc.
-        # Be careful not to affect escaped characters in regex or other contexts
+        # Be careful not to affect:
+        # - Escape sequences like \n, \t, \x (used in .po files, hex data)
+        # - Qt INI key hierarchy separators (e.g., General\property)
         # Pattern: word or special chars followed by backslash followed by word/dot
-        new_content = re.sub(r'([~\w\.])(\\+)([~\w\.\-])', r'\1/\3', content)
+        # But NOT: \n, \t, \r, \x, or Qt key separators
+        
+        # Exclude escape sequences and hex patterns
+        new_content = re.sub(
+            r'([~\w\.])(\\+)(?![ntrx\s])([~\w\.\-])',
+            r'\1/\3',
+            content
+        )
         if new_content != content:
             changes += (len(content) - len(content.replace('\\', ''))) - (len(new_content) - len(new_content.replace('\\', '')))
             content = new_content
@@ -99,11 +108,28 @@ class WindowsToMacOSConverter:
         return content, changes
     
     def should_process_file(self, filepath: Path) -> bool:
-        """Check if file should be processed based on extension."""
-        # Process common config file types
+        """Check if file should be processed based on extension and name patterns."""
+        # Exclude Qt INI files which use backslash as key hierarchy separators
+        qt_ini_patterns = [
+            'qt-config.ini',
+            'qt_ui.ini',
+            'GLideN64.ini',
+            'simple64-gui.ini',
+            'kronos.ini',
+            'CurrentSettings.ini'
+        ]
+        
+        if any(pattern in filepath.name for pattern in qt_ini_patterns):
+            return False
+        
+        # Exclude gettext .po/.pot files which use backslash escape sequences
+        if filepath.suffix.lower() in {'.po', '.pot'}:
+            return False
+        
+        # Process other common config file types
         extensions = {
             '.cfg', '.ini', '.conf', '.xml', '.json',
-            '.lst', '.info', '.po', '.pot', '.txt'
+            '.lst', '.info', '.txt'
         }
         return filepath.suffix.lower() in extensions
     
