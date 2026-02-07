@@ -251,8 +251,11 @@ Common emulators:
 - **PCSX2** - PlayStation 2
 - **PPSSPP** - PlayStation Portable
 - **Citra/Lime3DS** - Nintendo 3DS
+- **Snes9x** - Super Nintendo
+- **MAME** - Arcade games
+- **DuckStation** - PlayStation 1
 
-For a complete list, see [MACOS_EMULATOR_COMPATIBILITY.md](docs/MACOS_EMULATOR_COMPATIBILITY.md).
+> **Note**: RetroBat supports 125+ emulators. See `system/configgen/emulators_names.lst` for the complete list.
 
 ---
 

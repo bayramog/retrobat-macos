@@ -114,10 +114,10 @@ Most popular emulators have macOS ARM64 versions:
 
 **Limited/No Support**:
 - Xenia (Xbox 360) - Windows only
-- RCPS3 (PS3) - Limited macOS support
+- RPCS3 (PS3) - Limited macOS support
 - Yuzu/Sudachi (Switch) - Legal issues, limited support
 
-For a complete list, see the [Emulator Compatibility Document](docs/MACOS_EMULATOR_COMPATIBILITY.md).
+> **Note**: RetroBat supports 125+ emulators across multiple systems. Compatibility varies by emulator and macOS version. See `system/configgen/emulators_names.lst` for the complete list of supported emulators.
 
 ### Can I play Nintendo Switch games?
 
