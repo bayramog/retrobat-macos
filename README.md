@@ -42,6 +42,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
 - 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
 - 💡 [**EmulationStation Decision**](EMULATIONSTATION_DECISION.md) - Why we port RetroBat's ES fork
+- 🧪 [**Beta Testing**](docs/BETA_TESTING_INDEX.md) - Beta testing program information
 
 ### 📊 Progress
 - [x] Phase 1: Planning & Documentation (Week 1-2)
