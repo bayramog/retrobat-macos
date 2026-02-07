@@ -70,8 +70,7 @@ notarize_file() {
         echo "✓ Notarization successful: $filename"
         
         # Staple the notarization ticket (for offline verification)
-        # Note: Stapling works for app bundles, DMGs, and PKGs
-        # For app bundles, we need to staple the actual .app, not the .zip
+        # Note: Stapling for DMG and PKG files only. App bundles are stapled separately.
         if [[ "$file" == *.dmg ]] || [[ "$file" == *.pkg ]]; then
             echo "Stapling notarization ticket..."
             xcrun stapler staple "$file"

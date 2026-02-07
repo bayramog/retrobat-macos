@@ -45,7 +45,6 @@ sign_binary() {
              --entitlements "$ENTITLEMENTS" \
              --options runtime \
              --timestamp \
-             --deep \
              "$file"
 }
 

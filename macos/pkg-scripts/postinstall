@@ -60,10 +60,12 @@ echo "Updating Launch Services database..."
     -f "/Applications/RetroBat.app" || true
 
 # Clean up backup directory from preinstall if exists
-BACKUP_PATTERN="$USER_HOME/Library/Application Support/RetroBat/Backups/RetroBat-backup-*"
-if [ -n "$(find "$USER_HOME/Library/Application Support/RetroBat/Backups" -maxdepth 1 -name 'RetroBat-backup-*' -type d -mmin -10 2>/dev/null)" ]; then
-    echo "Note: Previous version backed up to ~/Library/Application Support/RetroBat/Backups/RetroBat-backup-*"
-    echo "You can delete this backup once you verify the new installation works."
+BACKUPS_DIR="$USER_HOME/Library/Application Support/RetroBat/Backups"
+if [ -d "$BACKUPS_DIR" ]; then
+    if [ -n "$(find "$BACKUPS_DIR" -maxdepth 1 -name 'RetroBat-backup-*' -type d -mmin -10 2>/dev/null)" ]; then
+        echo "Note: Previous version backed up to ~/Library/Application Support/RetroBat/Backups/RetroBat-backup-*"
+        echo "You can delete this backup once you verify the new installation works."
+    fi
 fi
 
 echo ""

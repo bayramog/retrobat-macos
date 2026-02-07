@@ -35,9 +35,9 @@ fi
 echo "Checking dependencies..."
 MISSING_DEPS=()
 
-for cmd in 7z wget dotnet; do
-    if ! command -v $cmd &> /dev/null; then
-        MISSING_DEPS+=("$cmd")
+for required_cmd in 7z wget dotnet; do
+    if ! command -v $required_cmd &> /dev/null; then
+        MISSING_DEPS+=("$required_cmd")
     fi
 done
 
