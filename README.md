@@ -45,6 +45,34 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - **SDL2/SDL3** - Cross-platform graphics and controller support
 - **Homebrew** - Package management
 
+### 📦 macOS Dependencies
+
+RetroBat on macOS uses system tools from Homebrew instead of bundled Windows binaries:
+
+**Core Build Tools:**
+- `p7zip` - Archive extraction (replaces `7za.exe`)
+- `wget` - File downloads (replaces `wget.exe`)
+- `curl` - Built-in on macOS (replaces `curl.exe`)
+- `git` - Built-in with Xcode Command Line Tools
+
+**SDL Libraries (for EmulationStation):**
+- `sdl2` - Required for EmulationStation (replaces `SDL2.dll`)
+- `sdl3` - Optional for enhanced features (replaces `SDL3.dll`)
+
+**Quick Install:**
+```bash
+# Install all dependencies
+brew bundle
+
+# Or install individually
+brew install p7zip wget sdl2 dotnet-sdk
+```
+
+For complete setup instructions, see:
+- [Brewfile](Brewfile) - All required dependencies
+- [system/tools/macos/README.md](system/tools/macos/README.md) - Detailed tool documentation
+- [docs/BUILDING_RETROBUILD_MACOS.md](docs/BUILDING_RETROBUILD_MACOS.md) - Build instructions
+
 **Timeline**: ~21 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
 
 ---
