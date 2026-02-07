@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -9,6 +10,13 @@ namespace RetroBuild;
 
 internal class Methods
 {
+    // Reuse HttpClient instance to avoid socket exhaustion
+    // Set timeout to 5 minutes to allow large downloads while preventing indefinite hangs
+    private static readonly HttpClient httpClient = new HttpClient
+    {
+        Timeout = TimeSpan.FromMinutes(5)
+    };
+    
     public static string PathCombineExeDir(string relativePath)
     {
         string? assemblyLocation = Assembly.GetExecutingAssembly().Location;
@@ -71,12 +79,18 @@ internal class Methods
     {
         string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
         string text = Path.Combine(Path.GetTempPath(), fileName);
-        Logger.LogInfo("Downloading (WebClient): " + url);
+        Logger.LogInfo("Downloading (HttpClient): " + url);
         try
         {
-            using (WebClient webClient = new WebClient())
+            using (HttpResponseMessage response = httpClient.GetAsync(url).ConfigureAwait(false).GetAwaiter().GetResult())
             {
-                webClient.DownloadFile(url, text);
+                response.EnsureSuccessStatusCode();
+                
+                using (Stream contentStream = response.Content.ReadAsStreamAsync().ConfigureAwait(false).GetAwaiter().GetResult())
+                using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    contentStream.CopyTo(fileStream);
+                }
             }
             Logger.LogInfo("Download complete: " + text);
             return ExtractArchive(text, outputDir, options);
