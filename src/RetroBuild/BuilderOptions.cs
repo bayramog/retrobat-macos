@@ -140,9 +140,7 @@ public class BuilderOptions
         // System tools are just command names without any path separators
         // e.g., "7z", "wget", "curl" instead of "system/tools/7za.exe"
         return !toolPath.Contains(Path.DirectorySeparatorChar) 
-            && !toolPath.Contains(Path.AltDirectorySeparatorChar)
-            && !toolPath.Contains('\\')
-            && !toolPath.Contains('/');
+            && !toolPath.Contains(Path.AltDirectorySeparatorChar);
     }
 
     public static bool IsComponentEnabled(string key, BuilderOptions options)
