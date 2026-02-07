@@ -7,3 +7,6 @@
 [submodule "system/decorations"]
 	path = system/decorations
 	url = https://github.com/RetroBat-Official/retrobat-bezels
+[submodule "src/emulationstation"]
+	path = src/emulationstation
+	url = https://github.com/batocera-linux/batocera-emulationstation.git
