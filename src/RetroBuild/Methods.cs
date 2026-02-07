@@ -82,11 +82,11 @@ internal class Methods
         Logger.LogInfo("Downloading (HttpClient): " + url);
         try
         {
-            using (HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult())
+            using (HttpResponseMessage response = httpClient.GetAsync(url).ConfigureAwait(false).GetAwaiter().GetResult())
             {
                 response.EnsureSuccessStatusCode();
                 
-                using (Stream contentStream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult())
+                using (Stream contentStream = response.Content.ReadAsStreamAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                 using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     contentStream.CopyTo(fileStream);
