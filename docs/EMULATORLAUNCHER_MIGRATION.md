@@ -176,16 +176,30 @@ string normalized = NormalizePath(path);     // Platform-aware
 - **Industry standard**: Used by many emulators and games
 
 ### Installation
-```bash
-# macOS (when SDL3 stable released)
-brew install sdl3
 
-# Current development
-brew install sdl2  # Fallback to SDL2 if SDL3 not available
+**Important**: SDL3 is required. SDL2 APIs are NOT compatible with SDL3.
+
+```bash
+# macOS
+# SDL3 not yet available via Homebrew - must build from source
+git clone https://github.com/libsdl-org/SDL
+cd SDL
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make && sudo make install
 
 # Linux
-sudo apt-get install libsdl3-dev
+# Build from source (no package managers have SDL3 yet)
+git clone https://github.com/libsdl-org/SDL
+cd SDL
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make && sudo make install
+
+# Alternative: Wait for SDL3 official release and package manager support
 ```
+
+**Note**: This implementation is designed for SDL3. If SDL3 is not available, controller support will be disabled until SDL3 is installed.
 
 ### P/Invoke Wrapper
 Located in `Controllers/SDLController.cs`:

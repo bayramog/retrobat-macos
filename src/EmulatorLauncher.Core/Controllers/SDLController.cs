@@ -134,8 +134,11 @@ namespace EmulatorLauncher.Controllers
             catch (DllNotFoundException)
             {
                 Console.WriteLine("ERROR: SDL3 library not found. Controller support disabled.");
-                Console.WriteLine("On macOS: brew install sdl3 (when available)");
-                Console.WriteLine("On Linux: Install SDL3 development package");
+                Console.WriteLine("SDL3 is required for controller support on macOS/Linux.");
+                Console.WriteLine("Installation instructions:");
+                Console.WriteLine("  macOS: SDL3 not yet available via Homebrew - build from source or wait for official release");
+                Console.WriteLine("  Linux: Build SDL3 from source: https://github.com/libsdl-org/SDL");
+                Console.WriteLine("Note: SDL2 is NOT compatible - SDL3 is required.");
                 return false;
             }
         }

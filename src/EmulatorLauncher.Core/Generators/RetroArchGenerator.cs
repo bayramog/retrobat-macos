@@ -25,7 +25,7 @@ namespace EmulatorLauncher.Generators
             Console.WriteLine($"Found RetroArch: {retroarchPath}");
             
             // Build command line arguments
-            var args = new List<string>();
+            List<string> args = new();
             
             // Add core if specified
             if (!string.IsNullOrEmpty(Core))
