@@ -10,6 +10,9 @@ namespace RetroBuild;
 
 internal class Methods
 {
+    // Reuse HttpClient instance to avoid socket exhaustion
+    private static readonly HttpClient httpClient = new HttpClient();
+    
     public static string PathCombineExeDir(string relativePath)
     {
         string? assemblyLocation = Assembly.GetExecutingAssembly().Location;
@@ -75,13 +78,10 @@ internal class Methods
         Logger.LogInfo("Downloading (HttpClient): " + url);
         try
         {
-            using (HttpClient httpClient = new HttpClient())
+            using (Stream contentStream = httpClient.GetStreamAsync(url).GetAwaiter().GetResult())
+            using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                using (Stream contentStream = httpClient.GetStreamAsync(url).Result)
-                using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
-                {
-                    contentStream.CopyTo(fileStream);
-                }
+                contentStream.CopyTo(fileStream);
             }
             Logger.LogInfo("Download complete: " + text);
             return ExtractArchive(text, outputDir, options);
