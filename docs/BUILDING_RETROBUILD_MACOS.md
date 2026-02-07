@@ -57,6 +57,36 @@ The build creates:
 - Downloads RetroArch for macOS
 - Uses system tools from Homebrew
 
+## Code Signing and Notarization
+
+For distribution outside the Mac App Store, the built application must be signed and notarized. See:
+
+- **[docs/CODESIGNING_MACOS.md](CODESIGNING_MACOS.md)** - Complete code signing and notarization guide
+- **scripts/macos-sign.sh** - Automated signing script
+- **scripts/macos-notarize.sh** - Automated notarization script
+
+Quick signing workflow:
+```bash
+# 1. Build the app
+dotnet run --project src/RetroBuild/RetroBuild.csproj
+
+# 2. Create app bundle structure (TBD - manual for now)
+# Create RetroBat.app with proper bundle structure
+
+# 3. Sign the app
+export SIGNING_IDENTITY_APP="Developer ID Application: Your Name (TEAM_ID)"
+./scripts/macos-sign.sh build/RetroBat.app
+
+# 4. Create and sign DMG
+hdiutil create -volname "RetroBat" -srcfolder build/RetroBat.app -ov -format UDZO RetroBat.dmg
+codesign --force --sign "$SIGNING_IDENTITY_APP" --timestamp RetroBat.dmg
+
+# 5. Notarize
+./scripts/macos-notarize.sh RetroBat.dmg
+```
+
+**Note**: Apple Developer account ($99/year) and Developer ID certificates are required.
+
 ## More Information
 
 See `src/RetroBuild/README.md` for detailed documentation.

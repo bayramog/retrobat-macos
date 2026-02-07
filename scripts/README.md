@@ -1,6 +1,59 @@
-# GitHub Issues Creation Tools
+# GitHub Issues Creation Tools and macOS Build Scripts
 
-This directory contains multiple tools to help create GitHub issues for the RetroBat macOS port project.
+This directory contains tools to help create GitHub issues for the RetroBat macOS port project and scripts for building, signing, and notarizing macOS applications.
+
+## macOS Code Signing and Notarization Scripts
+
+### `macos-sign.sh`
+Signs a macOS application bundle for distribution. Signs all binaries, frameworks, nested apps, and the main bundle.
+
+Usage:
+```bash
+# With environment variable
+export SIGNING_IDENTITY_APP="Developer ID Application: Your Name (TEAM_ID)"
+./scripts/macos-sign.sh RetroBat.app
+
+# With custom identity and entitlements
+./scripts/macos-sign.sh -i "Developer ID Application: Name" -e entitlements.plist RetroBat.app
+
+# Dry run to preview
+./scripts/macos-sign.sh --dry-run RetroBat.app
+```
+
+Requirements:
+- macOS
+- Xcode Command Line Tools
+- Developer ID Application certificate in Keychain
+- Valid signing identity
+
+See: [docs/CODESIGNING_MACOS.md](../docs/CODESIGNING_MACOS.md)
+
+### `macos-notarize.sh`
+Submits an app/DMG/PKG for Apple notarization and staples the notarization ticket.
+
+Usage:
+```bash
+# Using keychain profile (recommended)
+./scripts/macos-notarize.sh --profile retrobat-notarization RetroBat.dmg
+
+# Using environment variables
+export NOTARIZATION_PROFILE="retrobat-notarization"
+./scripts/macos-notarize.sh RetroBat.dmg
+
+# Using credentials directly
+./scripts/macos-notarize.sh --apple-id you@email.com --team-id TEAM123 --password xxxx RetroBat.dmg
+```
+
+Requirements:
+- macOS
+- Xcode Command Line Tools
+- Apple Developer account
+- App-specific password or keychain profile
+- File must be signed first
+
+See: [docs/CODESIGNING_MACOS.md](../docs/CODESIGNING_MACOS.md)
+
+## GitHub Issues Creation Tools
 
 ## Available Methods
 
