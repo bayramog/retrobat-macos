@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EmulatorLauncher.Core/EmulatorLauncher.Core.csproj" />
+  <Project Path="RetroBuild/RetroBuild.csproj" />
+</Solution>

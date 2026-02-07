@@ -48,3 +48,6 @@ packages/
 # Temporary files
 *.tmp
 *~
+
+# Upstream emulatorLauncher source (cloned for reference, not modified)
+src/emulatorLauncher/
