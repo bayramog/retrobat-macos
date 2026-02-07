@@ -82,13 +82,15 @@ internal class Methods
         Logger.LogInfo("Downloading (HttpClient): " + url);
         try
         {
-            HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
-            response.EnsureSuccessStatusCode();
-            
-            using (Stream contentStream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult())
-            using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult())
             {
-                contentStream.CopyTo(fileStream);
+                response.EnsureSuccessStatusCode();
+                
+                using (Stream contentStream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult())
+                using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    contentStream.CopyTo(fileStream);
+                }
             }
             Logger.LogInfo("Download complete: " + text);
             return ExtractArchive(text, outputDir, options);
