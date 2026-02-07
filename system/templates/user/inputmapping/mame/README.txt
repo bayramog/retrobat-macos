@@ -1,7 +1,7 @@
 # retrobat mame inputmapping
 
 This directory can be used to specify your own mappings for MAME games, the format is xml.
-Examples can be found in the system\resources\inputmapping\mame folder of your RetroBat installation.
+Examples can be found in the system/resources/inputmapping/mame folder of your RetroBat installation.
 
 ##################################################################"
 Here is an example of a mapping for one button in sf2:

@@ -6,14 +6,14 @@
     <Preference Name="iop.fileio.stdlogging" Type="boolean" Value="false" />
     <Preference Name="ps2.arcade.ioserver.enabled" Type="boolean" Value="false" />
     <Preference Name="ps2.arcade.ioserver.port" Type="integer" Value="9876" />
-    <Preference Name="ps2.arcaderoms.directory" Type="path" Value="Play Data Files\arcaderoms" />
+    <Preference Name="ps2.arcaderoms.directory" Type="path" Value="Play Data Files/arcaderoms" />
     <Preference Name="ps2.cdrom0.path.v2" Type="path" Value="" />
-    <Preference Name="ps2.hdd.directory" Type="path" Value="Play Data Files\vfs/hdd" />
-    <Preference Name="ps2.host.directory.v2" Type="path" Value="Play Data Files\vfs/host" />
+    <Preference Name="ps2.hdd.directory" Type="path" Value="Play Data Files/vfs/hdd" />
+    <Preference Name="ps2.host.directory.v2" Type="path" Value="Play Data Files/vfs/host" />
     <Preference Name="ps2.limitframerate" Type="boolean" Value="true" />
-    <Preference Name="ps2.mc0.directory.v2" Type="path" Value="Play Data Files\vfs/mc0" />
-    <Preference Name="ps2.mc1.directory.v2" Type="path" Value="Play Data Files\vfs/mc1" />
-    <Preference Name="ps2.rom0.directory.v2" Type="path" Value="Play Data Files\vfs/rom0" />
+    <Preference Name="ps2.mc0.directory.v2" Type="path" Value="Play Data Files/vfs/mc0" />
+    <Preference Name="ps2.mc1.directory.v2" Type="path" Value="Play Data Files/vfs/mc1" />
+    <Preference Name="ps2.rom0.directory.v2" Type="path" Value="Play Data Files/vfs/rom0" />
     <Preference Name="renderer.opengl.forcebilineartextures" Type="boolean" Value="false" />
     <Preference Name="renderer.opengl.resfactor" Type="integer" Value="1" />
     <Preference Name="renderer.presentationmode" Type="integer" Value="1" />

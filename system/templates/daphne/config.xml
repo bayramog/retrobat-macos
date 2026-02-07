@@ -3684,7 +3684,7 @@
 			<key_file pathname="DL2DVD/LIVES3.BMP" length="346680"  />
 			<key_file pathname="DL2DVD/LIVES4.BMP" length="346680"  />
 			<key_file pathname="DL2DVD/SAINTRO.VOB" length="50386944"  />
-			<key_file pathname="DL2DVD.exe" length="48128"  />
+			<key_file pathname="DL2DVD" length="48128"  />
 			<key_file pathname="DL2First.txt" length="2023"  />
 			<key_file pathname="DL2Help.txt" length="9813"  />
 			<key_file pathname="MFC42.DLL" length="941840"  />
@@ -3749,7 +3749,7 @@
 			  <key_file pathname="MFC42.DLL" length="941840" />
 			  <key_file pathname="MSVCRT.DLL" length="271632" />
 			  <key_file pathname="REGISTER.TXT" length="1111" />
-			  <key_file pathname="SADVD.exe" length="48640" />
+			  <key_file pathname="SADVD" length="48640" />
 			  <key_file pathname="SADVDROM/CONT0.BMP" length="346680" />
 			  <key_file pathname="SADVDROM/CONT1.BMP" length="346680" />
 			  <key_file pathname="SADVDROM/CONT2.BMP" length="346680" />

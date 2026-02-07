@@ -908,12 +908,12 @@
     <OverrideSaveStateFolder>true</OverrideSaveStateFolder>
     <OverrideScreenshotFolder>true</OverrideScreenshotFolder>
     <OverrideWaveFolder>false</OverrideWaveFolder>
-    <GameFolder>.\..\..\roms\snes</GameFolder>
+    <GameFolder>./../../roms/snes</GameFolder>
     <AviFolder />
     <MovieFolder />
-    <SaveDataFolder>.\..\..\saves\snes\mesen-s</SaveDataFolder>
-    <SaveStateFolder>.\..\..\saves\snes\mesen-s</SaveStateFolder>
-    <ScreenshotFolder>.\..\..\screenshots</ScreenshotFolder>
+    <SaveDataFolder>./../../saves/snes/mesen-s</SaveDataFolder>
+    <SaveStateFolder>./../../saves/snes/mesen-s</SaveStateFolder>
+    <ScreenshotFolder>./../../screenshots</ScreenshotFolder>
     <WaveFolder />
   </Preferences>
   <Debug>

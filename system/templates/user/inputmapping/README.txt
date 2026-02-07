@@ -13,7 +13,7 @@ This directory can be used to specify your own mappings for:
 - RetroArch specific core mappings
 - Mame64 specific game mappings (in mame subfolder)
 
-Original files are located in system\resources\inputmapping:
+Original files are located in system/resources/inputmapping:
 - retroarch_controller_hotkeys.yml
 - retroarch_kb_hotkeys.yml
 - retroarch_controller.json

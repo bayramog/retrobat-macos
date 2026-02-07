@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: emulationstation\n"
+"Project-Id-Version: emulationstation/n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-16 12:57+0100\n"
+"POT-Creation-Date: 2021-12-16 12:57+0100/n"
 "PO-Revision-Date: \n"
-"Language-Team: Retrobat\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Retrobat/n"
+"Language: es/n"
+"MIME-Version: 1.0/n"
+"Content-Type: text/plain; charset=UTF-8/n"
+"Content-Transfer-Encoding: 8bit/n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0/n"
 
 msgctxt "game_options"
 msgid "SHOW TATTOO OVER BEZEL"
@@ -3081,7 +3081,7 @@ msgid "per-pixel (accurate)"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Replace original textures with custom textures pack in 'bios\dc\textures'."
+msgid "Replace original textures with custom textures pack in 'bios/dc/textures'."
 msgstr ""
 
 msgctxt "game_options"
@@ -3089,7 +3089,7 @@ msgid "DUMP TEXTURES"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Dump textures to 'bios\dc\texdump'."
+msgid "Dump textures to 'bios/dc/texdump'."
 msgstr ""
 
 msgctxt "game_options"
@@ -3685,7 +3685,7 @@ msgid "READ INI FILE"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Read the ini file in 'bios\mame\ini' folder."
+msgid "Read the ini file in 'bios/mame/ini' folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -3781,7 +3781,7 @@ msgid "FORCE SOFTLIST"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Force usage of a specific softlist, software list needs to be in 'bios\mame\hash' folder."
+msgid "Force usage of a specific softlist, software list needs to be in 'bios/mame/hash' folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -6125,7 +6125,7 @@ msgid "TEXTURE ENHANCEMENT"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Select the IPL BIOS to run a game depending on its region. Needs 'IPL_JAP.n64', 'IPL_USA.n64' and 'IPL_DEV.n64' in bios\Mupen64plus folder."
+msgid "Select the IPL BIOS to run a game depending on its region. Needs 'IPL_JAP.n64', 'IPL_USA.n64' and 'IPL_DEV.n64' in bios/Mupen64plus folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -6245,7 +6245,7 @@ msgid "ENABLE 60fps PATCH"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Cheats must be placed in the \cheats\pcsx2\cheats folder."
+msgid "Cheats must be placed in the \cheats/pcsx2/cheats folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -8709,7 +8709,7 @@ msgid "UP TO 2"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Replace original textures with custom textures pack (\saves\psp\TEXTURES\%GAMEID%)."
+msgid "Replace original textures with custom textures pack (\saves/psp/TEXTURES\%GAMEID%)."
 msgstr ""
 
 msgctxt "game_options"
@@ -10441,7 +10441,7 @@ msgid "MAPPING PROFILE"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Use 'per game' if you have saved a profile for the game in capriceforever\Profiles folder."
+msgid "Use 'per game' if you have saved a profile for the game in capriceforever/Profiles folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -11053,7 +11053,7 @@ msgid "ENABLE MODS"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Load mods from User\Load\GraphicsMods folder."
+msgid "Load mods from User/Load/GraphicsMods folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -12465,7 +12465,7 @@ msgid "DIRECTX12"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Runs 'jgenesis-gui.exe' instead of cli version."
+msgid "Runs 'jgenesis-gui' instead of cli version."
 msgstr ""
 
 msgctxt "game_options"
@@ -12945,7 +12945,7 @@ msgid "DISABLE ARTWORK"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Disable the check of artworks in 'saves\mame\artwork' folder."
+msgid "Disable the check of artworks in 'saves/mame/artwork' folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -13013,7 +13013,7 @@ msgid "Use this setting to decrease or increase gamma, not compatible with 'gdi'
 msgstr ""
 
 msgctxt "game_options"
-msgid "Cheats need to be placed in 'cheats\mame' folder."
+msgid "Cheats need to be placed in 'cheats/mame' folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -13029,7 +13029,7 @@ msgid "IGNORE INI FILE"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Ignore existing ini files in 'bios\mame\ini' folder."
+msgid "Ignore existing ini files in 'bios/mame/ini' folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -13065,7 +13065,7 @@ msgid "CONTROLLER PROFILE"
 msgstr ""
 
 msgctxt "game_options"
-msgid "The RetroBat team has prepared profiles for some common controllers, they are located in 'saves\mame\ctrlr' folder. CUSTOM can be used for saving one's own mappings."
+msgid "The RetroBat team has prepared profiles for some common controllers, they are located in 'saves/mame/ctrlr' folder. CUSTOM can be used for saving one's own mappings."
 msgstr ""
 
 msgctxt "game_options"
@@ -13781,7 +13781,7 @@ msgid "TYPE OF AUTOCONFIGURATION"
 msgstr ""
 
 msgctxt "game_options"
-msgid "'Templates' option copies files located in 'emulators\m2emulator\templatescfg' folder instead of performing dynamic autoconfiguration."
+msgid "'Templates' option copies files located in 'emulators/m2emulator/templatescfg' folder instead of performing dynamic autoconfiguration."
 msgstr ""
 
 msgctxt "game_options"
@@ -14133,7 +14133,7 @@ msgid "SCALE NX"
 msgstr ""
 
 msgctxt "game_options"
-msgid "BLIP (Good speed\quality)"
+msgid "BLIP (Good speed/quality)"
 msgstr ""
 
 msgctxt "game_options"
@@ -14265,7 +14265,7 @@ msgid "Enable Sunrise Video9000"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Insert Video9000 extension in I\O slot."
+msgid "Insert Video9000 extension in I/O slot."
 msgstr ""
 
 msgctxt "game_options"
@@ -14273,7 +14273,7 @@ msgid "Enable Sunrise MoonSound"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Insert MoonSound extension in I\O slot."
+msgid "Insert MoonSound extension in I/O slot."
 msgstr ""
 
 msgctxt "game_options"
@@ -14733,7 +14733,7 @@ msgid "Define how to map the guncon2 buttons."
 msgstr ""
 
 msgctxt "game_options"
-msgid "KB & MOUSE (MOUSE MID\LEFT as START\A)"
+msgid "KB & MOUSE (MOUSE MID/LEFT as START/A)"
 msgstr ""
 
 msgctxt "game_options"
@@ -15329,7 +15329,7 @@ msgid "GPU RENDERING PLUGIN"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Select the GPU plugin, RetroBat options will not work on non-default plugin, they can be configured from emulators folder with config.exe."
+msgid "Select the GPU plugin, RetroBat options will not work on non-default plugin, they can be configured from emulators folder with config."
 msgstr ""
 
 msgctxt "game_options"
@@ -15373,11 +15373,11 @@ msgid "Default is ON, use this setting to remove the 60hz limit, might break gam
 msgstr ""
 
 msgctxt "game_options"
-msgid "Cheats need to be placed in 'cheats\psxmame' folder."
+msgid "Cheats need to be placed in 'cheats/psxmame' folder."
 msgstr ""
 
 msgctxt "game_options"
-msgid "Select 'game specific' to use game specific cfg file located in emulators\psxmame\ctrlr folder."
+msgid "Select 'game specific' to use game specific cfg file located in emulators/psxmame/ctrlr folder."
 msgstr ""
 
 msgctxt "game_options"
@@ -16441,7 +16441,7 @@ msgid "USE OWN GAME SETTING FILE"
 msgstr ""
 
 msgctxt "game_options"
-msgid "By default RetroBat will generate it's own config file, enable this option to use your own game setting file located in 'emulators\ssf\Setting' folder."
+msgid "By default RetroBat will generate it's own config file, enable this option to use your own game setting file located in 'emulators/ssf/Setting' folder."
 msgstr ""
 
 msgctxt "game_options"

@@ -76,7 +76,7 @@
     "sort_ascending": false
   },
   "game_dirs": [
-    "..\\..\\roms\\switch"
+    "../../roms/switch"
   ],
   "autoload_dirs": [],
   "shown_file_types": {

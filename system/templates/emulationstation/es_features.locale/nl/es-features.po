@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: emulationstation\n"
+"Project-Id-Version: emulationstation/n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-16 12:57+0100\n"
+"POT-Creation-Date: 2021-12-16 12:57+0100/n"
 "PO-Revision-Date: \n"
-"Language-Team: Retrobat\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Retrobat/n"
+"Language: nl/n"
+"MIME-Version: 1.0/n"
+"Content-Type: text/plain; charset=UTF-8/n"
+"Content-Transfer-Encoding: 8bit/n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0/n"
 
 # . TRANSLATION: shared, mame
 msgctxt "game_options"
@@ -2101,7 +2101,7 @@ msgid "per-pixel (accurate)"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Replace original textures with custom textures pack in 'bios\dc\textures'."
+msgid "Replace original textures with custom textures pack in 'bios/dc/textures'."
 msgstr ""
 
 msgctxt "game_options"
@@ -2109,7 +2109,7 @@ msgid "DUMP TEXTURES"
 msgstr ""
 
 msgctxt "game_options"
-msgid "Dump textures to 'bios\dc\texdump'."
+msgid "Dump textures to 'bios/dc/texdump'."
 msgstr ""
 
 msgctxt "game_options"
@@ -3397,7 +3397,7 @@ msgid "Deposterize fixes small in-texture glitches that may happen when the text
 msgstr ""
 
 msgctxt "game_options"
-msgid "Replace original textures with custom textures pack (\saves\psp\PSP\TEXTURES\%GAMEID%)."
+msgid "Replace original textures with custom textures pack (\saves/psp/PSP/TEXTURES\%GAMEID%)."
 msgstr ""
 
 msgctxt "game_options"
