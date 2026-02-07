@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -71,12 +72,16 @@ internal class Methods
     {
         string fileName = Path.GetFileName(new Uri(url).AbsolutePath);
         string text = Path.Combine(Path.GetTempPath(), fileName);
-        Logger.LogInfo("Downloading (WebClient): " + url);
+        Logger.LogInfo("Downloading (HttpClient): " + url);
         try
         {
-            using (WebClient webClient = new WebClient())
+            using (HttpClient httpClient = new HttpClient())
             {
-                webClient.DownloadFile(url, text);
+                using (Stream contentStream = httpClient.GetStreamAsync(url).Result)
+                using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    contentStream.CopyTo(fileStream);
+                }
             }
             Logger.LogInfo("Download complete: " + text);
             return ExtractArchive(text, outputDir, options);
