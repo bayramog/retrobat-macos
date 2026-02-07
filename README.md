@@ -110,7 +110,7 @@ See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
 |   |[Visual C++ 2015, 2017 and 2019 Redistributable Packages (32 bit)](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)|
 |   |[Visual C++ 2015, 2017 and 2019 Redistributable Packages (64 bit)](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)|
 |   |[DirectX](https://www.microsoft.com/download/details.aspx?id=35)|
-|**Controllers:**|Xinput controllers hightly recommanded. Test your controller [HERE](https://gamepad-tester.com)|
+|**Controllers:**|Xinput controllers highly recommended. Test your controller [HERE](https://gamepad-tester.com)|
 
 ### macOS (Apple Silicon)
 
