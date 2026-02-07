@@ -1,0 +1,353 @@
+{
+  "name": "RetroBat Apple Silicon Performance Test Suite",
+  "version": "1.0.0",
+  "description": "Standard performance test configurations for Apple Silicon Macs",
+  
+  "test_configurations": {
+    "emulationstation": {
+      "tests": [
+        {
+          "name": "idle_state",
+          "description": "Measure resource usage when EmulationStation is idle",
+          "duration_seconds": 60,
+          "metrics": ["fps", "memory_mb", "cpu_percent"],
+          "target_fps": 60,
+          "target_memory_mb": 500,
+          "target_cpu_percent": 5
+        },
+        {
+          "name": "menu_navigation",
+          "description": "Measure performance during menu navigation",
+          "duration_seconds": 120,
+          "actions": [
+            "Navigate through main menu",
+            "Open settings menu",
+            "Browse system list",
+            "Return to main menu"
+          ],
+          "metrics": ["fps", "memory_mb", "cpu_percent", "input_latency_ms"],
+          "target_fps": 60,
+          "target_memory_mb": 600,
+          "target_cpu_percent": 15,
+          "target_input_latency_ms": 16
+        },
+        {
+          "name": "game_list_scrolling",
+          "description": "Measure performance during rapid game list scrolling",
+          "duration_seconds": 120,
+          "actions": [
+            "Select system with 100+ games",
+            "Rapidly scroll through game list",
+            "Use both page up/down and continuous scrolling",
+            "Test different view modes (detailed, grid, video)"
+          ],
+          "metrics": ["fps", "frame_time_ms", "memory_mb", "cpu_percent"],
+          "target_fps": 60,
+          "target_frame_time_ms": 16.67,
+          "target_memory_mb": 800,
+          "target_cpu_percent": 30
+        },
+        {
+          "name": "theme_loading",
+          "description": "Measure theme switching and asset loading performance",
+          "duration_seconds": 60,
+          "actions": [
+            "Switch to complex theme",
+            "Wait for full asset loading",
+            "Navigate through systems",
+            "Switch to another theme"
+          ],
+          "metrics": ["load_time_seconds", "memory_mb", "cpu_percent"],
+          "target_load_time_seconds": 3,
+          "target_memory_mb": 1000,
+          "target_cpu_percent": 50
+        },
+        {
+          "name": "large_library",
+          "description": "Test with large game library (1000+ games)",
+          "duration_seconds": 300,
+          "prerequisites": [
+            "Game library with 1000+ games",
+            "High-resolution artwork",
+            "Video previews enabled"
+          ],
+          "metrics": ["fps", "memory_mb", "cpu_percent", "load_time_seconds"],
+          "target_fps": 60,
+          "target_memory_mb": 1500,
+          "target_cpu_percent": 25
+        }
+      ]
+    },
+    
+    "retroarch": {
+      "tests": [
+        {
+          "name": "nes_performance",
+          "system": "Nintendo Entertainment System",
+          "core": "nestopia_libretro",
+          "duration_seconds": 300,
+          "test_rom": "test-roms/nes/test.nes",
+          "metrics": ["fps", "frame_time_ms", "audio_underruns", "memory_mb", "cpu_percent"],
+          "target_fps": 60,
+          "target_frame_time_ms": 16.67,
+          "target_audio_underruns": 0,
+          "target_memory_mb": 50,
+          "target_cpu_percent": 5
+        },
+        {
+          "name": "snes_performance",
+          "system": "Super Nintendo",
+          "core": "snes9x_libretro",
+          "duration_seconds": 300,
+          "test_rom": "test-roms/snes/test.smc",
+          "metrics": ["fps", "frame_time_ms", "audio_underruns", "memory_mb", "cpu_percent"],
+          "target_fps": 60,
+          "target_frame_time_ms": 16.67,
+          "target_audio_underruns": 0,
+          "target_memory_mb": 75,
+          "target_cpu_percent": 10
+        },
+        {
+          "name": "genesis_performance",
+          "system": "Sega Genesis / Mega Drive",
+          "core": "genesis_plus_gx_libretro",
+          "duration_seconds": 300,
+          "test_rom": "test-roms/genesis/test.md",
+          "metrics": ["fps", "frame_time_ms", "audio_underruns", "memory_mb", "cpu_percent"],
+          "target_fps": 60,
+          "target_frame_time_ms": 16.67,
+          "target_audio_underruns": 0,
+          "target_memory_mb": 60,
+          "target_cpu_percent": 8
+        },
+        {
+          "name": "psx_performance",
+          "system": "Sony PlayStation",
+          "core": "pcsx_rearmed_libretro",
+          "duration_seconds": 300,
+          "test_rom": "test-roms/psx/test.cue",
+          "metrics": ["fps", "frame_time_ms", "audio_underruns", "memory_mb", "cpu_percent", "gpu_percent"],
+          "target_fps": 60,
+          "target_frame_time_ms": 16.67,
+          "target_audio_underruns": 0,
+          "target_memory_mb": 150,
+          "target_cpu_percent": 25,
+          "target_gpu_percent": 15
+        },
+        {
+          "name": "n64_performance",
+          "system": "Nintendo 64",
+          "core": "mupen64plus_next_libretro",
+          "duration_seconds": 300,
+          "test_rom": "test-roms/n64/test.z64",
+          "metrics": ["fps", "frame_time_ms", "audio_underruns", "memory_mb", "cpu_percent", "gpu_percent"],
+          "target_fps": 60,
+          "target_frame_time_ms": 16.67,
+          "target_audio_underruns": 5,
+          "target_memory_mb": 200,
+          "target_cpu_percent": 40,
+          "target_gpu_percent": 30,
+          "notes": "Performance varies significantly by game"
+        },
+        {
+          "name": "shader_performance",
+          "description": "Test impact of various shader presets",
+          "core": "snes9x_libretro",
+          "test_rom": "test-roms/snes/test.smc",
+          "duration_seconds": 60,
+          "shader_presets": [
+            "none",
+            "crt-easymode.slangp",
+            "crt-royale.slangp",
+            "xbrz-freescale.slangp"
+          ],
+          "metrics": ["fps", "frame_time_ms", "gpu_percent", "memory_mb"],
+          "target_fps": 60
+        }
+      ]
+    },
+    
+    "battery_life": {
+      "description": "Battery life tests for MacBook models",
+      "required_hardware": ["MacBook Pro", "MacBook Air"],
+      "tests": [
+        {
+          "name": "idle_battery_drain",
+          "description": "EmulationStation idle battery consumption",
+          "duration_seconds": 3600,
+          "prerequisites": [
+            "100% battery charge",
+            "Disconnect from power",
+            "50% screen brightness",
+            "Disable automatic sleep"
+          ],
+          "metrics": ["battery_drain_percent_per_hour", "power_watts"],
+          "target_battery_drain_percent_per_hour": 5,
+          "target_power_watts": 5
+        },
+        {
+          "name": "light_emulation_battery",
+          "description": "Battery consumption during light emulation (NES/SNES)",
+          "duration_seconds": 3600,
+          "emulation_cores": ["nestopia_libretro", "snes9x_libretro"],
+          "metrics": ["battery_drain_percent_per_hour", "power_watts"],
+          "target_battery_drain_percent_per_hour": 15,
+          "target_power_watts": 15
+        },
+        {
+          "name": "heavy_emulation_battery",
+          "description": "Battery consumption during heavy emulation (PSX/N64)",
+          "duration_seconds": 3600,
+          "emulation_cores": ["pcsx_rearmed_libretro", "mupen64plus_next_libretro"],
+          "metrics": ["battery_drain_percent_per_hour", "power_watts"],
+          "target_battery_drain_percent_per_hour": 25,
+          "target_power_watts": 25
+        }
+      ]
+    },
+    
+    "thermal": {
+      "description": "Thermal performance and throttling tests",
+      "tests": [
+        {
+          "name": "sustained_load_thermal",
+          "description": "Monitor temperature during sustained emulation",
+          "duration_seconds": 1800,
+          "emulation_core": "mupen64plus_next_libretro",
+          "metrics": ["cpu_temp_celsius", "gpu_temp_celsius", "throttling_events", "fan_rpm"],
+          "target_cpu_temp_celsius": 85,
+          "target_throttling_events": 0,
+          "sample_interval_seconds": 10
+        },
+        {
+          "name": "thermal_recovery",
+          "description": "Measure cooldown time after load",
+          "phases": [
+            {"name": "stress", "duration_seconds": 600},
+            {"name": "cooldown", "duration_seconds": 600}
+          ],
+          "metrics": ["cpu_temp_celsius", "time_to_baseline_seconds"],
+          "target_time_to_baseline_seconds": 300
+        }
+      ]
+    },
+    
+    "stress_tests": {
+      "description": "Edge case and stress testing scenarios",
+      "tests": [
+        {
+          "name": "rapid_core_switching",
+          "description": "Rapidly switch between different RetroArch cores",
+          "duration_seconds": 300,
+          "cores": [
+            "nestopia_libretro",
+            "snes9x_libretro",
+            "genesis_plus_gx_libretro",
+            "gambatte_libretro"
+          ],
+          "switch_interval_seconds": 10,
+          "metrics": ["memory_leaks", "crash_count", "load_time_average_ms"]
+        },
+        {
+          "name": "memory_stress",
+          "description": "Test with maximum game library and high-res assets",
+          "game_count": 5000,
+          "artwork_resolution": "4K",
+          "video_previews": true,
+          "duration_seconds": 600,
+          "metrics": ["memory_mb", "swap_usage_mb", "responsiveness"]
+        }
+      ]
+    }
+  },
+  
+  "hardware_profiles": {
+    "mac_mini_m1": {
+      "model": "Mac mini (M1, 2020)",
+      "cpu_cores": 8,
+      "gpu_cores": 8,
+      "ram_gb": [8, 16],
+      "expected_performance": {
+        "emulationstation_fps": 60,
+        "retroarch_nes_cpu": 5,
+        "retroarch_psx_cpu": 25
+      }
+    },
+    "macbook_pro_m1": {
+      "model": "MacBook Pro (M1, 2020)",
+      "cpu_cores": 8,
+      "gpu_cores": [7, 8],
+      "ram_gb": [8, 16],
+      "expected_performance": {
+        "emulationstation_fps": 60,
+        "retroarch_nes_cpu": 5,
+        "retroarch_psx_cpu": 25,
+        "battery_hours_light": 6,
+        "battery_hours_heavy": 4
+      }
+    },
+    "macbook_pro_m2": {
+      "model": "MacBook Pro (M2, 2022)",
+      "cpu_cores": [8, 10],
+      "gpu_cores": [10, 16, 19],
+      "ram_gb": [8, 16, 24],
+      "expected_performance": {
+        "emulationstation_fps": 60,
+        "retroarch_nes_cpu": 4,
+        "retroarch_psx_cpu": 20,
+        "battery_hours_light": 7,
+        "battery_hours_heavy": 5
+      }
+    },
+    "mac_studio_m1_max": {
+      "model": "Mac Studio (M1 Max, 2022)",
+      "cpu_cores": 10,
+      "gpu_cores": [24, 32],
+      "ram_gb": [32, 64],
+      "expected_performance": {
+        "emulationstation_fps": 60,
+        "retroarch_nes_cpu": 3,
+        "retroarch_psx_cpu": 15
+      }
+    },
+    "mac_studio_m1_ultra": {
+      "model": "Mac Studio (M1 Ultra, 2022)",
+      "cpu_cores": 20,
+      "gpu_cores": [48, 64],
+      "ram_gb": [64, 128],
+      "expected_performance": {
+        "emulationstation_fps": 60,
+        "retroarch_nes_cpu": 3,
+        "retroarch_psx_cpu": 12
+      }
+    },
+    "imac_m3": {
+      "model": "iMac (M3, 2023)",
+      "cpu_cores": 8,
+      "gpu_cores": [8, 10],
+      "ram_gb": [8, 16, 24],
+      "expected_performance": {
+        "emulationstation_fps": 60,
+        "retroarch_nes_cpu": 4,
+        "retroarch_psx_cpu": 18
+      }
+    }
+  },
+  
+  "reporting": {
+    "output_formats": ["json", "csv", "html"],
+    "metrics_precision": {
+      "fps": 2,
+      "cpu_percent": 2,
+      "memory_mb": 2,
+      "temperature_celsius": 1,
+      "power_watts": 2
+    },
+    "comparison_baseline": {
+      "name": "Reference Configuration",
+      "hardware": "Mac mini M1 8GB",
+      "macos_version": "14.0",
+      "retroarch_version": "1.16.0"
+    }
+  }
+}
