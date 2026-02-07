@@ -88,6 +88,8 @@ cd "$RESOURCES"
 
 # Set up environment
 export RETROBAT_ROOT="$RESOURCES"
+# Note: DYLD_FRAMEWORK_PATH requires com.apple.security.cs.allow-dyld-environment-variables entitlement
+# This is included in entitlements.plist for loading embedded frameworks
 export DYLD_FRAMEWORK_PATH="$APP_BUNDLE/Contents/Frameworks"
 
 # Check for required dependencies

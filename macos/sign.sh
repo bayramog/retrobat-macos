@@ -100,7 +100,6 @@ if [ -d "$APP_BUNDLE" ]; then
              --entitlements "$ENTITLEMENTS" \
              --options runtime \
              --timestamp \
-             --deep \
              "$APP_BUNDLE"
     
     echo ""

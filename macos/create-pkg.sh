@@ -74,7 +74,7 @@ cat > "$PKG_TEMP/distribution.xml" << EOF
     <title>RetroBat ${VERSION}</title>
     <organization>org.retrobat</organization>
     <domains enable_localSystem="true"/>
-    <options customize="never" require-scripts="false" hostArchitectures="arm64"/>
+    <options customize="never" require-scripts="true" hostArchitectures="arm64"/>
     
     <!-- Define documents displayed at various steps -->
     <welcome file="welcome.html" mime-type="text/html"/>

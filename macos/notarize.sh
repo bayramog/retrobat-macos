@@ -71,7 +71,8 @@ notarize_file() {
         
         # Staple the notarization ticket (for offline verification)
         # Note: Stapling works for app bundles, DMGs, and PKGs
-        if [[ "$file" == *.app ]] || [[ "$file" == *.dmg ]] || [[ "$file" == *.pkg ]]; then
+        # For app bundles, we need to staple the actual .app, not the .zip
+        if [[ "$file" == *.dmg ]] || [[ "$file" == *.pkg ]]; then
             echo "Stapling notarization ticket..."
             xcrun stapler staple "$file"
             
@@ -128,6 +129,14 @@ if [ -d "$APP_BUNDLE" ]; then
     ditto -c -k --keepParent "$APP_BUNDLE" "$APP_ZIP"
     
     notarize_file "$APP_ZIP"
+    
+    # Staple the original app bundle (not the zip)
+    if [ -d "$APP_BUNDLE" ]; then
+        echo "Stapling notarization ticket to app bundle..."
+        xcrun stapler staple "$APP_BUNDLE"
+        xcrun stapler validate "$APP_BUNDLE"
+        echo "✓ App bundle stapled"
+    fi
     
     # Clean up zip
     rm -f "$APP_ZIP"
