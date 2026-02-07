@@ -84,7 +84,7 @@ check_command() {
     local package=$2
     
     if command -v "$cmd" > /dev/null 2>&1; then
-        success "$cmd is installed ($(which $cmd))"
+        success "$cmd is installed ($(which "$cmd"))"
         return 0
     else
         error "$cmd is NOT installed"
@@ -342,9 +342,9 @@ CRITICAL_DIRS=(
 
 for dir in "${CRITICAL_DIRS[@]}"; do
     if [ -d "$dir" ]; then
-        success "Found: $(basename $dir)"
+        success "Found: $(basename "$dir")"
     else
-        warning "Missing: $(basename $dir)"
+        warning "Missing: $(basename "$dir")"
     fi
 done
 
