@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Allow JIT compilation for emulators (RetroArch, etc.) -->
+    <key>com.apple.security.cs.allow-jit</key>
+    <true/>
+    
+    <!-- Allow unsigned executable memory (needed for dynamic recompilation) -->
+    <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+    <true/>
+    
+    <!-- Disable library validation to load emulator cores/plugins -->
+    <key>com.apple.security.cs.disable-library-validation</key>
+    <true/>
+    
+    <!-- Allow DYLD environment variables (for loading dynamic libraries) -->
+    <key>com.apple.security.cs.allow-dyld-environment-variables</key>
+    <true/>
+    
+    <!-- Network access for downloading content and updates -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+    
+    <key>com.apple.security.network.server</key>
+    <true/>
+    
+    <!-- File system access -->
+    <key>com.apple.security.files.user-selected.read-write</key>
+    <true/>
+    
+    <key>com.apple.security.files.downloads.read-write</key>
+    <true/>
+    
+    <!-- Audio/Video device access -->
+    <key>com.apple.security.device.audio-input</key>
+    <true/>
+    
+    <key>com.apple.security.device.camera</key>
+    <true/>
+    
+    <!-- USB device access (for controllers) -->
+    <key>com.apple.security.device.usb</key>
+    <true/>
+    
+    <!-- Bluetooth for wireless controllers -->
+    <key>com.apple.security.device.bluetooth</key>
+    <true/>
+</dict>
+</plist>

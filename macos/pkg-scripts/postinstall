@@ -1,0 +1,80 @@
+#!/bin/bash
+# Post-install script for RetroBat PKG installer
+# This script runs after the app is installed
+
+set -e
+
+echo "RetroBat Post-install Script"
+echo "=============================="
+
+# Get the user who invoked the installer (not root)
+REAL_USER="${USER}"
+if [ "$REAL_USER" = "root" ]; then
+    # Try to get the user who ran the installer
+    REAL_USER=$(stat -f "%Su" /dev/console)
+fi
+
+echo "Installing for user: $REAL_USER"
+USER_HOME=$(eval echo ~$REAL_USER)
+
+# Set correct ownership and permissions
+echo "Setting permissions..."
+chown -R "$REAL_USER:staff" "/Applications/RetroBat.app"
+chmod -R 755 "/Applications/RetroBat.app"
+
+# Ensure executables are properly marked
+if [ -d "/Applications/RetroBat.app/Contents/MacOS" ]; then
+    find "/Applications/RetroBat.app/Contents/MacOS" -type f -exec chmod +x {} \;
+fi
+
+# Create user data directories if they don't exist
+echo "Creating user data directories..."
+USER_DATA_DIR="$USER_HOME/RetroBat"
+USER_CONFIG_DIR="$USER_HOME/Library/Application Support/RetroBat"
+
+if [ ! -d "$USER_DATA_DIR" ]; then
+    echo "Creating: $USER_DATA_DIR"
+    su - "$REAL_USER" -c "mkdir -p '$USER_DATA_DIR'"
+    su - "$REAL_USER" -c "mkdir -p '$USER_DATA_DIR/roms'"
+    su - "$REAL_USER" -c "mkdir -p '$USER_DATA_DIR/saves'"
+    su - "$REAL_USER" -c "mkdir -p '$USER_DATA_DIR/bios'"
+    su - "$REAL_USER" -c "mkdir -p '$USER_DATA_DIR/screenshots'"
+else
+    echo "Data directory already exists: $USER_DATA_DIR"
+fi
+
+if [ ! -d "$USER_CONFIG_DIR" ]; then
+    echo "Creating: $USER_CONFIG_DIR"
+    su - "$REAL_USER" -c "mkdir -p '$USER_CONFIG_DIR'"
+else
+    echo "Config directory already exists: $USER_CONFIG_DIR"
+fi
+
+# Remove quarantine attribute to avoid Gatekeeper issues
+echo "Removing quarantine attribute..."
+xattr -dr com.apple.quarantine "/Applications/RetroBat.app" 2>/dev/null || true
+
+# Update Launch Services database
+echo "Updating Launch Services database..."
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
+    -f "/Applications/RetroBat.app" || true
+
+# Clean up backup directory from preinstall if exists
+if [ -n "$(find /tmp -maxdepth 1 -name 'RetroBat-backup-*' -type d -mmin -10 2>/dev/null)" ]; then
+    echo "Note: Previous version backed up to /tmp/RetroBat-backup-*"
+    echo "You can delete this backup once you verify the new installation works."
+fi
+
+echo ""
+echo "✓ Installation complete!"
+echo ""
+echo "Next steps:"
+echo "1. Open Applications folder"
+echo "2. Right-click RetroBat and select 'Open'"
+echo "3. Click 'Open' in the security dialog"
+echo ""
+echo "If you haven't installed dependencies yet:"
+echo "  brew install sdl2 p7zip wget"
+echo ""
+
+exit 0

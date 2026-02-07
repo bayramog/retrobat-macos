@@ -1,0 +1,74 @@
+#!/bin/bash
+# Pre-install script for RetroBat PKG installer
+# This script runs before the app is installed
+
+set -e
+
+echo "RetroBat Pre-install Script"
+echo "============================="
+
+# Check macOS version
+MACOS_VERSION=$(sw_vers -productVersion)
+MACOS_MAJOR=$(echo "$MACOS_VERSION" | cut -d. -f1)
+
+echo "macOS Version: $MACOS_VERSION"
+
+if [ "$MACOS_MAJOR" -lt 11 ]; then
+    echo "Error: macOS 11.0 (Big Sur) or later is required"
+    echo "Current version: $MACOS_VERSION"
+    exit 1
+fi
+
+# Check architecture (Apple Silicon only)
+ARCH=$(uname -m)
+echo "Architecture: $ARCH"
+
+if [ "$ARCH" != "arm64" ]; then
+    echo "Error: This version of RetroBat requires Apple Silicon (M1/M2/M3/M4)"
+    echo "Current architecture: $ARCH"
+    exit 1
+fi
+
+# Check if old version exists and backup if needed
+if [ -d "/Applications/RetroBat.app" ]; then
+    echo "Found existing RetroBat installation"
+    BACKUP_DIR="/tmp/RetroBat-backup-$(date +%Y%m%d-%H%M%S)"
+    echo "Backing up to: $BACKUP_DIR"
+    mkdir -p "$BACKUP_DIR"
+    cp -R "/Applications/RetroBat.app" "$BACKUP_DIR/"
+    echo "Backup created successfully"
+fi
+
+# Check for Homebrew (warning only, not fatal)
+if ! command -v brew &> /dev/null; then
+    echo "WARNING: Homebrew not found"
+    echo "RetroBat requires Homebrew dependencies: sdl2, p7zip, wget"
+    echo "Install Homebrew from: https://brew.sh"
+else
+    echo "✓ Homebrew is installed"
+    
+    # Check for required dependencies
+    MISSING_DEPS=()
+    
+    if ! brew list sdl2 &> /dev/null; then
+        MISSING_DEPS+=("sdl2")
+    fi
+    
+    if ! brew list p7zip &> /dev/null; then
+        MISSING_DEPS+=("p7zip")
+    fi
+    
+    if ! brew list wget &> /dev/null; then
+        MISSING_DEPS+=("wget")
+    fi
+    
+    if [ ${#MISSING_DEPS[@]} -gt 0 ]; then
+        echo "WARNING: Missing dependencies: ${MISSING_DEPS[*]}"
+        echo "Install them with: brew install ${MISSING_DEPS[*]}"
+    else
+        echo "✓ All required dependencies are installed"
+    fi
+fi
+
+echo "Pre-install checks complete"
+exit 0
