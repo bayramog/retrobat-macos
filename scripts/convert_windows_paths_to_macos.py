@@ -58,6 +58,24 @@ class WindowsToMacOSConverter:
             changes += (len(content) - len(content.replace('\\', ''))) - (len(new_content) - len(new_content.replace('\\', '')))
             content = new_content
         
+        # 3b. Convert trailing backslashes in paths (e.g., path=./dir\)
+        new_content = re.sub(r'([/\w\.]+)\\(\s*$|\s)', r'\1/\2', content, flags=re.MULTILINE)
+        if new_content != content:
+            changes += 1
+            content = new_content
+        
+        # 3c. Convert leading backslashes in paths (e.g., \dev_hdd0/path)
+        new_content = re.sub(r'^\\([/\w])', r'/\1', content, flags=re.MULTILINE)
+        if new_content != content:
+            changes += 1
+            content = new_content
+        
+        # 3d. Convert backslash before wildcards (e.g., path\*.ext)
+        new_content = re.sub(r'([/\w\.])\\(\*)', r'\1/\2', content)
+        if new_content != content:
+            changes += content.count('\\*')
+            content = new_content
+        
         # 4. Remove .exe extensions from paths (but keep in quotes for compatibility)
         # Pattern: .exe preceded by alphanumeric/underscore/dash, possibly in quotes
         new_content = re.sub(r'(["\']?)(\w+)\.exe(["\']?)', r'\1\2\3', content)
