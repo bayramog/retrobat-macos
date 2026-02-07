@@ -6,7 +6,8 @@
 # Usage: ./verify-macos-setup.sh
 #
 
-set -e  # Exit on error
+# Note: Not using set -e because check functions intentionally return non-zero
+# for missing items, and we want to complete all checks before exiting
 
 echo "========================================"
 echo "RetroBat macOS Build Environment Check"
