@@ -24,6 +24,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 **Current Status**: Planning Phase Complete ✅
 
 ### 📚 Documentation
+- 🚀 [**Quick Start (macOS)**](QUICKSTART_MACOS.md) - Fast setup for developers (15 min)
 - 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed technical plan
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
 - 🔧 [**Building on macOS**](BUILDING_MACOS.md) - Developer setup guide
