@@ -89,8 +89,6 @@ See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
 
 ---
 
----
-
 ## 🖥️ Supported Platforms
 
 | Platform | Status | Architecture | Download |
