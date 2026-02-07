@@ -36,7 +36,7 @@ check_command() {
     
     if command -v "$cmd" &> /dev/null; then
         echo -e "${GREEN}✓${NC} $cmd is installed"
-        if [ ! -z "$version_flag" ]; then
+        if [ -n "$version_flag" ]; then
             local version=$($cmd $version_flag 2>&1 | head -n 1)
             echo "  Version: $version"
         fi
@@ -61,10 +61,10 @@ check_brew_package() {
     
     TOTAL_CHECKS=$((TOTAL_CHECKS + 1))
     
-    if brew list "$package" &> /dev/null 2>&1; then
+    if brew list "$package" &> /dev/null; then
         echo -e "${GREEN}✓${NC} $package is installed (Homebrew)"
         local version=$(brew list --versions "$package" 2>/dev/null)
-        if [ ! -z "$version" ]; then
+        if [ -n "$version" ]; then
             echo "  $version"
         fi
         PASSED_CHECKS=$((PASSED_CHECKS + 1))

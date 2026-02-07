@@ -69,7 +69,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 
 |**OS supported:**|macOS 12 (Monterey) or later|
 |---|---|
-|**Processor:**|Apple Silicon (M1/M2/M3/M4) ARM64 only|
+|**Processor:**|Apple Silicon (M1/M2/M3/M4) arm64 only|
 |**Graphics:**|Metal-compatible GPU (built-in with Apple Silicon)|
 |**Memory:**|8 GB RAM minimum, 16 GB recommended|
 |**Dependencies:**|[Homebrew](https://brew.sh/)|
