@@ -462,6 +462,138 @@ brew install dosbox-x
 - macOS Migration Plan: `MACOS_MIGRATION_PLAN.md`
 - Building on macOS: `docs/BUILDING_RETROBUILD_MACOS.md`
 
+## Testing Guide
+
+### Basic Testing Procedure
+
+For each emulator, follow these steps:
+
+1. **Installation Test**
+   ```bash
+   # Use the download script
+   ./scripts/download-macos-emulators.sh --core
+   
+   # Or install manually from official source
+   # Verify installation
+   ls -la /Applications/[Emulator].app
+   ```
+
+2. **Launch Test**
+   ```bash
+   # Try to launch the emulator
+   open /Applications/[Emulator].app
+   
+   # Check for quarantine issues
+   xattr -l /Applications/[Emulator].app
+   
+   # Remove quarantine if needed
+   xattr -cr /Applications/[Emulator].app
+   ```
+
+3. **Architecture Verification**
+   ```bash
+   # Check if binary is ARM64 native
+   file /Applications/[Emulator].app/Contents/MacOS/[binary]
+   
+   # Should show: "Mach-O 64-bit executable arm64"
+   # If it shows x86_64, it will run via Rosetta
+   ```
+
+4. **Basic Functionality Test**
+   - Load a ROM/game file
+   - Check video output
+   - Test audio output
+   - Test input (keyboard/controller)
+   - Test save/load states
+   - Verify settings persistence
+
+5. **Performance Test**
+   - Monitor CPU usage in Activity Monitor
+   - Check FPS counter (if available)
+   - Test demanding games
+   - Verify no thermal throttling
+
+### Test Results Template
+
+Create a test report using this template:
+
+```markdown
+## Emulator Test Report: [Emulator Name]
+
+**Date**: YYYY-MM-DD
+**Tester**: [Your Name]
+**System**: [Mac Model], [macOS Version]
+
+### Installation
+- [ ] Downloaded successfully
+- [ ] Extracted/Installed to /Applications
+- [ ] No quarantine issues
+- [ ] Version: [version number]
+
+### Architecture
+- [ ] Native ARM64 / [ ] Intel (Rosetta) / [ ] Universal Binary
+
+### Functionality
+- [ ] Launches successfully
+- [ ] Loads ROMs/games
+- [ ] Video renders correctly
+- [ ] Audio works
+- [ ] Keyboard input works
+- [ ] Controller input works
+- [ ] Save states work
+- [ ] Settings persist
+
+### Performance
+- CPU Usage: [percentage]
+- Temperature: [acceptable/high]
+- FPS: [fps in typical game]
+- Performance Rating: [Excellent/Good/Fair/Poor]
+
+### Issues Found
+- [List any issues]
+
+### Notes
+- [Any additional observations]
+```
+
+### Automated Testing Script
+
+Create a simple test script:
+
+```bash
+#!/bin/bash
+# test-emulator.sh - Quick emulator functionality test
+
+EMULATOR_PATH="$1"
+
+if [ ! -d "$EMULATOR_PATH" ]; then
+    echo "Error: Emulator not found at $EMULATOR_PATH"
+    exit 1
+fi
+
+echo "Testing: $(basename "$EMULATOR_PATH")"
+
+# Check architecture
+echo "Architecture:"
+file "$EMULATOR_PATH/Contents/MacOS/"* | grep -v "directory"
+
+# Check quarantine
+echo -e "\nQuarantine status:"
+xattr -l "$EMULATOR_PATH" | grep -q "com.apple.quarantine" && echo "QUARANTINED" || echo "Clean"
+
+# Try to launch (will timeout after 5 seconds)
+echo -e "\nLaunch test:"
+timeout 5 open "$EMULATOR_PATH" && echo "Launched successfully" || echo "Launch failed or timeout"
+
+echo -e "\nTest complete"
+```
+
+Usage:
+```bash
+chmod +x test-emulator.sh
+./test-emulator.sh /Applications/RetroArch.app
+```
+
 ## Contributing
 
 To update this compatibility matrix:
@@ -469,7 +601,7 @@ To update this compatibility matrix:
 2. Verify native ARM64 vs Rosetta 2 operation
 3. Document installation path and any special requirements
 4. Update the appropriate category table
-5. Submit PR with testing notes
+5. Submit PR with testing notes using the test report template
 
 ## License
 

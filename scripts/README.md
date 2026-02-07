@@ -1,6 +1,51 @@
-# GitHub Issues Creation Tools
+# RetroBat macOS Scripts
 
-This directory contains multiple tools to help create GitHub issues for the RetroBat macOS port project.
+This directory contains various tools and scripts for the RetroBat macOS port project.
+
+## Scripts
+
+### 1. Emulator Download Script (download-macos-emulators.sh)
+
+Automated script to download and install macOS-compatible emulators for RetroBat.
+
+#### Features
+- Downloads pre-built emulators optimized for Apple Silicon
+- Automatically extracts DMG and ZIP files
+- Installs emulators to standard macOS locations
+- Removes quarantine attributes
+- Supports batch installation
+
+#### Usage
+```bash
+# List available emulators
+./download-macos-emulators.sh --list
+
+# Install core emulators (RetroArch, Dolphin, PCSX2)
+./download-macos-emulators.sh --core
+
+# Install all emulators
+./download-macos-emulators.sh --all
+
+# Show help
+./download-macos-emulators.sh --help
+```
+
+#### Prerequisites
+- macOS 12+ (Monterey or later)
+- Apple Silicon (M1/M2/M3/M4) recommended
+- Homebrew installed
+- Required packages: `brew install wget curl p7zip`
+
+#### Environment Variables
+- `DOWNLOAD_DIR` - Directory for downloads (default: `/tmp/retrobat-emulators`)
+- `INSTALL_DIR` - Installation directory (default: `/Applications`)
+
+#### Supported Emulators
+See [MACOS_EMULATOR_COMPATIBILITY.md](../MACOS_EMULATOR_COMPATIBILITY.md) for the complete list of supported emulators and their compatibility status.
+
+### 2. GitHub Issues Creation Tools
+
+Multiple tools to help create GitHub issues for the RetroBat macOS port project.
 
 ## Available Methods
 
