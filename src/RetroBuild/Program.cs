@@ -381,7 +381,8 @@ internal class Program
             string retroarchUrl;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                retroarchUrl = options.RetroArchURL + "/stable/" + retroarchVersion + "/apple/osx/x86_64/RetroArch.dmg";
+                // Apple Silicon (arm64) support - macOS port is ARM64 only
+                retroarchUrl = options.RetroArchURL + "/stable/" + retroarchVersion + "/apple/osx/arm64/RetroArch.dmg";
             }
             else
             {
@@ -390,8 +391,20 @@ internal class Program
             
             Methods.DownloadAndExtractArchive_Wget(retroarchUrl, retroarchPath, options);
             
-            string? retroarchSubDir = Directory.GetDirectories(retroarchPath)
-                .FirstOrDefault(d => Path.GetFileName(d).Contains("RetroArch-Win64"));
+            // Platform-specific subdirectory handling
+            string? retroarchSubDir = null;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                // On macOS, look for RetroArch.app or similar
+                retroarchSubDir = Directory.GetDirectories(retroarchPath)
+                    .FirstOrDefault(d => Path.GetFileName(d).Contains("RetroArch"));
+            }
+            else
+            {
+                // On Windows, look for RetroArch-Win64
+                retroarchSubDir = Directory.GetDirectories(retroarchPath)
+                    .FirstOrDefault(d => Path.GetFileName(d).Contains("RetroArch-Win64"));
+            }
             
             if (retroarchSubDir != null && Directory.Exists(retroarchSubDir))
             {
@@ -417,7 +430,7 @@ internal class Program
             }
             else
             {
-                Console.WriteLine("Source directory does not exist.");
+                Console.WriteLine("RetroArch extracted successfully to " + retroarchPath);
             }
         }
         
@@ -967,7 +980,8 @@ internal class Program
                     string buildbotUrl;
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                     {
-                        buildbotUrl = options.RetroArchURL + "/nightly/apple/osx/x86_64/latest/" + core + "_libretro.dylib.zip";
+                        // Apple Silicon (arm64) support - macOS port is ARM64 only
+                        buildbotUrl = options.RetroArchURL + "/nightly/apple/osx/arm64/latest/" + core + "_libretro.dylib.zip";
                     }
                     else
                     {
