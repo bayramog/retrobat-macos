@@ -59,12 +59,20 @@ public class BuilderOptions
         builderOptions.GetWiimotegun = iniParser.Get(section, "get_wiimotegun") == "1";
         
         // Platform-specific tool paths
-        builderOptions.SevenZipPath = Methods.PathCombineExeDir(
-            iniParser.Get(section, "7za_path", GetDefaultSevenZipPath()));
-        builderOptions.WgetPath = Methods.PathCombineExeDir(
-            iniParser.Get(section, "wget_path", GetDefaultWgetPath()));
-        builderOptions.CurlPath = Methods.PathCombineExeDir(
-            iniParser.Get(section, "curl_path", GetDefaultCurlPath()));
+        string sevenZipPathConfig = iniParser.Get(section, "7za_path", GetDefaultSevenZipPath());
+        string wgetPathConfig = iniParser.Get(section, "wget_path", GetDefaultWgetPath());
+        string curlPathConfig = iniParser.Get(section, "curl_path", GetDefaultCurlPath());
+        
+        // For system tools (just a command name without path separator), don't combine with exe dir
+        builderOptions.SevenZipPath = IsSystemTool(sevenZipPathConfig) 
+            ? sevenZipPathConfig 
+            : Methods.PathCombineExeDir(sevenZipPathConfig);
+        builderOptions.WgetPath = IsSystemTool(wgetPathConfig) 
+            ? wgetPathConfig 
+            : Methods.PathCombineExeDir(wgetPathConfig);
+        builderOptions.CurlPath = IsSystemTool(curlPathConfig) 
+            ? curlPathConfig 
+            : Methods.PathCombineExeDir(curlPathConfig);
         
         builderOptions.RetrobatFTPPath = iniParser.Get(section, "retrobat_ftp", "http://www.retrobat.ovh/repo/");
         builderOptions.RetrobatBinariesBaseUrl = iniParser.Get(section, "retrobat_binaries_url", "http://www.retrobat.ovh/repo/tools/");
@@ -125,6 +133,16 @@ public class BuilderOptions
             return "curl"; // curl is built-in on macOS/Linux
         }
         return Path.Combine("system", "tools", "curl.exe");
+    }
+
+    private static bool IsSystemTool(string toolPath)
+    {
+        // System tools are just command names without any path separators
+        // e.g., "7z", "wget", "curl" instead of "system/tools/7za.exe"
+        return !toolPath.Contains(Path.DirectorySeparatorChar) 
+            && !toolPath.Contains(Path.AltDirectorySeparatorChar)
+            && !toolPath.Contains('\\')
+            && !toolPath.Contains('/');
     }
 
     public static bool IsComponentEnabled(string key, BuilderOptions options)
