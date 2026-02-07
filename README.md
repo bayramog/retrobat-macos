@@ -66,12 +66,16 @@ brew bundle
 
 # Or install individually
 brew install p7zip wget sdl2 dotnet-sdk
+
+# Verify installation
+./verify-tools.sh
 ```
 
 For complete setup instructions, see:
 - [Brewfile](Brewfile) - All required dependencies
 - [system/tools/macos/README.md](system/tools/macos/README.md) - Detailed tool documentation
 - [docs/BUILDING_RETROBUILD_MACOS.md](docs/BUILDING_RETROBUILD_MACOS.md) - Build instructions
+- [verify-tools.sh](verify-tools.sh) - Tool verification script
 
 **Timeline**: ~21 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
 
