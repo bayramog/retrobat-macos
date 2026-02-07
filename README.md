@@ -123,7 +123,7 @@ See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
 |   |Xcode Command Line Tools - `xcode-select --install`|
 |**Controllers:**|SDL3-compatible controllers. USB and Bluetooth controllers supported. Test your controller [HERE](https://gamepad-tester.com)|
 
-> **Note**: The macOS version is currently in active development. See the [macOS Apple Silicon Port](#-macos-apple-silicon-port) section below for current status and progress.
+> **Note**: The macOS version is currently in active development. See the [macOS Apple Silicon Port](#-macos-apple-silicon-port) section above for current status and progress.
 
 
 ## 🦇 RetroBat Team
