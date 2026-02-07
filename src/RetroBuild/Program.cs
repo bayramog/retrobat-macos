@@ -430,7 +430,8 @@ internal class Program
             }
             else
             {
-                Console.WriteLine("RetroArch extracted successfully to " + retroarchPath);
+                // No nested subdirectory found - files may be directly extracted
+                Logger.LogInfo("RetroArch extracted to " + retroarchPath + " (no nested subdirectory found)");
             }
         }
         

@@ -206,7 +206,7 @@ RetroArch logs can be found at:
 If you need to build RetroArch manually:
 
 ```bash
-cd /home/runner/work/retrobat-macos/retrobat-macos
+cd /path/to/retrobat-macos
 cp build-macos.ini build.ini
 dotnet run --project src/RetroBuild/RetroBuild.csproj
 ```
@@ -292,10 +292,9 @@ Potential improvements for RetroArch integration:
 
 ## Version History
 
-- **v1.0** (2024): Initial ARM64 support for macOS
-- **v1.22.2**: Current stable version with full Apple Silicon optimization
+- **v1.22.2**: Current stable RetroArch version targeted for macOS Apple Silicon
 
 ---
 
-**Last Updated**: 2024
+**Last Updated**: February 2024
 **Maintainer**: RetroBat macOS Team
