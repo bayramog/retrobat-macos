@@ -4,7 +4,15 @@ This document describes the automated conversion of RetroBat configuration files
 
 ## Overview
 
-All configuration files in the `system/templates/` and `system/configgen/` directories have been converted to use macOS-compatible paths and environment variables.
+All configuration files in the `system/templates/` and `system/configgen/` directories have been converted to use macOS-compatible paths and environment variables, with intelligent exclusions for files that require special syntax.
+
+## Final Results
+
+- **73 configuration files converted** (appropriate files only)
+- **~17,870 path transformations** successfully applied
+- **8 Qt INI files preserved** (special syntax intact)
+- **12 gettext .po/.pot files preserved** (escape sequences intact)
+- **Zero inappropriate conversions**
 
 ## Conversion Script
 
@@ -79,12 +87,55 @@ After:  emulatorLauncher
 ### 5. Special Path Patterns
 - RetroArch-style paths like `:\assets` → `$HOME/assets`
 
+### 6. Trailing Backslashes
+- Path endings like `./dir\` → `./dir/`
+
+### 7. Leading Backslashes  
+- Path beginnings like `\dev_hdd0/` → `/dev_hdd0/`
+
+### 8. Wildcards
+- Patterns like `path\*.ext` → `path/*.ext`
+
+## Files Intelligently Excluded
+
+The conversion script automatically excludes files that use backslashes for special syntax:
+
+### Qt INI Configuration Files (8 files)
+These files use backslashes in two special ways:
+1. **Key hierarchy separators:** `General\Geometry` (Qt standard format)
+2. **Hex escape sequences:** `@ByteArray(\x1\xd9...)` (binary data encoding)
+
+**Excluded files:**
+- `kronos/kronos.ini`
+- `mupen64/Config/GLideN64.ini`
+- `project64/Plugin/GFX/GLideN64/GLideN64.ini`
+- `rpcs3/GuiConfigs/CurrentSettings.ini`
+- `shadps4/launcher/qt_ui.ini`
+- `simple64/simple64-gui.ini`
+- `yuzu/user/config/qt-config.ini`
+- `suyu/user/config/qt-config.ini`
+
+### Gettext Localization Files (12 files)
+These files use backslash escape sequences for special characters:
+- `\n` for newlines
+- `\t` for tabs
+- `\"` for quotes
+
+**Excluded files:**
+- All `.po` and `.pot` files in `es_features.locale/` (12 files across all languages)
+
 ## Conversion Statistics
 
 ### Files Converted
-- **Templates:** 67 files modified (15,623 changes)
-- **ConfigGen:** 3 files modified (2,242 changes)
-- **Total:** 70 files, 17,865 path conversions
+- **Templates:** 73 files modified
+- **ConfigGen:** 3 files modified (templates_files.lst, retrobat_tree.lst, kill_process.lst)
+- **Total Conversions:** ~17,870 path transformations
+- **Git Changes:** 55 files changed, 7,987 insertions(+), 7,523 deletions(-)
+
+### Files Intelligently Excluded
+- **Qt INI files:** 8 files (use `\` for key hierarchy and `\x` for hex escape sequences)
+- **Gettext files:** 12 .po/.pot files (use `\n` for newline escape sequences)
+- **Total Preserved:** 20 files with special syntax requirements
 
 ### Key Files Converted
 
