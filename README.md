@@ -38,10 +38,8 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 **Current Status**: Planning Phase Complete ✅
 
 ### 📚 Documentation
-- 🚀 [**Quick Start (macOS)**](QUICKSTART_MACOS.md) - Fast setup for developers (15 min)
 - 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed technical plan
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
-- 🔧 [**Building on macOS**](BUILDING_MACOS.md) - Developer setup guide
 - 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
 - 💡 [**EmulationStation Decision**](EMULATIONSTATION_DECISION.md) - Why we port RetroBat's ES fork
 
@@ -158,20 +156,6 @@ See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
 |**Controllers:**|SDL3-compatible controllers. USB and Bluetooth controllers supported. Test your controller [HERE](https://gamepad-tester.com)|
 
 > **Note**: The macOS version is currently in active development. See the [macOS Apple Silicon Port](#-macos-apple-silicon-port) section above for current status and progress.
-
-### macOS (In Development)
-
-|**OS supported:**|macOS 12 (Monterey) or later|
-|---|---|
-|**Processor:**|Apple Silicon (M1/M2/M3/M4) arm64 only|
-|**Graphics:**|Metal-compatible GPU (built-in with Apple Silicon)|
-|**Memory:**|8 GB RAM minimum, 16 GB recommended|
-|**Dependencies:**|[Homebrew](https://brew.sh/)|
-|   |[.NET 6+ Runtime](https://dotnet.microsoft.com/download)|
-|   |[Xcode Command Line Tools](https://developer.apple.com/xcode/)|
-|**Controllers:**|SDL2/SDL3 compatible controllers. Most modern USB/Bluetooth controllers supported.|
-
-> **Note**: macOS downloads will be available at [github.com/bayramog/retrobat-macos/releases](https://github.com/bayramog/retrobat-macos/releases) when ready.
 
 
 ## 🦇 RetroBat Team

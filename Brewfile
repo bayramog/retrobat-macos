@@ -43,7 +43,7 @@ brew "sdl2"
 # Note: May need to build from source if not in Homebrew
 # brew "sdl3"
 
-# CMake - Build system for EmulationStation and C++ projects
+# CMake - Build system for EmulationStation
 brew "cmake"
 
 # Boost - C++ libraries for EmulationStation
@@ -61,32 +61,22 @@ brew "eigen"
 # GLM - OpenGL Mathematics library
 brew "glm"
 
-# Additional image format libraries
-brew "libpng"
-brew "jpeg"
-
 # OpenGL - Graphics API (built-in on macOS)
 # No brew package needed, use native framework
 
 # ============================================================================
-# Development IDEs and Editors (Optional but Recommended)
+# Additional Development Tools (Optional but Recommended)
 # ============================================================================
 
-# Visual Studio Code (Recommended - Free)
+# Visual Studio Code - Code editor
 cask "visual-studio-code"
 
 # JetBrains Rider (Commercial - Free for Open Source)
 # Uncomment if you prefer Rider over VS Code
 # cask "rider"
 
-# ============================================================================
-# Optional: Additional Development Tools
-# ============================================================================
-
-# Uncomment as needed:
-# brew "tree"               # Display directory structure
-# brew "htop"               # Better top command
-# brew "jq"                 # JSON processor
+# Xcode Command Line Tools (required, install separately if needed)
+# xcode-select --install
 
 # ============================================================================
 # Optional: Emulator Runtime Dependencies
@@ -96,15 +86,18 @@ cask "visual-studio-code"
 # Uncomment as needed:
 
 # brew "ffmpeg"        # Video encoding/decoding
+# brew "libpng"        # PNG image support
+# brew "jpeg"          # JPEG image support
 # brew "zlib"          # Compression library
 # brew "openal-soft"   # Audio library
 
 # ============================================================================
-# Xcode Command Line Tools
+# Optional: Additional Utilities
 # ============================================================================
 
-# Xcode Command Line Tools (required, install separately)
-# Install with: xcode-select --install
+# brew "tree"               # Display directory structure
+# brew "htop"               # Better top command
+# brew "jq"                 # JSON processor
 
 # Mac App Store apps (requires mas-cli)
 # Install mas-cli first: brew install mas
