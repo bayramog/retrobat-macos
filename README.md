@@ -26,6 +26,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 ### 📚 Documentation
 - 📘 [**Migration Plan**](MACOS_MIGRATION_PLAN.md) - Detailed technical plan
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
+- 🔧 [**Building on macOS**](BUILDING_MACOS.md) - Developer setup guide
 - 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
 - 💡 [**EmulationStation Decision**](EMULATIONSTATION_DECISION.md) - Why we port RetroBat's ES fork
 
@@ -51,6 +52,8 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 
 ## 💻 System Requirements
 
+### Windows
+
 |**OS supported:**|Windows 11, Windows 10, Windows 8.1|
 |---|---|
 |**Processor:**|CPU with SSE2 support. 3 GHz and Dual Core, not older than 2008 is highly recommended.|
@@ -60,6 +63,20 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 |   |[Visual C++ 2015, 2017 and 2019 Redistributable Packages (64 bit)](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)|
 |   |[DirectX](https://www.microsoft.com/download/details.aspx?id=35)|
 |**Controllers:**|Xinput controllers hightly recommanded. Test your controller [HERE](https://gamepad-tester.com)|
+
+### macOS (In Development)
+
+|**OS supported:**|macOS 12 (Monterey) or later|
+|---|---|
+|**Processor:**|Apple Silicon (M1/M2/M3/M4) ARM64 only|
+|**Graphics:**|Metal-compatible GPU (built-in with Apple Silicon)|
+|**Memory:**|8 GB RAM minimum, 16 GB recommended|
+|**Dependencies:**|[Homebrew](https://brew.sh/)|
+|   |[.NET 6+ Runtime](https://dotnet.microsoft.com/download)|
+|   |[Xcode Command Line Tools](https://developer.apple.com/xcode/)|
+|**Controllers:**|SDL2/SDL3 compatible controllers. Most modern USB/Bluetooth controllers supported.|
+
+> **Note**: macOS downloads will be available at [github.com/bayramog/retrobat-macos/releases](https://github.com/bayramog/retrobat-macos/releases) when ready.
 
 
 ## 🦇 RetroBat Team
