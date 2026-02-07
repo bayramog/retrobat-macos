@@ -11,6 +11,20 @@ This guide explains how to build RetroBat distributions on macOS using the new c
 
 Note: `curl` and `git` are already built-in on macOS
 
+### Verify Installation
+
+Run the verification script to check all dependencies:
+
+```bash
+./verify-tools.sh
+```
+
+This will check:
+- Core build tools (7z, wget, curl, git, dotnet)
+- SDL libraries (SDL2, SDL3)
+- Tool functionality (extraction, downloads)
+- RetroBuild compilation
+
 ## Quick Start
 
 ```bash
