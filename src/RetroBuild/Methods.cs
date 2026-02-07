@@ -11,7 +11,11 @@ namespace RetroBuild;
 internal class Methods
 {
     // Reuse HttpClient instance to avoid socket exhaustion
-    private static readonly HttpClient httpClient = new HttpClient();
+    // Set timeout to 5 minutes to allow large downloads while preventing indefinite hangs
+    private static readonly HttpClient httpClient = new HttpClient
+    {
+        Timeout = TimeSpan.FromMinutes(5)
+    };
     
     public static string PathCombineExeDir(string relativePath)
     {
@@ -78,7 +82,10 @@ internal class Methods
         Logger.LogInfo("Downloading (HttpClient): " + url);
         try
         {
-            using (Stream contentStream = httpClient.GetStreamAsync(url).GetAwaiter().GetResult())
+            HttpResponseMessage response = httpClient.GetAsync(url).GetAwaiter().GetResult();
+            response.EnsureSuccessStatusCode();
+            
+            using (Stream contentStream = response.Content.ReadAsStreamAsync().GetAwaiter().GetResult())
             using (FileStream fileStream = new FileStream(text, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 contentStream.CopyTo(fileStream);
