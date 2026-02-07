@@ -1,0 +1,251 @@
+# GitHub Actions Workflow for macOS Build, Sign, and Notarize
+# 
+# This is a TEMPLATE workflow for future CI/CD implementation.
+# It demonstrates how to build, sign, and notarize RetroBat for macOS in GitHub Actions.
+# 
+# IMPORTANT: This workflow is currently disabled (commented out trigger).
+# To enable it:
+# 1. Set up required GitHub Secrets (see below)
+# 2. Uncomment the 'on:' trigger section
+# 3. Test with a workflow_dispatch first
+#
+# Required GitHub Secrets:
+# - MACOS_CERTIFICATE_BASE64: Base64-encoded .p12 certificate
+# - MACOS_CERT_PASSWORD: Certificate password
+# - SIGNING_IDENTITY_APP: Full certificate name (e.g., "Developer ID Application: Name (TEAM_ID)")
+# - APPLE_ID: Apple Developer email
+# - APPLE_TEAM_ID: Apple Developer Team ID
+# - APPLE_APP_PASSWORD: App-specific password
+
+name: Build and Sign macOS (TEMPLATE)
+
+# Triggers (currently disabled - uncomment to enable)
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+#   workflow_dispatch:
+#     inputs:
+#       version:
+#         description: 'Version to build'
+#         required: false
+#         default: '8.0.0'
+
+# Manual trigger only (for testing)
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip notarization)'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  build-macos:
+    name: Build and Sign for macOS
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      
+      - name: Install dependencies
+        run: |
+          brew install p7zip wget
+      
+      - name: Import Code Signing Certificate
+        env:
+          MACOS_CERTIFICATE_BASE64: ${{ secrets.MACOS_CERTIFICATE_BASE64 }}
+          MACOS_CERT_PASSWORD: ${{ secrets.MACOS_CERT_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          # Create temporary keychain
+          KEYCHAIN_PATH=$RUNNER_TEMP/build.keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security default-keychain -s $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          
+          # Import certificate
+          CERT_PATH=$RUNNER_TEMP/certificate.p12
+          echo "$MACOS_CERTIFICATE_BASE64" | base64 --decode > $CERT_PATH
+          security import $CERT_PATH -k $KEYCHAIN_PATH -P "$MACOS_CERT_PASSWORD" -T /usr/bin/codesign
+          
+          # Allow codesign to access the keychain
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          
+          # Clean up
+          rm $CERT_PATH
+          
+          # Verify certificate
+          security find-identity -v -p codesigning
+      
+      - name: Build RetroBuild
+        run: |
+          cd src/RetroBuild
+          dotnet build -c Release
+          cd ../..
+      
+      - name: Configure build
+        run: |
+          cp build-macos.ini build.ini
+          # Update version if provided
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            sed -i '' "s/retrobat_version=.*/retrobat_version=${{ github.event.inputs.version }}/" build.ini
+          fi
+      
+      - name: Run RetroBuild (Download and Configure)
+        run: |
+          # TODO: This step needs to be automated
+          # Currently requires interactive input
+          echo "Building RetroBat distribution..."
+          # dotnet run --project src/RetroBuild/RetroBuild.csproj
+          echo "NOTE: RetroBuild automation pending - manual steps required"
+      
+      - name: Create App Bundle Structure
+        run: |
+          # TODO: Create proper .app bundle structure
+          # This is a placeholder for future implementation
+          echo "Creating RetroBat.app structure..."
+          mkdir -p build/RetroBat.app/Contents/{MacOS,Resources,Frameworks}
+          
+          # Copy Info.plist (TODO: create this)
+          # cp packaging/Info.plist build/RetroBat.app/Contents/
+          
+          # Copy resources (TODO: determine actual structure)
+          # cp -r build/* build/RetroBat.app/Contents/Resources/
+          
+          echo "NOTE: App bundle structure pending design"
+      
+      - name: Sign Application
+        env:
+          SIGNING_IDENTITY_APP: ${{ secrets.SIGNING_IDENTITY_APP }}
+        run: |
+          # TODO: Uncomment when app bundle is ready
+          # ./scripts/macos-sign.sh build/RetroBat.app
+          echo "NOTE: Signing will be performed when app bundle is ready"
+          echo "Would sign with identity: $SIGNING_IDENTITY_APP"
+      
+      - name: Create DMG
+        run: |
+          # TODO: Uncomment when app bundle is ready
+          # VERSION="${{ github.event.inputs.version || '8.0.0' }}"
+          # hdiutil create -volname "RetroBat" -srcfolder build/RetroBat.app \
+          #   -ov -format UDZO "RetroBat-${VERSION}-macos.dmg"
+          echo "NOTE: DMG creation pending app bundle completion"
+      
+      - name: Sign DMG
+        env:
+          SIGNING_IDENTITY_APP: ${{ secrets.SIGNING_IDENTITY_APP }}
+        run: |
+          # TODO: Uncomment when DMG is ready
+          # VERSION="${{ github.event.inputs.version || '8.0.0' }}"
+          # codesign --force --sign "$SIGNING_IDENTITY_APP" \
+          #   --timestamp "RetroBat-${VERSION}-macos.dmg"
+          echo "NOTE: DMG signing pending DMG creation"
+      
+      - name: Notarize (if not dry run)
+        if: ${{ !github.event.inputs.dry_run }}
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        run: |
+          # TODO: Uncomment when DMG is ready
+          # VERSION="${{ github.event.inputs.version || '8.0.0' }}"
+          # ./scripts/macos-notarize.sh \
+          #   --apple-id "$APPLE_ID" \
+          #   --team-id "$APPLE_TEAM_ID" \
+          #   --password "$APPLE_APP_PASSWORD" \
+          #   "RetroBat-${VERSION}-macos.dmg"
+          echo "NOTE: Notarization will be performed in production builds"
+      
+      - name: Verify Signature
+        run: |
+          # TODO: Uncomment when app bundle is ready
+          # codesign --verify --deep --strict --verbose=2 build/RetroBat.app
+          # spctl --assess --type execute -vv build/RetroBat.app
+          echo "NOTE: Verification pending app bundle completion"
+      
+      - name: Generate SHA256
+        run: |
+          # TODO: Uncomment when DMG is ready
+          # VERSION="${{ github.event.inputs.version || '8.0.0' }}"
+          # shasum -a 256 "RetroBat-${VERSION}-macos.dmg" > "RetroBat-${VERSION}-macos.dmg.sha256.txt"
+          echo "NOTE: Checksum generation pending DMG creation"
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: RetroBat-macOS
+          path: |
+            RetroBat-*.dmg
+            RetroBat-*.dmg.sha256.txt
+          if-no-files-found: warn
+      
+      - name: Create Release (on tag push)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            RetroBat-*.dmg
+            RetroBat-*.dmg.sha256.txt
+          draft: true
+          prerelease: true
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Cleanup Keychain
+        if: always()
+        run: |
+          KEYCHAIN_PATH=$RUNNER_TEMP/build.keychain
+          if [ -f "$KEYCHAIN_PATH" ]; then
+            security delete-keychain $KEYCHAIN_PATH || true
+          fi
+
+# Notes for Future Implementation:
+# 
+# 1. App Bundle Structure:
+#    - Create proper Info.plist with bundle identifier, version, etc.
+#    - Organize files into Contents/{MacOS,Resources,Frameworks}
+#    - Include app icon (icns file)
+#    - Set proper file permissions
+#
+# 2. Signing:
+#    - Sign all nested .app bundles first (RetroArch.app, etc.)
+#    - Sign all .dylib files
+#    - Sign executable binaries
+#    - Sign frameworks
+#    - Sign main app bundle last with entitlements
+#
+# 3. Notarization:
+#    - Typically takes 2-10 minutes
+#    - Can fail if any binaries are unsigned
+#    - Requires hardened runtime and timestamp on all signatures
+#    - Staple ticket after approval for offline verification
+#
+# 4. Testing:
+#    - Test on clean macOS VM before release
+#    - Verify Gatekeeper acceptance
+#    - Check for security warnings
+#    - Test on both Intel and Apple Silicon (if supporting both)
+#
+# 5. Secrets Management:
+#    - Export certificate: security export -k login.keychain -t identities -f pkcs12 -o cert.p12
+#    - Base64 encode: base64 -i cert.p12 -o cert.base64.txt
+#    - Store in GitHub Secrets (Settings > Secrets and variables > Actions)
+#    - Create app-specific password at appleid.apple.com
+#
+# 6. Environment-specific builds:
+#    - Use different signing identities for dev/staging/production
+#    - Consider separate notarization profiles for different environments
+#    - Tag releases appropriately (v1.0.0, v1.0.0-beta, etc.)

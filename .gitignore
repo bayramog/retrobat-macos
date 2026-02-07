@@ -42,6 +42,21 @@ packages/
 .DS_Store
 ._*
 
+# macOS distribution artifacts
+*.dmg
+*.pkg
+*.app
+RetroBat-*.zip
+RetroBat-*.dmg
+RetroBat-*.pkg
+
+# Code signing
+.retrobat-signing
+*.p12
+*.cer
+certificate*.txt
+notarization-log-*.json
+
 # Build logs
 *.log
 
