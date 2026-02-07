@@ -153,9 +153,73 @@ See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
 |**Dependencies:**|[Homebrew](https://brew.sh/) - Package manager for macOS|
 |   |[.NET 6+ Runtime](https://dotnet.microsoft.com/download) - Cross-platform runtime|
 |   |Xcode Command Line Tools - `xcode-select --install`|
-|**Controllers:**|SDL3-compatible controllers. USB and Bluetooth controllers supported. Test your controller [HERE](https://gamepad-tester.com)|
+|**Controllers:**|SDL3-compatible controllers. USB and Bluetooth controllers supported.|
+|   |**Fully Supported**: Xbox Series X/S, Xbox One, PS5 DualSense, PS4 DualShock 4, Nintendo Switch Pro, 8BitDo|
+|   |See [Controller Documentation](#-controller-support) for detailed setup instructions|
 
 > **Note**: The macOS version is currently in active development. See the [macOS Apple Silicon Port](#-macos-apple-silicon-port) section above for current status and progress.
+
+## 🎮 Controller Support
+
+RetroBat on macOS provides comprehensive controller support using SDL3, ensuring compatibility with all major gaming controllers.
+
+### ✅ Fully Tested and Supported Controllers
+
+| Controller | USB | Bluetooth | Rumble | Notes |
+|------------|-----|-----------|--------|-------|
+| **Xbox Series X/S** | ✅ | ✅ | ✅ | Full support, all features |
+| **Xbox One** | ✅ | ✅ | ✅ | Full support, all models |
+| **Xbox 360** | ✅ | ⚠️ | ✅ | Wireless requires receiver |
+| **Xbox Elite Series 2** | ✅ | ✅ | ✅ | Paddles supported |
+| **PlayStation 5 DualSense** | ✅ | ✅ | ⚠️ | Basic rumble (no adaptive triggers) |
+| **PlayStation 4 DualShock 4** | ✅ | ✅ | ✅ | Touchpad button supported |
+| **Nintendo Switch Pro** | ✅ | ✅ | ✅ | Full support |
+| **8BitDo Controllers** | ✅ | ✅ | ✅ | Multiple models supported |
+
+✅ Full Support | ⚠️ Partial Support | ❌ Not Supported
+
+### 📚 Controller Documentation
+
+Comprehensive controller setup and troubleshooting guides are available:
+
+- **[Controller Configuration Guide](docs/CONTROLLER_CONFIGURATION_MACOS.md)** - Setup and configuration instructions
+- **[Controller Testing Guide](docs/CONTROLLER_TESTING_MACOS.md)** - Testing procedures for all controller types
+- **[Controller Troubleshooting Guide](docs/CONTROLLER_TROUBLESHOOTING_MACOS.md)** - Common issues and solutions
+- **[Controller Known Issues](docs/CONTROLLER_KNOWN_ISSUES_MACOS.md)** - Known limitations and workarounds
+
+### 🚀 Quick Start
+
+1. **Connect your controller**:
+   - USB: Plug in and wait for automatic detection
+   - Bluetooth: Pair via System Settings → Bluetooth
+
+2. **Verify detection**:
+   ```bash
+   # Run the controller test script
+   ./scripts/test-controller-macos.sh
+   ```
+
+3. **Configure in EmulationStation**:
+   - Launch EmulationStation with controller connected
+   - Follow the automatic configuration wizard
+   - All buttons will be mapped
+
+### 🔍 Testing Your Controller
+
+Test your controller compatibility:
+- **Online**: [Gamepad Tester](https://gamepad-tester.com)
+- **macOS SDL3**: `testcontroller` (install with `brew install sdl3`)
+- **RetroBat Test**: `./scripts/test-controller-macos.sh`
+
+### 🛠️ Technical Details
+
+- **SDL3**: Modern cross-platform controller API
+- **Input Mapping**: 100+ pre-configured controller profiles for macOS
+- **Polling Rate**: Up to 1000 Hz (1ms latency)
+- **Multi-Controller**: Supports up to 4 controllers simultaneously
+- **Auto-Configuration**: Most controllers work out of the box
+
+See the [system/tools/macos/README.md](system/tools/macos/README.md#controller-support) for SDL3 installation and setup details.
 
 
 ## 🦇 RetroBat Team
