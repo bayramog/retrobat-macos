@@ -1,51 +1,110 @@
-# Brewfile for RetroBat macOS Development Environment
+# Brewfile for RetroBat macOS Development
+#
 # Install all dependencies with: brew bundle
-# See: https://github.com/Homebrew/homebrew-bundle
+# Update dependencies with: brew bundle install --verbose
+#
+# This Brewfile includes all required tools and libraries for:
+# - Building RetroBat with RetroBuild
+# - Compiling EmulationStation from source
+# - Running emulators and RetroArch
 
-# Taps (additional package repositories)
-# tap "homebrew/cask"
-# tap "homebrew/core"
+# ============================================================================
+# Core Build Tools (Required for RetroBuild)
+# ============================================================================
 
-# Development Tools
-brew "git"                  # Version control
-brew "cmake"                # Build system for C++ projects
-brew "pkg-config"           # Helper tool for compiling
+# p7zip - Archive extraction and creation (replaces 7za.exe)
+brew "p7zip"
 
-# Compression and Download Tools
-brew "p7zip"                # 7-Zip compression tool
-brew "wget"                 # File downloader
-brew "curl"                 # Transfer data with URLs (usually pre-installed)
+# wget - Download utility (replaces wget.exe)
+brew "wget"
 
-# Graphics and Media Libraries (for EmulationStation)
-brew "sdl2"                 # Simple DirectMedia Layer 2
-brew "boost"                # C++ libraries
-brew "freeimage"            # Image loading/saving library
-brew "freetype"             # Font rendering library
-brew "eigen"                # C++ template library for linear algebra
+# curl - Already built-in on macOS, but ensure latest version
+brew "curl"
 
-# Additional Libraries
-brew "libpng"               # PNG image library
-brew "jpeg"                 # JPEG image library
+# git - Version control (built-in with Xcode, but ensure latest)
+brew "git"
 
-# Optional: SDL3 (when available in Homebrew stable)
-# brew "sdl3"               # Simple DirectMedia Layer 3 (for enhanced controller support)
+# pkg-config - Helper tool for compiling
+brew "pkg-config"
 
-# IDEs and Editors (Casks - GUI applications)
-# Uncomment the one you prefer:
+# .NET SDK - Required for building and running RetroBuild
+brew "dotnet-sdk"
+
+# ============================================================================
+# EmulationStation Dependencies (Required for ES compilation)
+# ============================================================================
+
+# SDL2 - Cross-platform multimedia library (replaces SDL2.dll)
+# Required for EmulationStation graphics, input, and audio
+brew "sdl2"
+
+# SDL3 - Next-generation SDL (optional, replaces SDL3.dll)
+# Only needed for emulators that specifically require SDL3
+# Note: May need to build from source if not in Homebrew
+# brew "sdl3"
+
+# CMake - Build system for EmulationStation and C++ projects
+brew "cmake"
+
+# Boost - C++ libraries for EmulationStation
+brew "boost"
+
+# FreeImage - Image loading library
+brew "freeimage"
+
+# FreeType - Font rendering library
+brew "freetype"
+
+# Eigen - C++ template library for linear algebra
+brew "eigen"
+
+# GLM - OpenGL Mathematics library
+brew "glm"
+
+# Additional image format libraries
+brew "libpng"
+brew "jpeg"
+
+# OpenGL - Graphics API (built-in on macOS)
+# No brew package needed, use native framework
+
+# ============================================================================
+# Development IDEs and Editors (Optional but Recommended)
+# ============================================================================
 
 # Visual Studio Code (Recommended - Free)
 cask "visual-studio-code"
 
 # JetBrains Rider (Commercial - Free for Open Source)
+# Uncomment if you prefer Rider over VS Code
 # cask "rider"
 
-# Development SDKs (Casks)
-cask "dotnet-sdk"           # .NET SDK for macOS
+# ============================================================================
+# Optional: Additional Development Tools
+# ============================================================================
 
-# Optional: Additional useful tools
+# Uncomment as needed:
 # brew "tree"               # Display directory structure
 # brew "htop"               # Better top command
 # brew "jq"                 # JSON processor
+
+# ============================================================================
+# Optional: Emulator Runtime Dependencies
+# ============================================================================
+
+# Additional libraries that may be needed by specific emulators
+# Uncomment as needed:
+
+# brew "ffmpeg"        # Video encoding/decoding
+# brew "zlib"          # Compression library
+# brew "openal-soft"   # Audio library
+
+# ============================================================================
+# Xcode Command Line Tools
+# ============================================================================
+
+# Xcode Command Line Tools (required, install separately)
+# Install with: xcode-select --install
 
 # Mac App Store apps (requires mas-cli)
 # Install mas-cli first: brew install mas

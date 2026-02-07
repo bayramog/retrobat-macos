@@ -7,19 +7,33 @@
       <img src="https://img.shields.io/discord/748519802255179917?color=blue&label=discord&logo=discord&logoColor=white&style=for-the-badge"
            alt="Discord">
     </a>
+  <img src="https://img.shields.io/badge/macOS-Apple%20Silicon-blue?style=for-the-badge&logo=apple&logoColor=white" alt="macOS Apple Silicon">
+  <img src="https://img.shields.io/badge/Windows-11%20%7C%2010-blue?style=for-the-badge&logo=windows&logoColor=white" alt="Windows Support">
 </p>
 
 RetroBat is designed to automatically configure EmulationStation’s frontend interface with RetroArch and other stand alone emulators.
 
 With it you will be able to quickly run games from many compatible ROM collections. This saves hours of configuration and installation time, leaving you free to play your favourite retro games.
 
-RetroBat automatically downloads and installs all the relevant software needed to have the best retro gaming experience on your Windows PC.
+RetroBat automatically downloads and installs all the relevant software needed to have the best retro gaming experience on your PC. Originally designed for Windows, **RetroBat is now being ported to macOS Apple Silicon (M1/M2/M3/M4)**.
 
 RetroBat can also run in Portable Mode. This means you can play games from an external hard drive or from any removable storage device, as long as the computer meets the minimum requirements.
 
+## 📦 Download
+
+### Windows
+- **Latest Release**: Visit the [official RetroBat website](https://www.retrobat.org/) for the Windows version
+- **GitHub Releases**: [RetroBat Official Releases](https://github.com/RetroBat-Official/retrobat/releases)
+
+### macOS (Apple Silicon)
+- **Status**: In Development 🚧
+- **This Repository**: The macOS port is being developed here at [bayramog/retrobat-macos](https://github.com/bayramog/retrobat-macos)
+- **Releases**: Will be available on the [Releases page](https://github.com/bayramog/retrobat-macos/releases) once ready
+- **Follow Progress**: See the [macOS Apple Silicon Port](#-macos-apple-silicon-port) section below
+
 ## 🍎 macOS Apple Silicon Port
 
-> **⚠️ Work in Progress**: This fork is dedicated to porting RetroBat to macOS Apple Silicon (M1/M2/M3).
+> **⚠️ Work in Progress**: This fork is dedicated to porting RetroBat to macOS Apple Silicon (M1/M2/M3/M4).
 
 **Current Status**: Planning Phase Complete ✅
 
@@ -47,9 +61,76 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - **SDL2/SDL3** - Cross-platform graphics and controller support
 - **Homebrew** - Package management
 
+### 📦 macOS Dependencies
+
+RetroBat on macOS uses system tools from Homebrew instead of bundled Windows binaries:
+
+**Core Build Tools:**
+- `p7zip` - Archive extraction (replaces `7za.exe`)
+- `wget` - File downloads (replaces `wget.exe`)
+- `curl` - Built-in on macOS (replaces `curl.exe`)
+- `git` - Built-in with Xcode Command Line Tools
+
+**SDL Libraries (for EmulationStation):**
+- `sdl2` - Required for EmulationStation (replaces `SDL2.dll`)
+- `sdl3` - Optional for enhanced features (replaces `SDL3.dll`)
+
+**Quick Install:**
+```bash
+# Install all dependencies
+brew bundle
+
+# Or install individually
+brew install p7zip wget sdl2 dotnet-sdk
+
+# Verify installation
+./verify-tools.sh
+```
+
+For complete setup instructions, see:
+- [Brewfile](Brewfile) - All required dependencies
+- [system/tools/macos/README.md](system/tools/macos/README.md) - Detailed tool documentation
+- [docs/BUILDING_RETROBUILD_MACOS.md](docs/BUILDING_RETROBUILD_MACOS.md) - Build instructions
+- [verify-tools.sh](verify-tools.sh) - Tool verification script
+
 **Timeline**: ~21 weeks | **Next Step**: [Create GitHub Issues](ISSUES.md)
 
+### 🚀 Getting Started on macOS (When Available)
+
+> **Note**: macOS installation will be available once development is complete. For now, you can follow the [Migration Plan](MACOS_MIGRATION_PLAN.md) to contribute.
+
+**Prerequisites:**
+```bash
+# Install Homebrew (if not already installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install .NET Runtime
+brew install --cask dotnet-sdk
+
+# Install Xcode Command Line Tools
+xcode-select --install
+```
+
+**Installation Steps (Future):**
+1. Download the latest macOS release from [Releases](https://github.com/bayramog/retrobat-macos/releases)
+2. Open the `.dmg` file and drag RetroBat to your Applications folder
+3. Launch RetroBat from Applications
+4. Follow the setup wizard to configure your emulators and ROMs
+
+**Building from Source:**
+
+See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
+
 ---
+
+## 🖥️ Supported Platforms
+
+| Platform | Status | Architecture | Download |
+|----------|--------|--------------|----------|
+| **Windows** | ✅ Stable | x86, x64 | [Official Website](https://www.retrobat.org/) |
+| **macOS** | 🚧 In Development | ARM64 (Apple Silicon) | [Releases](https://github.com/bayramog/retrobat-macos/releases) (Coming Soon) |
+
+> **macOS Note**: Only Apple Silicon (M1/M2/M3/M4) is supported. Intel-based Macs are not supported.
 
 ## 💻 System Requirements
 
@@ -63,7 +144,20 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 |   |[Visual C++ 2015, 2017 and 2019 Redistributable Packages (32 bit)](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)|
 |   |[Visual C++ 2015, 2017 and 2019 Redistributable Packages (64 bit)](https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/)|
 |   |[DirectX](https://www.microsoft.com/download/details.aspx?id=35)|
-|**Controllers:**|Xinput controllers hightly recommanded. Test your controller [HERE](https://gamepad-tester.com)|
+|**Controllers:**|Xinput controllers highly recommended. Test your controller [HERE](https://gamepad-tester.com)|
+
+### macOS (Apple Silicon)
+
+|**OS supported:**|macOS 12 (Monterey) or later|
+|---|---|
+|**Processor:**|Apple Silicon (M1, M2, M3, M4) - **ARM64 only, Intel x86_64 not supported**|
+|**Graphics:**|Apple GPU with Metal support (built into all Apple Silicon chips)|
+|**Dependencies:**|[Homebrew](https://brew.sh/) - Package manager for macOS|
+|   |[.NET 6+ Runtime](https://dotnet.microsoft.com/download) - Cross-platform runtime|
+|   |Xcode Command Line Tools - `xcode-select --install`|
+|**Controllers:**|SDL3-compatible controllers. USB and Bluetooth controllers supported. Test your controller [HERE](https://gamepad-tester.com)|
+
+> **Note**: The macOS version is currently in active development. See the [macOS Apple Silicon Port](#-macos-apple-silicon-port) section above for current status and progress.
 
 ### macOS (In Development)
 
