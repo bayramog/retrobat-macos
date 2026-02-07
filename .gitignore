@@ -41,6 +41,14 @@ packages/
 # macOS
 .DS_Store
 ._*
+*.dmg
+*.pkg
+*.icns
+*.app
+build/RetroBat.app/
+build/*.dmg
+build/*.pkg
+build/*.sha256
 
 # Build logs
 *.log

@@ -42,6 +42,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
 - 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
 - 💡 [**EmulationStation Decision**](EMULATIONSTATION_DECISION.md) - Why we port RetroBat's ES fork
+- 📦 [**Packaging Guide**](macos/PACKAGING_MACOS.md) - Creating .dmg and .pkg installers
 
 ### 📊 Progress
 - [x] Phase 1: Planning & Documentation (Week 1-2)
@@ -118,6 +119,28 @@ xcode-select --install
 **Building from Source:**
 
 See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
+
+**Creating macOS Installers:**
+
+To create .dmg and .pkg installers for distribution:
+
+```bash
+# Quick build (all steps)
+cd macos
+./build-all.sh 8.0.0
+
+# Or build step-by-step:
+./create-icon.sh              # Generate app icon
+./build-app-bundle.sh 8.0.0   # Create app bundle
+./create-dmg.sh 8.0.0         # Create DMG installer
+./create-pkg.sh 8.0.0         # Create PKG installer
+
+# Optional: Sign and notarize (requires Apple Developer account)
+./sign.sh                     # Code sign
+./notarize.sh                 # Submit to Apple
+```
+
+For complete packaging documentation, see [macos/PACKAGING_MACOS.md](macos/PACKAGING_MACOS.md).
 
 ---
 
