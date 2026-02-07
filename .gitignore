@@ -15,3 +15,36 @@ retrobat-*.zip.sha256.txt
 InstallerHost.exe.config
 RetroBuild.exe.config__pycache__/
 *.pyc
+
+# .NET Core build artifacts
+src/**/bin/
+src/**/obj/
+*.dll
+*.pdb
+*.dylib
+*.so
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.iml
+
+# macOS
+.DS_Store
+._*
+
+# Build logs
+*.log
+
+# Temporary files
+*.tmp
+*~
