@@ -1,0 +1,207 @@
+name: Build macOS Release
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+    inputs:
+      skip_package:
+        description: 'Skip package creation (faster builds for testing)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+env:
+  RETROBAT_VERSION: ${{ github.ref_type == 'tag' && github.ref_name || '8.0.0.0-dev' }}
+
+permissions:
+  contents: write  # Required for creating releases
+
+jobs:
+  build-macos:
+    name: Build RetroBat for macOS
+    runs-on: macos-14  # macOS Sonoma with Apple Silicon
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      
+      - name: Install Homebrew dependencies
+        run: |
+          echo "Installing dependencies via Homebrew..."
+          brew install p7zip wget create-dmg
+          
+      - name: Verify tools
+        run: |
+          echo "Verifying installed tools..."
+          dotnet --version
+          7z --help | head -5
+          wget --version | head -1
+          curl --version | head -1
+          
+      - name: Display system info
+        run: |
+          echo "macOS Version:"
+          sw_vers
+          echo ""
+          echo "Architecture:"
+          uname -m
+          echo ""
+          echo "CPU Info:"
+          sysctl -n machdep.cpu.brand_string
+          
+      - name: Run build script
+        run: |
+          echo "Starting RetroBat macOS build..."
+          if [ "${{ github.event.inputs.skip_package }}" = "true" ]; then
+            ./build-macos.sh --skip-package
+          else
+            ./build-macos.sh
+          fi
+        env:
+          RETROBAT_VERSION: ${{ env.RETROBAT_VERSION }}
+          
+      - name: Display build log
+        if: always()
+        run: |
+          if [ -f build-macos.log ]; then
+            echo "=== Last 100 lines of build log ==="
+            tail -100 build-macos.log
+          fi
+          
+      - name: Verify build artifacts
+        run: |
+          echo "Checking build directory..."
+          if [ -d build ]; then
+            echo "✓ Build directory exists"
+            echo "Build size: $(du -sh build | cut -f1)"
+            echo ""
+            echo "Top-level contents:"
+            ls -lh build/
+          else
+            echo "✗ Build directory not found!"
+            exit 1
+          fi
+          
+          echo ""
+          echo "Checking output directory..."
+          if [ -d output ]; then
+            echo "✓ Output directory exists"
+            echo ""
+            echo "Package files:"
+            ls -lh output/
+          else
+            echo "ℹ Output directory not found (may be skipped)"
+          fi
+          
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: retrobat-macos-build-${{ github.sha }}
+          path: |
+            build/
+            output/
+            build-macos.log
+          retention-days: 30
+          
+      - name: Upload release packages
+        uses: actions/upload-artifact@v4
+        if: github.event.inputs.skip_package != 'true'
+        with:
+          name: retrobat-macos-packages-${{ github.sha }}
+          path: |
+            output/*.zip
+            output/*.dmg
+            output/*.sha256
+          retention-days: 90
+          
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
+          files: |
+            output/*.zip
+            output/*.dmg
+            output/*.sha256
+          body: |
+            ## RetroBat macOS Release ${{ env.RETROBAT_VERSION }}
+            
+            ### Downloads
+            - **DMG**: Drag-and-drop installer for macOS
+            - **ZIP**: Portable archive version
+            
+            ### System Requirements
+            - macOS 12.0 (Monterey) or later
+            - Apple Silicon (M1/M2/M3/M4) or Intel Mac
+            - 4GB RAM minimum
+            - 10GB free disk space
+            
+            ### Installation
+            1. Download the DMG or ZIP file
+            2. For DMG: Open and drag RetroBat to Applications
+            3. For ZIP: Extract anywhere and run
+            
+            ### Important Notes
+            - This build is **unsigned** - you may need to allow it in System Preferences > Security & Privacy
+            - First launch may take longer as macOS verifies the app
+            
+            ### What's Included
+            - EmulationStation frontend
+            - RetroArch with libretro cores
+            - Pre-configured system templates
+            - Default theme
+            
+            ### Known Issues
+            Please report issues at: https://github.com/${{ github.repository }}/issues
+            
+            ---
+            Built with ❤️ for macOS Apple Silicon
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Build Summary
+        if: always()
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ env.RETROBAT_VERSION }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Platform**: macOS (Apple Silicon)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Runner**: macos-14" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -d build ]; then
+            echo "### Build Artifacts" >> $GITHUB_STEP_SUMMARY
+            echo "- Build directory: $(du -sh build | cut -f1)" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ -d output ]; then
+            echo "### Packages Created" >> $GITHUB_STEP_SUMMARY
+            for file in output/*; do
+              if [ -f "$file" ]; then
+                echo "- $(basename $file): $(du -sh $file | cut -f1)" >> $GITHUB_STEP_SUMMARY
+              fi
+            done
+          fi
