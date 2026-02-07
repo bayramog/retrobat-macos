@@ -48,3 +48,10 @@ packages/
 # Temporary files
 *.tmp
 *~
+
+# macOS Build Artifacts
+output/
+*.dmg
+*.pkg
+build-macos.log
+build.ini

@@ -42,6 +42,7 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - 🏗️ [**Architecture**](ARCHITECTURE.md) - System architecture (current vs. target)
 - 📝 [**GitHub Issues**](ISSUES.md) - Issue templates for tracking
 - 💡 [**EmulationStation Decision**](EMULATIONSTATION_DECISION.md) - Why we port RetroBat's ES fork
+- 🔧 [**Build Automation**](docs/BUILD_AUTOMATION.md) - Automated build system and CI/CD
 
 ### 📊 Progress
 - [x] Phase 1: Planning & Documentation (Week 1-2)
@@ -58,6 +59,26 @@ RetroBat can also run in Portable Mode. This means you can play games from an ex
 - **RetroBat EmulationStation** - Porting RetroBat's own ES fork (C++/SDL2)
 - **SDL2/SDL3** - Cross-platform graphics and controller support
 - **Homebrew** - Package management
+
+### 🚀 Build Automation
+
+Automated build system with CI/CD pipeline:
+
+- **Build Script**: [`build-macos.sh`](build-macos.sh) - Automated build from scratch
+- **CI/CD**: GitHub Actions workflow for automated builds
+- **Artifacts**: ZIP and DMG packages automatically created
+- **Releases**: Draft releases created automatically on version tags
+
+```bash
+# Run full automated build
+./build-macos.sh
+
+# Or with options
+./build-macos.sh --clean        # Clean build
+./build-macos.sh --skip-package # Skip packaging
+```
+
+See [Build Automation Guide](docs/BUILD_AUTOMATION.md) for complete documentation.
 
 ### 📦 macOS Dependencies
 
@@ -117,7 +138,17 @@ xcode-select --install
 
 **Building from Source:**
 
-See [INSTALL.md](INSTALL.md) for detailed build instructions for developers.
+```bash
+# Quick automated build
+./build-macos.sh
+
+# Or build step by step
+cp build-macos.ini build.ini
+cd src/RetroBuild && dotnet build -c Release && cd ../..
+dotnet run --project src/RetroBuild/RetroBuild.csproj
+```
+
+See [docs/BUILD_AUTOMATION.md](docs/BUILD_AUTOMATION.md) for complete build automation documentation.
 
 ---
 
